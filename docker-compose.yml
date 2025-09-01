@@ -1,0 +1,13 @@
+version: '3'
+services:
+  oliver:
+    build: .
+    env_file:
+      - .env_oliver
+    restart: always
+
+  evelyn:
+    build: .
+    env_file:
+      - .env_evelyn
+    restart: always
