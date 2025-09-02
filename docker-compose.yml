@@ -12,3 +12,9 @@ services:
     env_file:
       - .env_evelyn
     restart: always
+
+  daniela:
+    image: rosseta-playwright-image
+    env_file:
+      - .env_daniela
+    restart: always
