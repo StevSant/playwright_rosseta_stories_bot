@@ -1,13 +1,14 @@
 version: '3'
 services:
   oliver:
-    build: .
+    image: rosseta-playwright-image
+
     env_file:
       - .env_oliver
     restart: always
 
   evelyn:
-    build: .
+    image: rosseta-playwright-image
     env_file:
       - .env_evelyn
     restart: always

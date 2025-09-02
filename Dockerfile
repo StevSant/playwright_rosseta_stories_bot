@@ -43,4 +43,4 @@ RUN python -m playwright install --with-deps
 # Expose nothing (this is a script), set non-root user if desired
 # Use root by default so Playwright can run without extra permissions in CI/local
 
-ENTRYPOINT ["python", "./script.py"]
+ENTRYPOINT ["python", "./main.py"]
