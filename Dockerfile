@@ -9,6 +9,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 # Copy project files
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 COPY pyproject.toml pyproject.toml
 COPY uv.lock uv.lock
 COPY . /app
@@ -36,11 +38,13 @@ RUN apt-get update \
 # Instalar pip, setuptools y uv
 RUN python -m pip install --upgrade pip setuptools uv
 
+
 # Instalar dependencias del proyecto desde uv.lock
-RUN uv sync
+RUN uv sync --locked
+
 
 # Instalar Playwright browsers
-RUN python -m playwright install --with-deps
+RUN uv run playwright install --with-deps
 
 # Entrypoint
-ENTRYPOINT ["python", "./main.py"]
+ENTRYPOINT ["uv","run", "./main.py"]
