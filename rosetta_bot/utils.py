@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 from typing import Optional, Tuple, Union
 
-from playwright.sync_api import Page, Frame
+from playwright.sync_api import Page, Frame, Locator
 
 
 def debug_dump(page: Optional[Page], tag: str = "state"):
@@ -72,7 +72,7 @@ def click_cookie_consent_if_present(page: Optional[Page]):
 
 def find_in_any_frame(
     page: Optional[Page], selector: str
-) -> Tuple[Optional[Union[Frame, Page]], Optional[object]]:
+) -> Tuple[Optional[Union[Frame, Page]], Optional[Locator]]:
     """Busca un locator visible por CSS en la página o en cualquiera de sus iframes.
 
     Devuelve (frame_or_page, locator) o (None, None) si no se encuentra.

@@ -1,25 +1,24 @@
 from dotenv import load_dotenv
-import os
 from playwright.sync_api import sync_playwright
 
-from rosetta_bot import RosettaStoneBot
+from rosetta_bot import RosettaStoneBot, AppConfig
 
 
 def main():
-    load_dotenv()
+    load_dotenv(dotenv_path=".env_evelyn")
 
-    email = os.getenv("EMAIL")
-    password = os.getenv("PASSWORD")
-    headless_env = os.getenv("PLAYWRIGHT_HEADLESS", "1")
-    headless = headless_env.lower() not in ("0", "false", "no")
+    # Create configuration from environment variables
+    config = AppConfig.from_env()
 
+    # Run the bot - puedes cambiar entre los diferentes modos aquí
     with sync_playwright() as playwright:
-        bot = RosettaStoneBot(email, password, slow_mo=500, headless=headless)
-        bot.launch_browser(playwright)
-        bot.login()
-        bot.navigate_to_lesson()
-        bot.activity_loop()
-        bot.close_browser()
+        bot = RosettaStoneBot(config)
+
+        # Modo 1: Bucle infinito de historias (NUEVO)
+        bot.run_infinite_stories_loop(playwright)
+
+        # Modo 2: Lección tradicional original
+        # bot.run(playwright)
 
 
 if __name__ == "__main__":
