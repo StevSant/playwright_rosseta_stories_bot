@@ -42,8 +42,7 @@ class AppConfig:
             )
 
         headless_env = os.getenv("PLAYWRIGHT_HEADLESS", "1")
-        # headless = headless_env.lower() not in ("0", "false", "no")
-        headless = False
+        headless = headless_env.lower() not in ("0", "false", "no")
 
         slow_mo = int(os.getenv("PLAYWRIGHT_SLOW_MO", "500"))
         debug_enabled = os.getenv("DEBUG", "1").lower() not in ("0", "false", "no")
