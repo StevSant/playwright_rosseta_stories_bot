@@ -67,7 +67,7 @@ wheels = [
 ]
 
 [[package]]
-name = "script-rosseta"
+name = "rosseta-stone-bot-stories"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
