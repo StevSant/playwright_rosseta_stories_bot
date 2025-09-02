@@ -37,7 +37,7 @@ RUN apt-get update \
 RUN python -m pip install --upgrade pip setuptools uv
 
 # Instalar dependencias del proyecto desde uv.lock
-RUN uv install
+RUN uv sync
 
 # Instalar Playwright browsers
 RUN python -m playwright install --with-deps
