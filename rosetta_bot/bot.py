@@ -221,7 +221,6 @@ class RosettaStoneBot:
                         "[WARN] No se encontró el control de reproducción (polygon) en esta iteración."
                     )
 
-
                 time.sleep(50)
                 # Guardar una captura en las primeras iteraciones para facilitar debug
                 try:
