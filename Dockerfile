@@ -33,14 +33,14 @@ RUN apt-get update \
   libxkbcommon0 \
   && rm -rf /var/lib/apt/lists/*
 
-# Install pip-tools and install dependencies from pyproject/lock
-RUN python -m pip install --upgrade pip setuptools pip-tools && \
-  python -m pip install "playwright>=1.55.0"
+# Instalar pip, setuptools y uv
+RUN python -m pip install --upgrade pip setuptools uv
 
-# Install playwright browsers (all supported browsers)
+# Instalar dependencias del proyecto desde uv.lock
+RUN uv install
+
+# Instalar Playwright browsers
 RUN python -m playwright install --with-deps
 
-# Expose nothing (this is a script), set non-root user if desired
-# Use root by default so Playwright can run without extra permissions in CI/local
-
+# Entrypoint
 ENTRYPOINT ["python", "./main.py"]
