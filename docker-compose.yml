@@ -6,14 +6,20 @@ services:
     env_file:
       - .env_oliver
     restart: always
+  oliver-2:
+    image: rosseta-playwright-image
 
-  # evelyn:
-  #   image: rosseta-playwright-image
-  #   env_file:
-  #     - .env_evelyn
-  #   restart: always
+    env_file:
+      - .env_oliver
+    restart: always
 
   daniela:
+    image: rosseta-playwright-image
+    env_file:
+      - .env_daniela
+    restart: always
+
+  daniela-2:
     image: rosseta-playwright-image
     env_file:
       - .env_daniela
