@@ -1,11 +1,9 @@
 """Authentication service for Rosetta Stone."""
 
-import re
-
 from playwright.sync_api import Page
 
 from . import utils
-from .constants import URLs, Selectors, TextPatterns, Timeouts
+from .constants import URLs, CompiledPatterns
 
 
 class AuthenticationService:
@@ -126,11 +124,7 @@ class AuthenticationService:
     def _retry_login_button_click(self, page: Page) -> None:
         """Retry clicking login button with multiple strategies."""
         try:
-            btn = page.get_by_role("button").filter(
-                has_text=re.compile(
-                    r"sign\s*in|iniciar\s*sesión|acceder|entrar|login", re.I
-                )
-            )
+            btn = page.get_by_role("button").filter(has_text=CompiledPatterns.SIGNIN)
             btn.first.click(timeout=10000)
         except Exception:
             self._try_frame_login_buttons(page)
@@ -140,11 +134,7 @@ class AuthenticationService:
         clicked = False
         for frame in page.frames:
             try:
-                fbtn = frame.get_by_role("button").filter(
-                    has_text=re.compile(
-                        r"sign\s*in|iniciar\s*sesión|acceder|entrar|login", re.I
-                    )
-                )
+                fbtn = frame.get_by_role("button").filter(has_text=CompiledPatterns.SIGNIN)
                 fbtn.first.click(timeout=5000)
                 clicked = True
                 break

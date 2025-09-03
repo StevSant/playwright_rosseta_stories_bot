@@ -1,6 +1,50 @@
 """Constants and action definitions for Rosetta Stone Bot."""
 
+import re
 from dataclasses import dataclass
+
+
+def compile_case_insensitive(pattern: str) -> re.Pattern:
+    """
+    Utility function to compile regex patterns with case-insensitive flag.
+    
+    Args:
+        pattern: The regex pattern string
+        
+    Returns:
+        Compiled regex pattern with IGNORECASE flag
+    """
+    return re.compile(pattern, re.IGNORECASE)
+
+
+@dataclass 
+class CompiledPatterns:
+    """Pre-compiled regex patterns for better performance."""
+    
+    # Login patterns
+    SIGNIN = compile_case_insensitive(r"sign\s*in|iniciar\s*sesión|acceder|entrar|login")
+    LOGIN_PAGE = compile_case_insensitive(r"login|signin|acceder|entrar|iniciar")
+
+    # Cookie patterns
+    COOKIE_ACCEPT = compile_case_insensitive(
+        r"accept|agree|allow|ok|got\s*it|entendido|acept(ar|o)|permit(ir|o)|de\s*acuerdo"
+    )
+
+    # Navigation patterns
+    FOUNDATIONS = compile_case_insensitive(r"foundations|fundamentos")
+    BROWSE_CONTENT = compile_case_insensitive(
+        r"^(explorar\s+todo\s+el\s+contenido|browse\s+all\s+content|explore\s+all\s+content)$"
+    )
+    CONTINUE_WITHOUT_VOICE = compile_case_insensitive(
+        r"continuar\s+sin\s+voz|continue\s+without\s+(voice|speech)"
+    )
+    LISTEN = compile_case_insensitive(r"escuchar|listen")
+    READ = compile_case_insensitive(r"leer|read")
+    
+    # Story completion patterns
+    COMPLETION = compile_case_insensitive(r"completado|completed|finalizado|finished")
+    NEXT_STORY = compile_case_insensitive(r"siguiente|next")
+    STORIES_SECTION = compile_case_insensitive(r"^historias$|^stories$")
 
 
 @dataclass
@@ -66,13 +110,18 @@ class TextPatterns:
     )
 
     # Navigation patterns
-    FOUNDATIONS_PATTERNS = r"Foundations|Fundamentos"
+    FOUNDATIONS_PATTERNS = r"foundations|fundamentos"
     BROWSE_CONTENT_PATTERNS = (
-        r"Explorar todo el contenido|Browse all content|Explore all content"
+        r"^(explorar\s+todo\s+el\s+contenido|browse\s+all\s+content|explore\s+all\s+content)$"
     )
-    CONTINUE_WITHOUT_VOICE_PATTERNS = r"Continuar sin voz|Continue without voice"
-    LISTEN_PATTERNS = r"Escuchar|Listen"
-    READ_PATTERNS = r"Leer|Read"
+    CONTINUE_WITHOUT_VOICE_PATTERNS = r"continuar\s+sin\s+voz|continue\s+without\s+(voice|speech)"
+    LISTEN_PATTERNS = r"escuchar|listen"
+    READ_PATTERNS = r"leer|read"
+    
+    # Story completion patterns
+    COMPLETION_PATTERNS = r"completado|completed|finalizado|finished"
+    NEXT_STORY_PATTERNS = r"siguiente|next"
+    STORIES_SECTION_PATTERNS = r"^historias$|^stories$"
 
 
 @dataclass

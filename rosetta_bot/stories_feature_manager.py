@@ -1,18 +1,14 @@
 """Stories feature module for Rosetta Stone bot automation."""
 
-import re
 import time
 
 from playwright.sync_api import Page
 
-from .constants import WaitTimes
+from .constants import WaitTimes, CompiledPatterns
 
 
 class StoriesFeatureManager:
     """Manages stories-related features and automation."""
-
-    # Constante para el selector de regreso a Historias
-    HISTORIAS_SELECTOR_PATTERN = r"^Historias$"
 
     def __init__(self, page: Page, debug_enabled: bool = False):
         """
@@ -169,7 +165,7 @@ class StoriesFeatureManager:
         """Maneja el botón 'Continuar sin voz' si aparece."""
         try:
             continue_btn = self.page.get_by_role("button").filter(
-                has_text=re.compile(r"Continuar sin voz|Continue without voice", re.I)
+                has_text=CompiledPatterns.CONTINUE_WITHOUT_VOICE
             )
             continue_btn.first.wait_for(state="visible", timeout=3000)
             continue_btn.first.click()
@@ -181,7 +177,7 @@ class StoriesFeatureManager:
     def _set_initial_listen_mode(self) -> None:
         """Establece el modo inicial de escuchar."""
         try:
-            listen_btn = self.page.get_by_text(re.compile(r"Escuchar|Listen", re.I))
+            listen_btn = self.page.get_by_text(CompiledPatterns.LISTEN)
             listen_btn.first.click(timeout=3000)
             print("[DEBUG] Modo 'Escuchar' activado.")
             time.sleep(WaitTimes.VERY_SHORT_WAIT)
@@ -208,13 +204,13 @@ class StoriesFeatureManager:
         """Intercala entre los modos de leer y escuchar."""
         try:
             # Cambiar a modo "Leer"
-            read_btn = self.page.get_by_text(re.compile(r"Leer|Read", re.I))
+            read_btn = self.page.get_by_text(CompiledPatterns.READ)
             read_btn.first.click(timeout=3000)
             print("[DEBUG] Cambiado a modo 'Leer'.")
             time.sleep(WaitTimes.VERY_SHORT_WAIT)
 
             # Volver a modo "Escuchar"
-            listen_btn = self.page.get_by_text(re.compile(r"Escuchar|Listen", re.I))
+            listen_btn = self.page.get_by_text(CompiledPatterns.LISTEN)
             listen_btn.first.click(timeout=3000)
             print("[DEBUG] Cambiado a modo 'Escuchar'.")
             time.sleep(WaitTimes.VERY_SHORT_WAIT)
@@ -230,21 +226,13 @@ class StoriesFeatureManager:
             bool: True si la historia está completa, False en caso contrario
         """
         try:
-            # Buscar indicadores de finalización de historia
-            # Esto puede variar según la interfaz de Rosetta Stone
-            completion_indicators = [
-                "Completado",
-                "Completed",
-                "Finalizado",
-                "Finished",
-            ]
-
-            for indicator in completion_indicators:
-                if self.page.get_by_text(indicator).count() > 0:
-                    return True
+            # Buscar indicadores de finalización de historia usando constantes
+            completion_btn = self.page.get_by_text(CompiledPatterns.COMPLETION)
+            if completion_btn.count() > 0:
+                return True
 
             # Verificar si aparece botón de "Siguiente historia" o similar
-            next_story_btn = self.page.get_by_text(re.compile(r"Siguiente|Next", re.I))
+            next_story_btn = self.page.get_by_text(CompiledPatterns.NEXT_STORY)
             if next_story_btn.count() > 0:
                 return True
 
@@ -274,7 +262,11 @@ class StoriesFeatureManager:
             return False
 
         try:
-            self.page.get_by_text("Explorar todo el contenido").click()
+            # Use div locator with filter and regex pattern to support multiple languages (case-insensitive)
+            browse_content_locator = self.page.locator("div").filter(
+                has_text=CompiledPatterns.BROWSE_CONTENT
+            )
+            browse_content_locator.click()
             print("[DEBUG] Click en 'Explorar todo el contenido' exitoso.")
         except Exception as e:
             print(f"[ERROR] No se encontró 'Explorar todo el contenido': {e}")
@@ -297,7 +289,7 @@ class StoriesFeatureManager:
         """Regresa a la lista de historias."""
         try:
             self.page.locator("div").filter(
-                has_text=re.compile(self.HISTORIAS_SELECTOR_PATTERN)
+                has_text=CompiledPatterns.STORIES_SECTION
             ).click()
             print("[DEBUG] Regresando a Historias.")
             self.page.wait_for_load_state("networkidle")

@@ -1,10 +1,9 @@
 """Navigation service for Rosetta Stone lessons."""
 
-import re
-
 from playwright.sync_api import Page
 
 from . import utils
+from .constants import CompiledPatterns
 
 
 class LessonNavigator:
@@ -26,18 +25,13 @@ class LessonNavigator:
     def _enter_foundations(self) -> None:
         """Enter the Foundations/Fundamentos section."""
         print("[INFO] Entering 'Foundations/Fundamentos'...")
-        self.page.get_by_text(re.compile(r"Foundations|Fundamentos", re.I)).click()
+        self.page.get_by_text(CompiledPatterns.FOUNDATIONS).click()
         utils.debug_dump(self.page, "foundations")
 
     def _browse_all_content(self) -> None:
         """Browse all content in the section."""
         print("[INFO] Exploring all content / Browse all content...")
-        self.page.get_by_text(
-            re.compile(
-                r"Explorar todo el contenido|Browse all content|Explore all content",
-                re.I,
-            )
-        ).click()
+        self.page.get_by_text(CompiledPatterns.BROWSE_CONTENT).click()
         utils.debug_dump(self.page, "browse_all_content")
 
     def _select_lesson(self) -> None:
@@ -59,7 +53,7 @@ class LessonNavigator:
         """Continue without voice recognition."""
         print("[INFO] Waiting and clicking 'Continue without voice'...")
         cont_btn = self.page.get_by_role("button").filter(
-            has_text=re.compile(r"Continuar sin voz|Continue without voice", re.I)
+            has_text=CompiledPatterns.CONTINUE_WITHOUT_VOICE
         )
         cont_btn.first.wait_for(state="visible", timeout=60000)
         cont_btn.first.click()
@@ -68,7 +62,7 @@ class LessonNavigator:
     def _select_listen_mode(self) -> None:
         """Select Listen/Escuchar mode."""
         print("[INFO] Selecting 'Listen/Escuchar'...")
-        self.page.get_by_text(re.compile(r"Escuchar|Listen", re.I)).click()
+        self.page.get_by_text(CompiledPatterns.LISTEN).click()
         utils.debug_dump(self.page, "listen_mode")
 
     def _setup_dialog_handling(self) -> None:

@@ -4,6 +4,8 @@ from typing import Optional, Tuple, Union
 
 from playwright.sync_api import Page, Frame, Locator
 
+from .constants import CompiledPatterns
+
 
 def debug_dump(page: Optional[Page], tag: str = "state"):
     """Guarda HTML, screenshot y un pequeño txt con info de la página/frames."""
@@ -52,12 +54,7 @@ def click_cookie_consent_if_present(page: Optional[Page]):
     if page is None:
         return
     try:
-        btn = page.get_by_role("button").filter(
-            has_text=re.compile(
-                r"accept|agree|allow|ok|got\s*it|entendido|acept(ar|o)|permit(ir|o)|de\s*acuerdo",
-                re.I,
-            )
-        )
+        btn = page.get_by_role("button").filter(has_text=CompiledPatterns.COOKIE_ACCEPT)
         btn.first.click(timeout=3000)
         print("[INFO] Banner de cookies aceptado.")
     except Exception:
