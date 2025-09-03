@@ -1,18 +1,5 @@
 version: '3'
 services:
-  oliver:
-    image: rosseta-playwright-image
-
-    env_file:
-      - .env_oliver
-    restart: always
-  oliver-2:
-    image: rosseta-playwright-image
-
-    env_file:
-      - .env_oliver
-    restart: always
-
   daniela:
     image: rosseta-playwright-image
     env_file:
