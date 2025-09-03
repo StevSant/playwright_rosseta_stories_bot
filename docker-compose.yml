@@ -11,3 +11,16 @@ services:
     env_file:
       - .env_daniela
     restart: always
+
+
+  luis:
+    image: rosseta-playwright-image
+    env_file:
+      - .env_oliver
+    restart: always
+
+  luis-2:
+    image: rosseta-playwright-image
+    env_file:
+      - .env_oliver
+    restart: always
