@@ -1,5 +1,4 @@
-"""Authentication service for Rosetta Stone."""
-
+import re
 from playwright.sync_api import Page
 
 from . import utils
