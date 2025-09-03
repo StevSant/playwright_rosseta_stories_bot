@@ -7,22 +7,24 @@ from dataclasses import dataclass
 def compile_case_insensitive(pattern: str) -> re.Pattern:
     """
     Utility function to compile regex patterns with case-insensitive flag.
-    
+
     Args:
         pattern: The regex pattern string
-        
+
     Returns:
         Compiled regex pattern with IGNORECASE flag
     """
     return re.compile(pattern, re.IGNORECASE)
 
 
-@dataclass 
+@dataclass
 class CompiledPatterns:
     """Pre-compiled regex patterns for better performance."""
-    
+
     # Login patterns
-    SIGNIN = compile_case_insensitive(r"sign\s*in|iniciar\s*sesión|acceder|entrar|login")
+    SIGNIN = compile_case_insensitive(
+        r"sign\s*in|iniciar\s*sesión|acceder|entrar|login"
+    )
     LOGIN_PAGE = compile_case_insensitive(r"login|signin|acceder|entrar|iniciar")
 
     # Cookie patterns
@@ -40,7 +42,7 @@ class CompiledPatterns:
     )
     LISTEN = compile_case_insensitive(r"escuchar|listen")
     READ = compile_case_insensitive(r"leer|read")
-    
+
     # Story completion patterns
     COMPLETION = compile_case_insensitive(r"completado|completed|finalizado|finished")
     NEXT_STORY = compile_case_insensitive(r"siguiente|next")
@@ -111,13 +113,13 @@ class TextPatterns:
 
     # Navigation patterns
     FOUNDATIONS_PATTERNS = r"foundations|fundamentos"
-    BROWSE_CONTENT_PATTERNS = (
-        r"^(explorar\s+todo\s+el\s+contenido|browse\s+all\s+content|explore\s+all\s+content)$"
+    BROWSE_CONTENT_PATTERNS = r"^(explorar\s+todo\s+el\s+contenido|browse\s+all\s+content|explore\s+all\s+content)$"
+    CONTINUE_WITHOUT_VOICE_PATTERNS = (
+        r"continuar\s+sin\s+voz|continue\s+without\s+(voice|speech)"
     )
-    CONTINUE_WITHOUT_VOICE_PATTERNS = r"continuar\s+sin\s+voz|continue\s+without\s+(voice|speech)"
     LISTEN_PATTERNS = r"escuchar|listen"
     READ_PATTERNS = r"leer|read"
-    
+
     # Story completion patterns
     COMPLETION_PATTERNS = r"completado|completed|finalizado|finished"
     NEXT_STORY_PATTERNS = r"siguiente|next"

@@ -134,7 +134,9 @@ class AuthenticationService:
         clicked = False
         for frame in page.frames:
             try:
-                fbtn = frame.get_by_role("button").filter(has_text=CompiledPatterns.SIGNIN)
+                fbtn = frame.get_by_role("button").filter(
+                    has_text=CompiledPatterns.SIGNIN
+                )
                 fbtn.first.click(timeout=5000)
                 clicked = True
                 break
