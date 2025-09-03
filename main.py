@@ -5,7 +5,7 @@ from rosetta_bot import RosettaStoneBot, AppConfig
 
 
 def main():
-    load_dotenv(dotenv_path=".env_evelyn")
+    load_dotenv()
 
     # Create configuration from environment variables
     config = AppConfig.from_env()
