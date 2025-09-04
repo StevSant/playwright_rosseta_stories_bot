@@ -16,10 +16,10 @@ def main():
         bot = RosettaStoneBot(config)
 
         # Modo 1: Bucle infinito de historias (NUEVO)
-        bot.run_infinite_stories_loop(playwright)
+        # bot.run_infinite_stories_loop(playwright)
 
         # Modo 2: Lección tradicional original
-        # bot.run(playwright)
+        bot.run(playwright)
 
 
 if __name__ == "__main__":
