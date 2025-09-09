@@ -13,8 +13,14 @@ services:
       - .env_oliver
     restart: always
 
-  jandry-3:
+  alcivar:
     image: rosseta-playwright-image
     env_file:
-      - .env_oliver
+      - .env_daniela
+    restart: always
+
+  alcivar-2:
+    image: rosseta-playwright-image
+    env_file:
+      - .env_daniela
     restart: always
