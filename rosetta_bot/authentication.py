@@ -104,11 +104,16 @@ class AuthenticationService:
             pass
 
     def _verify_login_success(self, page: Page) -> None:
-        """Verify if login was successful and retry if needed."""
+        """Verify if login was successful and handle account selection if needed."""
+        print("[INFO] Verifying login success...")
         try:
             title = page.title() or ""
         except Exception:
             title = ""
+
+        # Check if we need to handle institutional account selection
+        if self._handle_institutional_account_selection(page):
+            return
 
         if re.search(r"login|signin|acceder|entrar|iniciar", title, re.I):
             print("[WARN] Still on login page, trying button click...")
@@ -149,3 +154,75 @@ class AuthenticationService:
                 )
             except Exception:
                 pass
+
+    def _handle_institutional_account_selection(self, page: Page) -> bool:
+        """Handle institutional account selection if multiple accounts are associated."""
+        try:
+            # Wait a moment for the page to load after initial login attempt
+            page.wait_for_load_state("networkidle", timeout=5000)
+
+            # Check if we're on an account selection page by looking for institutional indicators
+            # Look for "uleam" text or similar institutional selectors
+            institutional_selectors = [
+                "text=uleam",
+                "[data-testid*='uleam']",
+                "button:has-text('uleam')",
+                "div:has-text('uleam')",
+                "span:has-text('uleam')",
+            ]
+
+            account_found = False
+            for selector in institutional_selectors:
+                try:
+                    element = page.locator(selector).first
+                    if element.is_visible(timeout=3000):
+                        print("[INFO] Found institutional account selector (uleam)...")
+                        element.click(timeout=5000)
+                        account_found = True
+                        break
+                except Exception:
+                    continue
+
+            if not account_found:
+                # Try looking for any institutional account indicators in the page content
+                page_content = page.content().lower()
+                if (
+                    "uleam" in page_content
+                    or "universidad" in page_content
+                    or "institution" in page_content
+                ):
+                    print(
+                        "[INFO] Detected institutional account page, looking for clickable elements..."
+                    )
+                    try:
+                        # Try clicking on any element containing "uleam"
+                        uleam_element = page.get_by_text("uleam", exact=False).first
+                        uleam_element.click(timeout=5000)
+                        account_found = True
+                    except Exception:
+                        pass
+
+            if account_found:
+                print("[INFO] Selected institutional account, re-entering password...")
+                # Wait for the page to load after account selection
+                page.wait_for_load_state("networkidle", timeout=8000)
+
+                # Re-enter password
+                self._fill_password(page)
+                self._submit_form(page)
+
+                # Wait for final navigation
+                page.wait_for_load_state("networkidle", timeout=10000)
+
+                # Debug dump after institutional login
+                try:
+                    utils.debug_dump(page, "institutional_login_complete")
+                except Exception:
+                    pass
+
+                return True
+
+        except Exception as e:
+            print(f"[WARN] Error during institutional account handling: {e}")
+
+        return False
