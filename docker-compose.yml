@@ -1,25 +1,19 @@
 version: '3'
 services:
-  daniela:
-    image: rosseta-playwright-image
-    env_file:
-      - .env_daniela
-    restart: always
 
-  daniela-2:
-    image: rosseta-playwright-image
-    env_file:
-      - .env_daniela
-    restart: always
-
-
-  luis:
+  jandry:
     image: rosseta-playwright-image
     env_file:
       - .env_oliver
     restart: always
 
-  luis-2:
+  jandry-2:
+    image: rosseta-playwright-image
+    env_file:
+      - .env_oliver
+    restart: always
+
+  jandry-3:
     image: rosseta-playwright-image
     env_file:
       - .env_oliver
