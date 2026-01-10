@@ -29,6 +29,7 @@ class AppConfig:
     password: str
     browser: BrowserConfig
     debug_enabled: bool = True
+    lesson_name: str = "A Visit to Hollywood|Una visita a Hollywood"
 
     @classmethod
     def from_env(cls) -> "AppConfig":
@@ -49,9 +50,14 @@ class AppConfig:
 
         browser_config = BrowserConfig(headless=headless, slow_mo=slow_mo)
 
+        lesson_name = os.getenv(
+            "LESSON_NAME", "A Visit to Hollywood|Una visita a Hollywood"
+        )
+
         return cls(
             email=email,
             password=password,
             browser=browser_config,
             debug_enabled=debug_enabled,
+            lesson_name=lesson_name,
         )
