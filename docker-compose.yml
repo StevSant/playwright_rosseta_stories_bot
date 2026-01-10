@@ -1,26 +1,38 @@
 version: '3'
+
+volumes:
+  tracking-data:
+
 services:
 
   jandry:
     image: rosseta-playwright-image
     env_file:
       - .env_oliver
+    volumes:
+      - tracking-data:/app/data
     restart: always
 
   jandry-2:
     image: rosseta-playwright-image
     env_file:
       - .env_oliver
+    volumes:
+      - tracking-data:/app/data
     restart: always
 
   alcivar:
     image: rosseta-playwright-image
     env_file:
       - .env_daniela
+    volumes:
+      - tracking-data:/app/data
     restart: always
 
   alcivar-2:
     image: rosseta-playwright-image
     env_file:
       - .env_daniela
+    volumes:
+      - tracking-data:/app/data
     restart: always

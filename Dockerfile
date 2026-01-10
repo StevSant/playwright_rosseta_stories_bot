@@ -46,5 +46,5 @@ RUN uv sync --locked
 # Instalar Playwright browsers
 RUN uv run playwright install --with-deps
 
-# Entrypoint
-ENTRYPOINT ["uv","run", "./main.py"]
+# Default command (can be overridden)
+CMD ["uv", "run", "./main.py"]

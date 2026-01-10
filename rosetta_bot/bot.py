@@ -19,6 +19,7 @@ from .browser import BrowserManager
 from .core import get_logger
 from .pages import LoginPage, LaunchpadPage
 from .workflows import StoriesWorkflow, LessonWorkflow
+from .services import TimeTracker
 
 
 class RosettaStoneBot:
@@ -40,6 +41,13 @@ class RosettaStoneBot:
         self._browser_manager = BrowserManager(config.browser)
         self._logger = get_logger("Bot")
         self._page: Optional[Page] = None
+
+        # Time tracking
+        self._time_tracker = TimeTracker(
+            user_email=config.email,
+            target_hours=config.target_hours,
+            logger=get_logger("TimeTracker"),
+        )
 
     @property
     def page(self) -> Page:
@@ -119,6 +127,15 @@ class RosettaStoneBot:
             navigate_to_lesson: Whether to navigate to lesson first
             run_method: Method to execute the specific workflow
         """
+        # Check if already completed
+        if self._time_tracker.is_complete:
+            self._logger.info("🎉 ¡Las 35 horas ya están completadas!")
+            self._logger.info(self._time_tracker.get_status_summary())
+            return
+
+        # Start time tracking
+        self._time_tracker.start_session(workflow=workflow_name)
+
         try:
             self._logger.info(f"Starting {workflow_name} workflow...")
 
@@ -131,6 +148,8 @@ class RosettaStoneBot:
             run_method()
 
         finally:
+            # End time tracking
+            self._time_tracker.end_session()
             self._cleanup()
 
     def _run_stories_workflow(self) -> None:

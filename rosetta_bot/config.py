@@ -30,6 +30,7 @@ class AppConfig:
     browser: BrowserConfig
     debug_enabled: bool = True
     lesson_name: str = "A Visit to Hollywood|Una visita a Hollywood"
+    target_hours: float = 35.0
 
     @classmethod
     def from_env(cls) -> "AppConfig":
@@ -54,10 +55,13 @@ class AppConfig:
             "LESSON_NAME", "A Visit to Hollywood|Una visita a Hollywood"
         )
 
+        target_hours = float(os.getenv("TARGET_HOURS", "35.0"))
+
         return cls(
             email=email,
             password=password,
             browser=browser_config,
             debug_enabled=debug_enabled,
             lesson_name=lesson_name,
+            target_hours=target_hours,
         )
