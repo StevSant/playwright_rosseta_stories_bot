@@ -82,9 +82,12 @@ docker-compose up -d
 ### Ver estado de horas
 
 ```bash
-# Ejecutar status.py
+# Desde un container en ejecución (recomendado)
+docker compose exec jandry uv run status.py
+
+# O con docker run (usar nombre completo del volumen)
 docker run --rm \
-  -v tracking-data:/app/data \
+  -v playwright_rosseta_stories_bot_tracking-data:/app/data \
   rosseta-playwright-image \
   uv run status.py
 ```
@@ -92,17 +95,20 @@ docker run --rm \
 ### Ver datos de tracking
 
 ```bash
-# Ver el JSON directamente
-docker run --rm \
-  -v tracking-data:/app/data \
-  rosseta-playwright-image \
-  cat /app/data/time_tracking.json
+# Desde un container en ejecución (recomendado)
+docker compose exec jandry cat /app/data/time_tracking.json
+
+# Ver archivos de datos
+docker compose exec jandry ls -la /app/data/
 
 # Ver reportes generados
+docker compose exec jandry ls -la /app/data/reports/
+
+# Alternativa con docker run (usar nombre completo del volumen)
 docker run --rm \
-  -v tracking-data:/app/data \
+  -v playwright_rosseta_stories_bot_tracking-data:/app/data \
   rosseta-playwright-image \
-  ls -la /app/data/reports/
+  cat /app/data/time_tracking.json
 ```
 
 ### Copiar datos al host
@@ -110,10 +116,20 @@ docker run --rm \
 ```bash
 # Copiar carpeta data al directorio actual
 docker run --rm \
-  -v tracking-data:/app/data \
+  -v playwright_rosseta_stories_bot_tracking-data:/app/data \
   -v $(pwd):/backup \
   rosseta-playwright-image \
   cp -r /app/data /backup/data-backup
+```
+
+### Ver volúmenes disponibles
+
+```bash
+# Listar todos los volúmenes de Docker
+docker volume ls
+
+# El volumen de docker-compose tendrá el prefijo del proyecto:
+# playwright_rosseta_stories_bot_tracking-data
 ```
 
 ### Docker Compose

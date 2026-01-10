@@ -142,11 +142,16 @@ class LoginPage(BasePage):
         except Exception:
             pass
 
-        # Try clicking submit button
+        # Try clicking submit button (wait for it to be enabled)
         try:
             submit_btn = self.submit_button
-            if self.wait_for_element(submit_btn, timeout=Timeouts.DEFAULT_TIMEOUT):
-                self.click_safe(submit_btn, scroll=False)
+            if self.wait_for_element(submit_btn, timeout=Timeouts.LONG_TIMEOUT):
+                self.click_safe(
+                    submit_btn,
+                    scroll=False,
+                    wait_enabled=True,
+                    timeout=Timeouts.LONG_TIMEOUT,
+                )
         except Exception:
             pass
 

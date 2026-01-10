@@ -55,9 +55,14 @@ class AudioPlayerService:
 
     def _try_click_polygon(self) -> bool:
         """Try to click the polygon play button."""
+        import time
+
         try:
+            # Wait briefly for DOM to stabilize after mode switch
+            time.sleep(0.5)
             play_btn = self._page.locator(self.PLAY_BUTTON).nth(self.PLAY_BUTTON_INDEX)
-            play_btn.click(timeout=Timeouts.SHORT)
+            # Use force=True to bypass actionability checks
+            play_btn.click(timeout=Timeouts.DEFAULT, force=True)
             self._logger.debug("Audio started (polygon).")
             return True
         except Exception:
@@ -65,9 +70,12 @@ class AudioPlayerService:
 
     def _try_click_circle(self) -> bool:
         """Try to click the circle play button."""
+        import time
+
         try:
+            time.sleep(0.3)
             circle_btn = self._page.locator(self.CIRCLE_BUTTON)
-            circle_btn.click(timeout=Timeouts.SHORT)
+            circle_btn.click(timeout=Timeouts.DEFAULT, force=True)
             self._logger.debug("Audio started (circle).")
             return True
         except Exception:

@@ -86,6 +86,8 @@ class BasePage(ABC):
         locator: Locator,
         timeout: int = Timeouts.DEFAULT_TIMEOUT,
         scroll: bool = True,
+        force: bool = False,
+        wait_enabled: bool = False,
     ) -> bool:
         """
         Safely click an element with error handling.
@@ -94,14 +96,24 @@ class BasePage(ABC):
             locator: Playwright locator for the element
             timeout: Timeout in milliseconds
             scroll: Whether to scroll element into view first
+            force: Whether to force click (bypass actionability checks)
+            wait_enabled: Whether to wait for element to be enabled first
 
         Returns:
             True if click was successful, False otherwise
         """
         try:
+            if wait_enabled:
+                # Wait for the element to be enabled (not disabled)
+                locator.wait_for(state="visible", timeout=timeout)
+                self._page.wait_for_function(
+                    "el => !el.disabled",
+                    arg=locator.element_handle(timeout=timeout),
+                    timeout=timeout,
+                )
             if scroll:
                 locator.scroll_into_view_if_needed()
-            locator.click(timeout=timeout)
+            locator.click(timeout=timeout, force=force)
             return True
         except Exception as e:
             self._log(f"Click failed: {e}", level="WARN")

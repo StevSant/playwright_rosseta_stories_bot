@@ -1,0 +1,19 @@
+{
+  "e1351685316@live.uleam.edu.ec": {
+    "email": "e1351685316@live.uleam.edu.ec",
+    "total_seconds": 0.087748,
+    "target_hours": 35.0,
+    "sessions": [
+      {
+        "start_time": "2026-01-09T23:02:45.005820",
+        "end_time": "2026-01-09T23:02:45.093568",
+        "duration_seconds": 0.087748,
+        "workflow": "InfiniteLesson"
+      }
+    ],
+    "created_at": "2026-01-09T23:02:45.005763",
+    "updated_at": "2026-01-09T23:02:45.093615",
+    "completed": false,
+    "completed_at": null
+  }
+}

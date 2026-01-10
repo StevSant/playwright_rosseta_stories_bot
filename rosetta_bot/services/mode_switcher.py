@@ -61,10 +61,15 @@ class ModeSwitcherService:
         Returns:
             True if successful, False otherwise
         """
+        import time
+
         try:
             button = self._page.get_by_text(pattern)
             if button.count() > 0:
-                button.first.click(timeout=Timeouts.SHORT)
+                # Wait briefly for any animations to settle
+                time.sleep(0.5)
+                # Use force=True to bypass actionability checks (overlay issues)
+                button.first.click(timeout=Timeouts.DEFAULT, force=True)
                 self._logger.debug(f"{mode_name} mode activated.")
                 return True
             self._logger.debug(f"{mode_name} mode button not found.")

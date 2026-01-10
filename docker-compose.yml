@@ -2,11 +2,6 @@ volumes:
   tracking-data:
 
 services:
-  playwright:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: rosseta-playwright-image
   jandry:
     image: rosseta-playwright-image
     env_file:
