@@ -34,7 +34,7 @@ def main(mode: BotMode = BotMode.INFINITE_LESSON) -> None:
         mode: The operation mode for the bot
     """
     # Load environment variables
-    load_dotenv(".env_oliver")
+    # load_dotenv(".env_oliver")
 
     # Create configuration from environment variables
     config = AppConfig.from_env()
