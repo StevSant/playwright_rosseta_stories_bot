@@ -1,0 +1,4 @@
+URL: https://totale.rosettastone.com/stories
+Title: Rosetta Stone | Historias
+Frames: 1
+  [0] name= url=https://totale.rosettastone.com/stories
