@@ -15,5 +15,22 @@
     "updated_at": "2026-01-09T23:02:45.093615",
     "completed": false,
     "completed_at": null
+  },
+  "e1316082765@live.uleam.edu.ec": {
+    "email": "e1316082765@live.uleam.edu.ec",
+    "total_seconds": 16.067019,
+    "target_hours": 35.0,
+    "sessions": [
+      {
+        "start_time": "2026-01-21T20:52:50.026752",
+        "end_time": "2026-01-21T20:53:06.093771",
+        "duration_seconds": 16.067019,
+        "workflow": "InfiniteLesson"
+      }
+    ],
+    "created_at": "2026-01-21T20:52:50.026464",
+    "updated_at": "2026-01-21T20:53:06.093823",
+    "completed": false,
+    "completed_at": null
   }
 }

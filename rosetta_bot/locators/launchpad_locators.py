@@ -30,7 +30,6 @@ class LaunchpadLocators:
     SEE_ALL_LINK: str = '[data-qa="explore_section_see_all_link"]'
 
     # Lesson selection
-    SPECIFIC_LESSON_PATTERN: Pattern[str] = _compile_pattern(
-        r"A Visit to Hollywood|Una visita a Hollywood"
-    )
+    # Note: SPECIFIC_LESSON_PATTERN is deprecated, lesson_name should be
+    # configured via LESSON_NAME environment variable or passed to LaunchpadPage
     BOOK_COVER_PREFIX: str = '[data-qa^="BookCover-"]'

@@ -1,0 +1,4 @@
+URL: https://login.rosettastone.com/login
+Title: Welcome to Rosetta Stone®!
+Frames: 1
+  [0] name= url=https://login.rosettastone.com/login

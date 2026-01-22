@@ -1,5 +1,6 @@
 """Launchpad Page Object for navigation and course selection."""
 
+import os
 import time
 
 from playwright.sync_api import Page
@@ -19,11 +20,23 @@ class LaunchpadPage(BasePage):
     - Specific lessons
     """
 
+    # Valor por defecto para el nombre de la lección
+    DEFAULT_LESSON_NAME = "A Visit to Hollywood|Una visita a Hollywood"
+
+    # Lecciones de fallback en caso de que la principal no se encuentre
+    FALLBACK_LESSONS = [
+        "Driving",
+        "Cats",
+        "At the Airport",
+        "A Man Is Walking",
+        "The Big Yellow Sun",
+    ]
+
     def __init__(
         self,
         page: Page,
         debug_enabled: bool = False,
-        lesson_name: str = "A Visit to Hollywood|Una visita a Hollywood",
+        lesson_name: str | None = None,
     ):
         """
         Initialize the Launchpad Page.
@@ -31,11 +44,15 @@ class LaunchpadPage(BasePage):
         Args:
             page: Playwright Page object
             debug_enabled: Whether to enable debug screenshots
-            lesson_name: Regex pattern for the target lesson name
+            lesson_name: Regex pattern for the target lesson name.
+                         If None, reads from LESSON_NAME env var or uses default.
         """
         super().__init__(page, debug_enabled)
         self._locators = LaunchpadLocators()
-        self._lesson_name = lesson_name
+        # Prioridad: parámetro > variable de entorno > valor por defecto
+        self._lesson_name = lesson_name or os.getenv(
+            "LESSON_NAME", self.DEFAULT_LESSON_NAME
+        )
 
     # ==================== Navigation Actions ====================
 
@@ -102,22 +119,44 @@ class LaunchpadPage(BasePage):
 
     def select_specific_lesson(self) -> "LaunchpadPage":
         """
-        Select the specific lesson by name.
+        Select the specific lesson by name, with fallback to alternative lessons.
+
+        Tries the configured lesson first, then falls back to FALLBACK_LESSONS
+        if not found.
 
         Returns:
             Self for method chaining
         """
-        self._log(f"Selecting lesson: {self._lesson_name}")
-
         import re
 
-        pattern = re.compile(self._lesson_name, re.IGNORECASE)
+        # Lista de lecciones a intentar: primero la configurada, luego los fallbacks
+        lessons_to_try = [self._lesson_name] + self.FALLBACK_LESSONS
 
-        book_cover = self._page.locator(
-            self._locators.BOOK_COVER_PREFIX,
-            has_text=pattern,
-        )
-        self.click_safe(book_cover)
+        for lesson_name in lessons_to_try:
+            self._log(f"Searching for lesson: {lesson_name}")
+
+            pattern = re.compile(lesson_name, re.IGNORECASE)
+
+            book_cover = self._page.locator(
+                self._locators.BOOK_COVER_PREFIX,
+                has_text=pattern,
+            )
+
+            # Verificar si el elemento existe y es visible
+            try:
+                if book_cover.count() > 0 and book_cover.first.is_visible(timeout=2000):
+                    self._log(f"Found lesson: {lesson_name}")
+                    self.click_safe(book_cover.first)
+                    self.take_screenshot("entered_specific_lesson")
+                    return self
+            except Exception:
+                self._log(f"Lesson '{lesson_name}' not found, trying next...")
+                continue
+
+        # Si ninguna lección fue encontrada, intentar con la primera disponible
+        self._log("No specific lesson found, selecting first available story...")
+        first_book = self._page.locator(self._locators.BOOK_COVER_PREFIX).first
+        self.click_safe(first_book)
         self.take_screenshot("entered_specific_lesson")
 
         return self
