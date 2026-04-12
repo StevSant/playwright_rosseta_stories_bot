@@ -1,0 +1,107 @@
+{
+  "cookies": [
+    {
+      "name": "RSID",
+      "value": "%7B%22access_token%22%3A%225dc159d3-67c1-4aa0-b734-0eda21c5af8e%22%2C%22userId%22%3A%224689706e-d3c6-43c3-b8fd-7aa962088ca1%22%2C%22rm_key%22%3Anull%2C%22rm_guid%22%3Anull%2C%22expires%22%3Anull%2C%22account_type%22%3A%22titan%22%2C%22createdAt%22%3A%222026-03-27T15%3A18%3A47.518Z%22%2C%22interfaceLanguage%22%3A%22es-419%22%7D",
+      "domain": ".rosettastone.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_dd_s",
+      "value": "logs=0&expire=1774625632262&rum=0",
+      "domain": "login.rosettastone.com",
+      "path": "/",
+      "expires": 1774625632,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "isGpcEnabled=0&datestamp=Fri+Mar+27+2026+10%3A18%3A52+GMT-0500+(hora+de+Ecuador)&version=202505.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=9b42f565-3675-4864-a082-5f06b5ed248f&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Flogin.rosettastone.com%2Flogin&groups=C0003%3A0%2CC0004%3A0%2CC0002%3A0%2CC0005%3A0%2CC0001%3A1",
+      "domain": ".rosettastone.com",
+      "path": "/",
+      "expires": 1806160732,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_community_session_id",
+      "value": "a8a66e87ac415cb16563d6c03b034a2e",
+      "domain": "totale.rosettastone.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "EDjQrLP5vd.vWOTDD4tH3ornXmhJyQNyXyaaVBiyJXU-1774624733-1.0.1.1-MuKz8ddVbdG92b0ELNnDDqN7_gd9FTPaTFIq6.nxxHpqfevhqVbIkkmuBSR_8Ng_UAlmqnkshPjmUVT36WaFjB9PresQXMLeeTjYaIRXjEY",
+      "domain": ".rosettastone.com",
+      "path": "/",
+      "expires": 1774626533.046455,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "rack.session",
+      "value": "65058bed88c344b45abd7327ab060be812471bae055dee1292ebcef6aee5e1aa",
+      "domain": "lcp.rosettastone.com",
+      "path": "/",
+      "expires": 1775229542.976066,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ab.storage.sessionId.06fb0bd3-1b87-4cb3-9b2c-711d40916903",
+      "value": "%7B%22g%22%3A%221f3d407b-5b6f-9caf-e882-4f59f15b4085%22%2C%22e%22%3A1774626542984%2C%22c%22%3A1774624735530%2C%22l%22%3A1774624742984%7D",
+      "domain": ".rosettastone.com",
+      "path": "/",
+      "expires": 1806181682,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "X_hKRXroPugT.mNouG3hxLB4ugK2cTas5JGCYaWdbp8-1774624744-1.0.1.1-sU3pIsQoU0FVHMeQqBwyHzzo2Doz_jl0ytjCGy8oHXSqjcmD9KoLvijAfYxYi_KVeWJTr6oN502k_grqBOULCOn0urbZS9zstLY6mAi8yg8",
+      "domain": ".resources.rosettastone.com",
+      "path": "/",
+      "expires": 1774626544.114168,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ab.storage.deviceId.06fb0bd3-1b87-4cb3-9b2c-711d40916903",
+      "value": "%7B%22g%22%3A%224920d856-e177-8b8a-9b77-d466a425efbc%22%2C%22c%22%3A1774624752637%2C%22l%22%3A1774624752637%7D",
+      "domain": ".rosettastone.com",
+      "path": "/",
+      "expires": 1806181692,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_dd_s",
+      "value": "rum=0&expire=1774625654616",
+      "domain": "totale.rosettastone.com",
+      "path": "/",
+      "expires": 1774625654,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Strict"
+    }
+  ],
+  "access_token": "5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+  "user_guid": "4689706e-d3c6-43c3-b8fd-7aa962088ca1",
+  "lcp_cookie_header": "RSID=%7B%22access_token%22%3A%225dc159d3-67c1-4aa0-b734-0eda21c5af8e%22%2C%22userId%22%3A%224689706e-d3c6-43c3-b8fd-7aa962088ca1%22%2C%22rm_key%22%3Anull%2C%22rm_guid%22%3Anull%2C%22expires%22%3Anull%2C%22account_type%22%3A%22titan%22%2C%22createdAt%22%3A%222026-03-27T15%3A18%3A47.518Z%22%2C%22interfaceLanguage%22%3A%22es-419%22%7D; _dd_s=logs=0&expire=1774625632262&rum=0; OptanonConsent=isGpcEnabled=0&datestamp=Fri+Mar+27+2026+10%3A18%3A52+GMT-0500+(hora+de+Ecuador)&version=202505.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=9b42f565-3675-4864-a082-5f06b5ed248f&interactionCount=1&isAnonUser=1&landingPath=https%3A%2F%2Flogin.rosettastone.com%2Flogin&groups=C0003%3A0%2CC0004%3A0%2CC0002%3A0%2CC0005%3A0%2CC0001%3A1; _community_session_id=a8a66e87ac415cb16563d6c03b034a2e; __cf_bm=EDjQrLP5vd.vWOTDD4tH3ornXmhJyQNyXyaaVBiyJXU-1774624733-1.0.1.1-MuKz8ddVbdG92b0ELNnDDqN7_gd9FTPaTFIq6.nxxHpqfevhqVbIkkmuBSR_8Ng_UAlmqnkshPjmUVT36WaFjB9PresQXMLeeTjYaIRXjEY; rack.session=65058bed88c344b45abd7327ab060be812471bae055dee1292ebcef6aee5e1aa; ab.storage.sessionId.06fb0bd3-1b87-4cb3-9b2c-711d40916903=%7B%22g%22%3A%221f3d407b-5b6f-9caf-e882-4f59f15b4085%22%2C%22e%22%3A1774626542984%2C%22c%22%3A1774624735530%2C%22l%22%3A1774624742984%7D; __cf_bm=X_hKRXroPugT.mNouG3hxLB4ugK2cTas5JGCYaWdbp8-1774624744-1.0.1.1-sU3pIsQoU0FVHMeQqBwyHzzo2Doz_jl0ytjCGy8oHXSqjcmD9KoLvijAfYxYi_KVeWJTr6oN502k_grqBOULCOn0urbZS9zstLY6mAi8yg8; ab.storage.deviceId.06fb0bd3-1b87-4cb3-9b2c-711d40916903=%7B%22g%22%3A%224920d856-e177-8b8a-9b77-d466a425efbc%22%2C%22c%22%3A1774624752637%2C%22l%22%3A1774624752637%7D; _dd_s=rum=0&expire=1774625654616"
+}

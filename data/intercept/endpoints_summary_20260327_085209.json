@@ -1,0 +1,157 @@
+{
+  "GET https://login.rosettastone.com/login": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/login",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/css/main.c6e47160.css": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/css/main.c6e47160.css",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/js/main.711f1859.js": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/js/main.711f1859.js",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/assets/lion/language-en-US.json": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/assets/lion/language-en-US.json",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/img-footer-bg.3bdf2888.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/img-footer-bg.3bdf2888.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/header-logo2.8a62b0e3.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/header-logo2.8a62b0e3.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Light.abccec32.woff2": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Light.abccec32.woff2",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-down-darkgrey.8419e393.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-down-darkgrey.8419e393.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Regular.6ce6085a.woff2": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Regular.6ce6085a.woff2",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Medium.e42aeb08.woff2": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Medium.e42aeb08.woff2",
+    "has_post_data": false
+  },
+  "POST https://launchpad-service.rosettastone.com/api/authentication/login": {
+    "count": 2,
+    "example_url": "https://launchpad-service.rosettastone.com/api/authentication/login",
+    "has_post_data": true
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-link.aa62f183.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-link.aa62f183.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Bold.918a65a1.woff2": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Bold.918a65a1.woff2",
+    "has_post_data": false
+  },
+  "GET https://siren.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1/productrights": {
+    "count": 1,
+    "example_url": "https://siren.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1/productrights?expandProduct=true",
+    "has_post_data": false
+  },
+  "GET https://ego.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1": {
+    "count": 2,
+    "example_url": "https://ego.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/user-icon.7be2c0a1.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/user-icon.7be2c0a1.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-down-grey-solid.93e0fcb0.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-down-grey-solid.93e0fcb0.svg",
+    "has_post_data": false
+  },
+  "GET https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerConfigs": {
+    "count": 2,
+    "example_url": "https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerConfigs",
+    "has_post_data": false
+  },
+  "GET https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerCanChangeL2": {
+    "count": 2,
+    "example_url": "https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerCanChangeL2",
+    "has_post_data": false
+  },
+  "GET https://launchpad-service.rosettastone.com/api/activities/recommendation": {
+    "count": 2,
+    "example_url": "https://launchpad-service.rosettastone.com/api/activities/recommendation?full_name=DIEGO%20ALEJANDRO%20ATIENCIA%20VARGAS&locale=es-419&targetLanguage=en-US",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/assets/lion/language-es-419.json": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/assets/lion/language-es-419.json",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-up-grey-solid.a9701593.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-up-grey-solid.a9701593.svg",
+    "has_post_data": false
+  },
+  "GET https://prism.rosettastone.com/reports/learner/dashboard/4689706e-d3c6-43c3-b8fd-7aa962088ca1": {
+    "count": 2,
+    "example_url": "https://prism.rosettastone.com/reports/learner/dashboard/4689706e-d3c6-43c3-b8fd-7aa962088ca1?skipLastUsageDate=true",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-right.4d626473.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-right.4d626473.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/icon-default.0ecb6426.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/icon-default.0ecb6426.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/img-mobileapp.8bd8cade.png": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/img-mobileapp.8bd8cade.png",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/icon_edit.cf2422f5.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/icon_edit.cf2422f5.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/img-msg-pre-goal.b72b9888.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/img-msg-pre-goal.b72b9888.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/en-US.11c7af0b.png": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/en-US.11c7af0b.png",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/stories": {
+    "count": 1,
+    "example_url": "https://totale.rosettastone.com/stories",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/?reauth=true",
+    "has_post_data": false
+  }
+}

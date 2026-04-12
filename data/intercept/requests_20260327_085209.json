@@ -1,0 +1,800 @@
+[
+  {
+    "timestamp": "2026-03-27T08:50:38.878361",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/login",
+    "headers": {
+      "accept-language": "es-ES",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\""
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:39.679707",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/css/main.c6e47160.css",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:39.679880",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/js/main.711f1859.js",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:40.392825",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/assets/lion/language-en-US.json",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:40.394513",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/img-footer-bg.3bdf2888.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/login",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:40.537422",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/header-logo2.8a62b0e3.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/login",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:40.537702",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/RSNotoSans-Light.abccec32.woff2",
+    "headers": {
+      "origin": "https://login.rosettastone.com",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:40.537821",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/arrow-down-darkgrey.8419e393.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/login",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:40.537935",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/RSNotoSans-Regular.6ce6085a.woff2",
+    "headers": {
+      "origin": "https://login.rosettastone.com",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:40.538042",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/RSNotoSans-Medium.e42aeb08.woff2",
+    "headers": {
+      "origin": "https://login.rosettastone.com",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:47.526736",
+    "method": "POST",
+    "url": "https://launchpad-service.rosettastone.com/api/authentication/login",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "content-type": "application/x-www-form-urlencoded",
+      "sec-ch-ua-mobile": "?0",
+      "accept-language": "es-ES"
+    },
+    "post_data": "username=e1351067861%40live.uleam.edu.ec&password=Vargas_2007&namespace=&account_type=&remember_me=false"
+  },
+  {
+    "timestamp": "2026-03-27T08:50:48.478722",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/arrow-link.aa62f183.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/login",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:50:48.478973",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/RSNotoSans-Bold.918a65a1.woff2",
+    "headers": {
+      "origin": "https://login.rosettastone.com",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:31.825889",
+    "method": "POST",
+    "url": "https://launchpad-service.rosettastone.com/api/authentication/login",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "content-type": "application/x-www-form-urlencoded",
+      "sec-ch-ua-mobile": "?0",
+      "accept-language": "es-ES"
+    },
+    "post_data": "username=e1351067861%40live.uleam.edu.ec&password=Vargas_2007&namespace=uleam&account_type=titan&remember_me=false"
+  },
+  {
+    "timestamp": "2026-03-27T08:51:32.204111",
+    "method": "GET",
+    "url": "https://siren.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1/productrights?expandProduct=true",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:32.746897",
+    "method": "GET",
+    "url": "https://ego.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.277670",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/user-icon.7be2c0a1.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.278056",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/arrow-down-grey-solid.93e0fcb0.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.278262",
+    "method": "GET",
+    "url": "https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerConfigs",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.278463",
+    "method": "GET",
+    "url": "https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerCanChangeL2",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.278639",
+    "method": "GET",
+    "url": "https://launchpad-service.rosettastone.com/api/activities/recommendation?full_name=DIEGO%20ALEJANDRO%20ATIENCIA%20VARGAS&locale=es-419&targetLanguage=en-US",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.278861",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/assets/lion/language-es-419.json",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.386779",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/arrow-up-grey-solid.a9701593.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.952971",
+    "method": "GET",
+    "url": "https://prism.rosettastone.com/reports/learner/dashboard/4689706e-d3c6-43c3-b8fd-7aa962088ca1?skipLastUsageDate=true",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "referer": "",
+      "accept-language": "es-ES",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json",
+      "content-type": "application/json;charset=UTF-8"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.962656",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/arrow-right.4d626473.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.962870",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/icon-default.0ecb6426.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:33.963006",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/img-mobileapp.8bd8cade.png",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:34.768908",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/icon_edit.cf2422f5.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:34.769202",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/img-msg-pre-goal.b72b9888.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:34.769400",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/en-US.11c7af0b.png",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:36.978455",
+    "method": "GET",
+    "url": "https://totale.rosettastone.com/stories",
+    "headers": {
+      "accept-language": "es-ES",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\""
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.155539",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/?reauth=true",
+    "headers": {
+      "accept-language": "es-ES",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\""
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.312812",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/css/main.c6e47160.css",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.313434",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/js/main.711f1859.js",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.382486",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/RSNotoSans-Regular.6ce6085a.woff2",
+    "headers": {
+      "referer": ""
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.383060",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/RSNotoSans-Light.abccec32.woff2",
+    "headers": {
+      "referer": ""
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.383600",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/RSNotoSans-Medium.e42aeb08.woff2",
+    "headers": {
+      "referer": ""
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.384123",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/RSNotoSans-Bold.918a65a1.woff2",
+    "headers": {
+      "referer": ""
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.384689",
+    "method": "GET",
+    "url": "https://ego.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.385416",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/img-footer-bg.3bdf2888.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/login?reauth=true",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.573560",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/assets/lion/language-en-US.json",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.577849",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/assets/lion/language-es-419.json",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.594015",
+    "method": "GET",
+    "url": "https://launchpad-service.rosettastone.com/api/activities/recommendation?full_name=DIEGO%20ALEJANDRO%20ATIENCIA%20VARGAS&locale=es-419&targetLanguage=en-US",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.594204",
+    "method": "GET",
+    "url": "https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerConfigs",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.594325",
+    "method": "GET",
+    "url": "https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerCanChangeL2",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "referer": "",
+      "accept-language": "es-ES",
+      "pragma": "no-cache",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.595500",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/user-icon.7be2c0a1.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.598271",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/arrow-down-grey-solid.93e0fcb0.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:37.599642",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/arrow-up-grey-solid.a9701593.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:38.166337",
+    "method": "GET",
+    "url": "https://prism.rosettastone.com/reports/learner/dashboard/4689706e-d3c6-43c3-b8fd-7aa962088ca1?skipLastUsageDate=true",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "authorization": "Bearer 5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+      "referer": "",
+      "accept-language": "es-ES",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "accept": "application/json",
+      "content-type": "application/json;charset=UTF-8"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:38.167878",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/arrow-right.4d626473.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:38.168137",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/icon-default.0ecb6426.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:38.168264",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/img-mobileapp.8bd8cade.png",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:38.547570",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/icon_edit.cf2422f5.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:38.547768",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/img-msg-pre-goal.b72b9888.svg",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  },
+  {
+    "timestamp": "2026-03-27T08:51:38.547928",
+    "method": "GET",
+    "url": "https://login.rosettastone.com/static/media/en-US.11c7af0b.png",
+    "headers": {
+      "sec-ch-ua-platform": "\"Windows\"",
+      "referer": "https://login.rosettastone.com/launchpad",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+      "accept-language": "es-ES",
+      "sec-ch-ua-mobile": "?0"
+    },
+    "post_data": null
+  }
+]

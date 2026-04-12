@@ -18,6 +18,14 @@ services:
       - tracking-data:/app/data
     restart: always
 
+  jandry-3:
+    image: rosseta-playwright-image
+    env_file:
+      - .env_oliver
+    volumes:
+      - tracking-data:/app/data
+    restart: always
+
   alcivar:
     image: rosseta-playwright-image
     env_file:
@@ -27,6 +35,14 @@ services:
     restart: always
 
   alcivar-2:
+    image: rosseta-playwright-image
+    env_file:
+      - .env_daniela
+    volumes:
+      - tracking-data:/app/data
+    restart: always
+
+  alcivar-3:
     image: rosseta-playwright-image
     env_file:
       - .env_daniela

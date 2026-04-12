@@ -1,0 +1,62 @@
+{
+  "GET https://login.rosettastone.com/login": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/login",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/css/main.c6e47160.css": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/css/main.c6e47160.css",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/js/main.711f1859.js": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/js/main.711f1859.js",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/assets/lion/language-en-US.json": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/assets/lion/language-en-US.json",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/img-footer-bg.3bdf2888.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/img-footer-bg.3bdf2888.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/header-logo2.8a62b0e3.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/header-logo2.8a62b0e3.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Light.abccec32.woff2": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Light.abccec32.woff2",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-down-darkgrey.8419e393.svg": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-down-darkgrey.8419e393.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Regular.6ce6085a.woff2": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Regular.6ce6085a.woff2",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Medium.e42aeb08.woff2": {
+    "count": 2,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Medium.e42aeb08.woff2",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/stories": {
+    "count": 1,
+    "example_url": "https://totale.rosettastone.com/stories",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/?reauth=true",
+    "has_post_data": false
+  }
+}

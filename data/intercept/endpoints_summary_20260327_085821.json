@@ -1,0 +1,2347 @@
+{
+  "GET https://login.rosettastone.com/login": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/login",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/css/main.c6e47160.css": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/css/main.c6e47160.css",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/js/main.711f1859.js": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/js/main.711f1859.js",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/assets/lion/language-en-US.json": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/assets/lion/language-en-US.json",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/img-footer-bg.3bdf2888.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/img-footer-bg.3bdf2888.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/header-logo2.8a62b0e3.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/header-logo2.8a62b0e3.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Light.abccec32.woff2": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Light.abccec32.woff2",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-down-darkgrey.8419e393.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-down-darkgrey.8419e393.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Regular.6ce6085a.woff2": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Regular.6ce6085a.woff2",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Medium.e42aeb08.woff2": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Medium.e42aeb08.woff2",
+    "has_post_data": false
+  },
+  "POST https://launchpad-service.rosettastone.com/api/authentication/login": {
+    "count": 2,
+    "example_url": "https://launchpad-service.rosettastone.com/api/authentication/login",
+    "has_post_data": true
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-link.aa62f183.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-link.aa62f183.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/RSNotoSans-Bold.918a65a1.woff2": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/RSNotoSans-Bold.918a65a1.woff2",
+    "has_post_data": false
+  },
+  "GET https://siren.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1/productrights": {
+    "count": 1,
+    "example_url": "https://siren.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1/productrights?expandProduct=true",
+    "has_post_data": false
+  },
+  "GET https://ego.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1": {
+    "count": 1,
+    "example_url": "https://ego.rosettastone.com/api/users/4689706e-d3c6-43c3-b8fd-7aa962088ca1",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/user-icon.7be2c0a1.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/user-icon.7be2c0a1.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-down-grey-solid.93e0fcb0.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-down-grey-solid.93e0fcb0.svg",
+    "has_post_data": false
+  },
+  "GET https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerConfigs": {
+    "count": 1,
+    "example_url": "https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerConfigs",
+    "has_post_data": false
+  },
+  "GET https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerCanChangeL2": {
+    "count": 1,
+    "example_url": "https://ego.rosettastone.com/api/groups/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/learnerCanChangeL2",
+    "has_post_data": false
+  },
+  "GET https://launchpad-service.rosettastone.com/api/activities/recommendation": {
+    "count": 1,
+    "example_url": "https://launchpad-service.rosettastone.com/api/activities/recommendation?full_name=DIEGO%20ALEJANDRO%20ATIENCIA%20VARGAS&locale=es-419&targetLanguage=en-US",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/assets/lion/language-es-419.json": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/assets/lion/language-es-419.json",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-up-grey-solid.a9701593.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-up-grey-solid.a9701593.svg",
+    "has_post_data": false
+  },
+  "GET https://prism.rosettastone.com/reports/learner/dashboard/4689706e-d3c6-43c3-b8fd-7aa962088ca1": {
+    "count": 1,
+    "example_url": "https://prism.rosettastone.com/reports/learner/dashboard/4689706e-d3c6-43c3-b8fd-7aa962088ca1?skipLastUsageDate=true",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-right.4d626473.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-right.4d626473.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/icon-default.0ecb6426.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/icon-default.0ecb6426.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/img-mobileapp.8bd8cade.png": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/img-mobileapp.8bd8cade.png",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/icon_edit.cf2422f5.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/icon_edit.cf2422f5.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/img-msg-pre-goal.b72b9888.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/img-msg-pre-goal.b72b9888.svg",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/en-US.11c7af0b.png": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/en-US.11c7af0b.png",
+    "has_post_data": false
+  },
+  "GET https://login.rosettastone.com/static/media/arrow-right-hover.a41eee5f.svg": {
+    "count": 1,
+    "example_url": "https://login.rosettastone.com/static/media/arrow-right-hover.a41eee5f.svg",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/titan_authentication": {
+    "count": 1,
+    "example_url": "https://totale.rosettastone.com/titan_authentication?access_token=5dc159d3-67c1-4aa0-b734-0eda21c5af8e",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/home": {
+    "count": 1,
+    "example_url": "https://totale.rosettastone.com/home",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/googletaggateway/": {
+    "count": 2,
+    "example_url": "https://totale.rosettastone.com/googletaggateway/",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/css/main.7a4bd8f2.chunk.css": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/css/main.7a4bd8f2.chunk.css",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/sonic_events.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/sonic_events.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/sonic.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/sonic.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/runtime-main.cb995f10.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/runtime-main.cb995f10.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/82.0dbc728b.chunk.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/82.0dbc728b.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/main.e408b793.chunk.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/main.e408b793.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/media/Correct.0c7052b6.mp3": {
+    "count": 3,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/media/Correct.0c7052b6.mp3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/Home.bbbec75e.chunk.js": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/Home.bbbec75e.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/media/RSNotoSans-Regular.6ce6085a.woff2": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/media/RSNotoSans-Regular.6ce6085a.woff2",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/media/RSNotoSans-Medium.e42aeb08.woff2": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/media/RSNotoSans-Medium.e42aeb08.woff2",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/media/RSNotoSans-Bold.918a65a1.woff2": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/media/RSNotoSans-Bold.918a65a1.woff2",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/media/RSNotoSans-Light.abccec32.woff2": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/media/RSNotoSans-Light.abccec32.woff2",
+    "has_post_data": false
+  },
+  "POST https://lcp.rosettastone.com/api/v3/session/start": {
+    "count": 2,
+    "example_url": "https://lcp.rosettastone.com/api/v3/session/start",
+    "has_post_data": true
+  },
+  "POST https://lcp.rosettastone.com/api/v3/session/subman": {
+    "count": 2,
+    "example_url": "https://lcp.rosettastone.com/api/v3/session/subman",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/6.5fbf7972.chunk.js": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/6.5fbf7972.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/courseMenu.b7da071b.chunk.js": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/courseMenu.b7da071b.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/lion-language-2.bf3d99c0.chunk.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/lion-language-2.bf3d99c0.chunk.js",
+    "has_post_data": false
+  },
+  "POST https://lcp.rosettastone.com/api/v3/session/set_session_modality": {
+    "count": 2,
+    "example_url": "https://lcp.rosettastone.com/api/v3/session/set_session_modality",
+    "has_post_data": true
+  },
+  "POST https://graph.rosettastone.com/graphql": {
+    "count": 2,
+    "example_url": "https://graph.rosettastone.com/graphql",
+    "has_post_data": true
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/lion-language-1.fd8be46c.chunk.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/lion-language-1.fd8be46c.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/recommended_course": {
+    "count": 2,
+    "example_url": "https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/recommended_course?product_identifier=ENG",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/available_products_RS_r111.xml": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/available_products_RS_r111.xml",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/8b/e/8bec24158925f99fa88290e6efa40a71c2e60d22": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/8b/e/8bec24158925f99fa88290e6efa40a71c2e60d22",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/77/6/7761a30049ba3c277b4b55583e539e49c852143c": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/77/6/7761a30049ba3c277b4b55583e539e49c852143c",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/15/4/15409d558392f076179e145e0c851d1e85c6da11": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/15/4/15409d558392f076179e145e0c851d1e85c6da11",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/43/f/43fbb1e3ae9aebb51bbb102699e4355cc4e22dc6": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/43/f/43fbb1e3ae9aebb51bbb102699e4355cc4e22dc6",
+    "has_post_data": false
+  },
+  "GET https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/curriculums": {
+    "count": 4,
+    "example_url": "https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/curriculums?course=SK-ENG-L5-NA-PE-NA-NA-Y-3&_method=get",
+    "has_post_data": false
+  },
+  "POST https://lcp.rosettastone.com/api/v3/preferences/get_preferences": {
+    "count": 2,
+    "example_url": "https://lcp.rosettastone.com/api/v3/preferences/get_preferences",
+    "has_post_data": true
+  },
+  "GET https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/preferences": {
+    "count": 2,
+    "example_url": "https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/preferences?product_identifier=ENG&no-cache=1774619854656",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/media/unit_17.172b2451.png": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/media/unit_17.172b2451.png",
+    "has_post_data": false
+  },
+  "POST https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/course_preferences/SK-ENG-L5-NA-PE-NA-NA-Y-3": {
+    "count": 1,
+    "example_url": "https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/course_preferences/SK-ENG-L5-NA-PE-NA-NA-Y-3?_method=put",
+    "has_post_data": true
+  },
+  "POST https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/course_preferences": {
+    "count": 2,
+    "example_url": "https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/course_preferences?course=SK-ENG-L5-NA-PE-NA-NA-Y-3&_method=get",
+    "has_post_data": false
+  },
+  "POST https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/user_preferences": {
+    "count": 2,
+    "example_url": "https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/user_preferences?_method=get",
+    "has_post_data": false
+  },
+  "POST https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/defined_curriculums/SK-ENG-L5-NA-PE-NA-NA-Y-3": {
+    "count": 1,
+    "example_url": "https://tracking.rosettastone.com/ee/ce/03664e05-6b83-45c7-8bd1-0995b1b9a1e0/users/4765475/defined_curriculums/SK-ENG-L5-NA-PE-NA-NA-Y-3?_method=get",
+    "has_post_data": true
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/80/6/806ece7eb592c891962d6f0c294375caaa04b51b": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/80/6/806ece7eb592c891962d6f0c294375caaa04b51b",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/static/zoom/app/sre-4.0.19/sonic_worker.js": {
+    "count": 2,
+    "example_url": "https://totale.rosettastone.com/static/zoom/app/sre-4.0.19/sonic_worker.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/SpeechPrompt.mp3": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/SpeechPrompt.mp3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/media/Incorrect.773ef85f.mp3": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/media/Incorrect.773ef85f.mp3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/1f/6/1f6d1e48da1720ac4b50e3742232009f4ab6785f": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/1f/6/1f6d1e48da1720ac4b50e3742232009f4ab6785f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/da/0/da08d4581a720eb176b7c0510f121243a2ddbd4a": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/da/0/da08d4581a720eb176b7c0510f121243a2ddbd4a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f6/a/f6aa031ce71be7d3b4a2ca7e82ab91f2e1ea7bcb": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f6/a/f6aa031ce71be7d3b4a2ca7e82ab91f2e1ea7bcb",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/0e/4/0e4156a477ff67a7843d7e451065dd162eea97ea": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/0e/4/0e4156a477ff67a7843d7e451065dd162eea97ea",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/68/f/68f8016c395040eb0345d907900bbe5d618315e5": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/68/f/68f8016c395040eb0345d907900bbe5d618315e5",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/2c/4/2c425475b8bfcb2bcb5c77c23bd97d87bca5a03a": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/2c/4/2c425475b8bfcb2bcb5c77c23bd97d87bca5a03a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b1/4/b1440b97b40697c4390d33d47b9793dde7dfd69a": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b1/4/b1440b97b40697c4390d33d47b9793dde7dfd69a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a2/9/a29b434a8d4d21a1a58ff5f8a0744ae200594457": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a2/9/a29b434a8d4d21a1a58ff5f8a0744ae200594457",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c0/a/c0aa99b6c5e88c47873e25b513c3e8266300adf3": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c0/a/c0aa99b6c5e88c47873e25b513c3e8266300adf3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/59/4/594928b743a2b38b3c8fdbe98c0e12ff03c4a63c": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/59/4/594928b743a2b38b3c8fdbe98c0e12ff03c4a63c",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/82/f/82f164f234f55f30e2f4cceed14bb6ec96f131ac": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/82/f/82f164f234f55f30e2f4cceed14bb6ec96f131ac",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/8f/a/8fa44ca7718edc1b8719725ab18561a602892f19": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/8f/a/8fa44ca7718edc1b8719725ab18561a602892f19",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/70/8/7081ecff4a00fd928ca72cef20c411fa29fa7a8a": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/70/8/7081ecff4a00fd928ca72cef20c411fa29fa7a8a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/23/2/23267c20f3054ab419cf35dd5ac8b6f4b4958f28": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/23/2/23267c20f3054ab419cf35dd5ac8b6f4b4958f28",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/7e/5/7e5b3315d201c55e374ba5daf9692c9893c29487": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/7e/5/7e5b3315d201c55e374ba5daf9692c9893c29487",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/9e/4/9e47dc84a2f3b87699629006c43696988634c07e": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/9e/4/9e47dc84a2f3b87699629006c43696988634c07e",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/49/e/49e3ad61e4431ff82b9f331e8725d331a4dc8a5e": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/49/e/49e3ad61e4431ff82b9f331e8725d331a4dc8a5e",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c1/a/c1a2fc9d79174df4070553e2eb7252f8eac85af5": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c1/a/c1a2fc9d79174df4070553e2eb7252f8eac85af5",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/15/b/15b7394af7bef02834eb0169965e33a5a49eaf79": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/15/b/15b7394af7bef02834eb0169965e33a5a49eaf79",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/57/4/574628ba0c937b10cae1cfdc39b93e7a376c4fff": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/57/4/574628ba0c937b10cae1cfdc39b93e7a376c4fff",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/69/3/6939c9c014215e7da70d4ecdf1d0236a78b171e2": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/69/3/6939c9c014215e7da70d4ecdf1d0236a78b171e2",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/98/3/983c39819e38da140c2740ad0fe818db1e902625": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/98/3/983c39819e38da140c2740ad0fe818db1e902625",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/10/d/10d2e7817ec63ed1c326cc262e645ab5a59b1578": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/10/d/10d2e7817ec63ed1c326cc262e645ab5a59b1578",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/09/f/09ff41657417d128912c9d9897e36ac38f854bbf": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/09/f/09ff41657417d128912c9d9897e36ac38f854bbf",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/81/e/81e5f1645fb8905476be464c5b857987487e61aa": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/81/e/81e5f1645fb8905476be464c5b857987487e61aa",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ab/d/abd7d3609a6bd2865442cdf295faf209103b046b": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ab/d/abd7d3609a6bd2865442cdf295faf209103b046b",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/7d/2/7d206808047ce9fc546db9f63ee8cab2fb940da1": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/7d/2/7d206808047ce9fc546db9f63ee8cab2fb940da1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/38/e/38e765233cfcf039a3bda526f65e9e925e8745ad": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/38/e/38e765233cfcf039a3bda526f65e9e925e8745ad",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e2/7/e27c6fa4fb01fe752fc3a9a09268ab2b1adc6f47": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e2/7/e27c6fa4fb01fe752fc3a9a09268ab2b1adc6f47",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/1e/6/1e6e3856e2510323c52c9b1fdeb976deade0a018": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/1e/6/1e6e3856e2510323c52c9b1fdeb976deade0a018",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/media/Tile.0e4878ee.mp3": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/media/Tile.0e4878ee.mp3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/sonic_worker.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/sonic_worker.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/jszip.min.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/jszip.min.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/libsonic.js": {
+    "count": 2,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/libsonic.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/libsonic.wasm": {
+    "count": 4,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/sre-4.0.19/libsonic.wasm",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/static/zoom/app/sre-4.0.19/sonic_dnn_tensorflow.js": {
+    "count": 2,
+    "example_url": "https://totale.rosettastone.com/static/zoom/app/sre-4.0.19/sonic_dnn_tensorflow.js",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/static/zoom/app/sre-4.0.19/tf.min.js": {
+    "count": 2,
+    "example_url": "https://totale.rosettastone.com/static/zoom/app/sre-4.0.19/tf.min.js",
+    "has_post_data": false
+  },
+  "POST https://www.google-analytics.com/g/collect": {
+    "count": 5,
+    "example_url": "https://www.google-analytics.com/g/collect?v=2&tid=G-MLWZWE2H1F&gtm=45je63p1v879850320z8852968313za20gzb852968313zd852968313&_p=1774619858130&gcs=G100&gcd=13p3p3p3p5l1&npa=1&dma_cps=-&dma=0&gdid=dY2E1Nz&gtm_up=1&cid=306016872.1774619859&ul=es-es&sr=1366x768&uaa=x86&uab=64&uafvl=Not%253DA%253FBrand%3B24.0.0.0%7CChromium%3B140.0.7339.16&uamb=0&uam=&uap=Windows&uapv=10.0&uaw=0&are=1&frm=0&pscdl=denied&_s=1&tag_exp=0~115938465~115938468~117484252~117512542&sid=1774619858&sct=1&seg=0&dl=https%3A%2F%2Ftotale.rosettastone.com%2F&dt=Welcome%20to%20Rosetta%20Stone!&_tu=CA&en=page_view&_fv=1&_nsi=1&_ss=1&tfd=8945",
+    "has_post_data": false
+  },
+  "GET https://totale.rosettastone.com/stories": {
+    "count": 1,
+    "example_url": "https://totale.rosettastone.com/stories",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/1.93791bf1.chunk.js": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/1.93791bf1.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/7.0b909c41.chunk.js": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/7.0b909c41.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/8.d6f919fe.chunk.js": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/8.d6f919fe.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/StoriesModule.bdf50ffa.chunk.js": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/StoriesModule.bdf50ffa.chunk.js",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/52/1/52159cd2ac799b09ed4404698b06a900b0e2b86f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/52/1/52159cd2ac799b09ed4404698b06a900b0e2b86f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/29/e/29e3e4d34b6776765ccee8c0bd014a7895f45baf": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/29/e/29e3e4d34b6776765ccee8c0bd014a7895f45baf",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs/zoom/app/static/js/95.cd4e659b.chunk.js": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs/zoom/app/static/js/95.cd4e659b.chunk.js",
+    "has_post_data": false
+  },
+  "POST https://eve.rosettastone.com/api/report": {
+    "count": 1,
+    "example_url": "https://eve.rosettastone.com/api/report",
+    "has_post_data": true
+  },
+  "GET https://totale.rosettastone.com/api/stories": {
+    "count": 1,
+    "example_url": "https://totale.rosettastone.com/api/stories?current_language=ENG",
+    "has_post_data": false
+  },
+  "POST https://rssocapps.rosettastone.com/taggable_records/search": {
+    "count": 2,
+    "example_url": "https://rssocapps.rosettastone.com/taggable_records/search",
+    "has_post_data": true
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/48/9/4895dacac5fedc5864f7c373fb50ba02b391e245": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/48/9/4895dacac5fedc5864f7c373fb50ba02b391e245",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/02/0/020d18c7c2f773ade816aad44dce357916e085f1": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/02/0/020d18c7c2f773ade816aad44dce357916e085f1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e4/3/e43253e13432670c381c6017f518b78110dfb1b9": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e4/3/e43253e13432670c381c6017f518b78110dfb1b9",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/1f/7/1f7214873bf68a05bf9ddcc04a161615241bfbb4": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/1f/7/1f7214873bf68a05bf9ddcc04a161615241bfbb4",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f0/1/f010b7be001ba1526b14736ce54fd068e8bace31": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f0/1/f010b7be001ba1526b14736ce54fd068e8bace31",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/5a/a/5aa9e2bf41a03d69e61156cebc82ec9cdb25554a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/5a/a/5aa9e2bf41a03d69e61156cebc82ec9cdb25554a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/fb/9/fb9c9fae7be7d7285920ef3beca88f84173e04b8": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/fb/9/fb9c9fae7be7d7285920ef3beca88f84173e04b8",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e9/9/e99cd36fc7b2df1e7d9333bccfeb85c9ee012ca3": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e9/9/e99cd36fc7b2df1e7d9333bccfeb85c9ee012ca3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/d6/6/d663092ff93c8de6876d7d469ee468d5ad39010c": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/d6/6/d663092ff93c8de6876d7d469ee468d5ad39010c",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/fb/a/fbac3040b5d67c78654c9b2e9fd84910abbdc5ea": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/fb/a/fbac3040b5d67c78654c9b2e9fd84910abbdc5ea",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c1/b/c1bc1218b10d9f74a5247ba39402afeda025e078": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c1/b/c1bc1218b10d9f74a5247ba39402afeda025e078",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/13/4/134ce96860d0719b4f95474957b64d5ad4ded35d": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/13/4/134ce96860d0719b4f95474957b64d5ad4ded35d",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c1/1/c1124ff9d48b1bb8dac2a56422065f06602c1c13": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c1/1/c1124ff9d48b1bb8dac2a56422065f06602c1c13",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/69/0/690041e1cf191eec8e3e7c7bfba0f63659a1c56f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/69/0/690041e1cf191eec8e3e7c7bfba0f63659a1c56f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f7/7/f77bedaec9f0a29f60189c470cb5202b1c450e24": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f7/7/f77bedaec9f0a29f60189c470cb5202b1c450e24",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/d7/c/d7cf099933b82dd1492f8ec7decd8303b3caa5b1": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/d7/c/d7cf099933b82dd1492f8ec7decd8303b3caa5b1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/7e/9/7e9842f8ba9500b711ee94d3478b26c8e703f931": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/7e/9/7e9842f8ba9500b711ee94d3478b26c8e703f931",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ee/f/eef1cc3b563302aebff3f0781450a8323df6d495": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ee/f/eef1cc3b563302aebff3f0781450a8323df6d495",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c1/3/c1328dd966e37e70655bded1817147a26b5821a5": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c1/3/c1328dd966e37e70655bded1817147a26b5821a5",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/3e/4/3e40a3010dc4fc2926137c5f7039c950ac09af18": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/3e/4/3e40a3010dc4fc2926137c5f7039c950ac09af18",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b9/9/b9947eddd7911fd516f4211fc89edd882f37c737": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b9/9/b9947eddd7911fd516f4211fc89edd882f37c737",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/49/b/49baad523ebcbb5b7dd15d3eb4551b6edf935539": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/49/b/49baad523ebcbb5b7dd15d3eb4551b6edf935539",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/17/9/179330cef306f5eec8bce435a953f095e6f1f6c9": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/17/9/179330cef306f5eec8bce435a953f095e6f1f6c9",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b4/6/b4639a7451a4df256ddb1d09f5fb5c6ff1b3ceff": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b4/6/b4639a7451a4df256ddb1d09f5fb5c6ff1b3ceff",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/fd/0/fd056d8ca6fbfd2096a38b381fa0e16196815fda": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/fd/0/fd056d8ca6fbfd2096a38b381fa0e16196815fda",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/8b/d/8bdd97f813df443cff7f6255b95dfd5a315cc386": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/8b/d/8bdd97f813df443cff7f6255b95dfd5a315cc386",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/0e/0/0e07e22fcfec73dd172c1eea088ed8c272d9f183": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/0e/0/0e07e22fcfec73dd172c1eea088ed8c272d9f183",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a8/b/a8be7ed32e62004de5c65c30ed1a6a7e8d15b3c3": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a8/b/a8be7ed32e62004de5c65c30ed1a6a7e8d15b3c3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/82/9/8297b4bf32853d86ddda4ed2a3fade3d74235b5f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/82/9/8297b4bf32853d86ddda4ed2a3fade3d74235b5f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/cb/c/cbceba8ffcd37295d3f424c38717c01dba50a4c9": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/cb/c/cbceba8ffcd37295d3f424c38717c01dba50a4c9",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b7/7/b77ccceec8e2c9464b010c23b236c2b2694a1197": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b7/7/b77ccceec8e2c9464b010c23b236c2b2694a1197",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/9b/4/9b4b174e9d1c365e2db49c20173e9c6a04c6593b": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/9b/4/9b4b174e9d1c365e2db49c20173e9c6a04c6593b",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f4/a/f4ac19e6392e172a20482512436d717352a1a253": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f4/a/f4ac19e6392e172a20482512436d717352a1a253",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a9/3/a932bc6c04d301cfb97e2801f1138b1d4fbfd752": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a9/3/a932bc6c04d301cfb97e2801f1138b1d4fbfd752",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f8/8/f8875e0afc6c14f1b4885f94feef1f6f7c66618a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f8/8/f8875e0afc6c14f1b4885f94feef1f6f7c66618a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a8/2/a8282ba71d97fa71292a0afa2a1df3ac12347513": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a8/2/a8282ba71d97fa71292a0afa2a1df3ac12347513",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c6/a/c6a8939d0d2e1af8d3f0a6a4e1fcfcdb36dade69": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c6/a/c6a8939d0d2e1af8d3f0a6a4e1fcfcdb36dade69",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/04/7/0473434ebdbe98af57374553c4cc040073ebe270": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/04/7/0473434ebdbe98af57374553c4cc040073ebe270",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/75/c/75cdc2520b4a7184f21924e5cd528d70067f6e5d": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/75/c/75cdc2520b4a7184f21924e5cd528d70067f6e5d",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b2/6/b26f2e87d65f4f835a0c36be0d0fdc469a30270d": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b2/6/b26f2e87d65f4f835a0c36be0d0fdc469a30270d",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/56/c/56c4ea666264cbd8d959c576f35ca4ee99f61549": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/56/c/56c4ea666264cbd8d959c576f35ca4ee99f61549",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a2/9/a292e1e2d95b101151e29517defebbad1a41130c": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a2/9/a292e1e2d95b101151e29517defebbad1a41130c",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/50/7/507baa7c618533a617066ca08dcc7a06d51207d0": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/50/7/507baa7c618533a617066ca08dcc7a06d51207d0",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f5/6/f56a931e31cef84e8a04f049e8e9793e06bd17fb": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f5/6/f56a931e31cef84e8a04f049e8e9793e06bd17fb",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/40/3/403a471b16b6d2818af43509ba3c8501d235193f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/40/3/403a471b16b6d2818af43509ba3c8501d235193f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c7/e/c7ef35c0f05d08fccea29406fb191c77e4b47fc6": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c7/e/c7ef35c0f05d08fccea29406fb191c77e4b47fc6",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/53/e/53eec360ac723306457a465904d79661f56d58a1": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/53/e/53eec360ac723306457a465904d79661f56d58a1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b1/c/b1c0052df724c9289dfee93a58a7ae7eddf5a97d": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b1/c/b1c0052df724c9289dfee93a58a7ae7eddf5a97d",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ac/b/acb99e303f56e83b661f238134deac9e285b93ff": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ac/b/acb99e303f56e83b661f238134deac9e285b93ff",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/53/b/53b9f0a3a2b0a3ebe8d66ad962a52e32117d1fad": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/53/b/53b9f0a3a2b0a3ebe8d66ad962a52e32117d1fad",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b9/d/b9d07d0f41fbbe024d56f5cdaa9401ae13d56f44": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b9/d/b9d07d0f41fbbe024d56f5cdaa9401ae13d56f44",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/83/b/83be4941d4650d77ed63337d7980c77637b8e7a2": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/83/b/83be4941d4650d77ed63337d7980c77637b8e7a2",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f3/6/f36773e6f8f17e74012b22208a13ca19b5d19da9": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f3/6/f36773e6f8f17e74012b22208a13ca19b5d19da9",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/15/d/15d980b8bd20b5ad0132692d0c5ebac9a3b3cc09": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/15/d/15d980b8bd20b5ad0132692d0c5ebac9a3b3cc09",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/cd/7/cd71648971a0d6cf7ce9d622fd82aad10c958c2c": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/cd/7/cd71648971a0d6cf7ce9d622fd82aad10c958c2c",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/4a/b/4ab1af93d164074b8270190b6f10d8b2624051dd": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/4a/b/4ab1af93d164074b8270190b6f10d8b2624051dd",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ad/b/adb1d999b302e84adf0fa9baae2eb986b2fa6ddc": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ad/b/adb1d999b302e84adf0fa9baae2eb986b2fa6ddc",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c0/6/c06453b65baac4d08ed9c58a8eb028b30e3ec9ce": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c0/6/c06453b65baac4d08ed9c58a8eb028b30e3ec9ce",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e6/4/e64d18ceaf46e36819d70beef2de36d30078e78d": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e6/4/e64d18ceaf46e36819d70beef2de36d30078e78d",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/d6/0/d606d1d4b7bfbe170604bfd5724dcf6716f11c26": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/d6/0/d606d1d4b7bfbe170604bfd5724dcf6716f11c26",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/44/9/449c50e4ce69c0318df03b87ad7201d1fcda3b3d": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/44/9/449c50e4ce69c0318df03b87ad7201d1fcda3b3d",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/bc/1/bc1b2b89d438f2943bf2f09ce17c04f4fd26a447": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/bc/1/bc1b2b89d438f2943bf2f09ce17c04f4fd26a447",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/3d/2/3d217f3393647e92ef8dbdd4de3723ea323abfe0": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/3d/2/3d217f3393647e92ef8dbdd4de3723ea323abfe0",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/05/6/056db5d324a9c43c99d9e7d16bc1286e9b86ac37": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/05/6/056db5d324a9c43c99d9e7d16bc1286e9b86ac37",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/4d/7/4d7316da009f0bfaf4ab403c6459f08b2d311be7": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/4d/7/4d7316da009f0bfaf4ab403c6459f08b2d311be7",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/99/f/99f5174fc87e9885ec7aae0a7515f8d3e778edd3": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/99/f/99f5174fc87e9885ec7aae0a7515f8d3e778edd3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/1f/c/1fca2920675d6635f43a2f238d39f9f21bfb06b7": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/1f/c/1fca2920675d6635f43a2f238d39f9f21bfb06b7",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/19/c/19ca973c40319c321f777098e0cc1f0b5752f155": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/19/c/19ca973c40319c321f777098e0cc1f0b5752f155",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/fa/a/faa5dd6d87efa02a05dcbf66bf608084dded2283": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/fa/a/faa5dd6d87efa02a05dcbf66bf608084dded2283",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/52/6/5266c953d2c16df6481fb658ca8c822d2257726c": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/52/6/5266c953d2c16df6481fb658ca8c822d2257726c",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/9e/1/9e16e4cddd2b87d136733a11add353ef7e10be0e": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/9e/1/9e16e4cddd2b87d136733a11add353ef7e10be0e",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ac/1/ac1d42b080a7edfe1b5fa11862ff36df9850e42b": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ac/1/ac1d42b080a7edfe1b5fa11862ff36df9850e42b",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/48/2/482c0019919e045855751174b0bddd89ab344f0a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/48/2/482c0019919e045855751174b0bddd89ab344f0a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/56/5/565ec2be2c1b62edfc7f8be8ad084d0d93369b4e": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/56/5/565ec2be2c1b62edfc7f8be8ad084d0d93369b4e",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/64/0/640ebcba5dc82ce0004f6672d02f7cfb9b07e463": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/64/0/640ebcba5dc82ce0004f6672d02f7cfb9b07e463",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/9a/f/9afe8c8342764cca57ce1ae50dcbe26a4332e294": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/9a/f/9afe8c8342764cca57ce1ae50dcbe26a4332e294",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/9b/1/9b1319837f0df7fb887c3ae7499ea622f1f2a3e5": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/9b/1/9b1319837f0df7fb887c3ae7499ea622f1f2a3e5",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/36/a/36ab473d8149b3820f60571c96dddb3ac348e079": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/36/a/36ab473d8149b3820f60571c96dddb3ac348e079",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/49/6/496418f0b74c506fb8bff2f90ac0cd508eb65db6": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/49/6/496418f0b74c506fb8bff2f90ac0cd508eb65db6",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ea/2/ea2438aa3b08459996ea4d97140432d28ebce50e": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ea/2/ea2438aa3b08459996ea4d97140432d28ebce50e",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/cc/2/cc263a639078884a8cc526251ecaf0826a70945a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/cc/2/cc263a639078884a8cc526251ecaf0826a70945a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/0c/2/0c29554dbf747caf160dda6d7cef239521f1e1a9": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/0c/2/0c29554dbf747caf160dda6d7cef239521f1e1a9",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/cd/7/cd74b19732c23c04029bfed653d8dfc09784c986": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/cd/7/cd74b19732c23c04029bfed653d8dfc09784c986",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e8/e/e8e81296f69556e37774a528e92d487b0c8d9f75": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e8/e/e8e81296f69556e37774a528e92d487b0c8d9f75",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/17/5/175e502c01b1df0a7b8238023144e39ce6506635": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/17/5/175e502c01b1df0a7b8238023144e39ce6506635",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/03/8/03862d69bc76b8a133318261cf63e0f5aa85a20a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/03/8/03862d69bc76b8a133318261cf63e0f5aa85a20a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a7/9/a79d7d4e41294433fe7e339f29ca4e3e13454614": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a7/9/a79d7d4e41294433fe7e339f29ca4e3e13454614",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/da/5/da51594dab05700aeec71a0106b299b81e3b52c5": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/da/5/da51594dab05700aeec71a0106b299b81e3b52c5",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/3a/d/3adb7d572ff1c6d5e88c741b22b0e3e3af52477c": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/3a/d/3adb7d572ff1c6d5e88c741b22b0e3e3af52477c",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/3a/d/3ad262c3ca2585606fcd810bb9a079a6b43bf936": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/3a/d/3ad262c3ca2585606fcd810bb9a079a6b43bf936",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/83/4/834331c6386473615b098fb659d977c9985f729f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/83/4/834331c6386473615b098fb659d977c9985f729f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/56/5/56542dd43070ce2eb48bf4656e47a7fce7ecfad3": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/56/5/56542dd43070ce2eb48bf4656e47a7fce7ecfad3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/67/f/67f946d20c9ece387e6a2424b05ef5a3b67cd4ba": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/67/f/67f946d20c9ece387e6a2424b05ef5a3b67cd4ba",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c9/2/c925cfaec0329ea715d1cef29c3544c00ceef891": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c9/2/c925cfaec0329ea715d1cef29c3544c00ceef891",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/dc/3/dc32bf4532747689f9a3b161926b98340ba1beb4": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/dc/3/dc32bf4532747689f9a3b161926b98340ba1beb4",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f4/3/f43ee5926af4bbd411ff4b290fe9a0c3db71d49c": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f4/3/f43ee5926af4bbd411ff4b290fe9a0c3db71d49c",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/54/4/544ac8f3341cf20e434e50b2cdc4a8e19878a3a1": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/54/4/544ac8f3341cf20e434e50b2cdc4a8e19878a3a1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/52/d/52dcc9b3311d86365018a9526ac0865cfe43a524": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/52/d/52dcc9b3311d86365018a9526ac0865cfe43a524",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/3d/c/3dcf08f4e1de59fd09fd4618c19fef35b79e211a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/3d/c/3dcf08f4e1de59fd09fd4618c19fef35b79e211a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/44/a/44ab279ca4d5cdb919ea79057f591077c1171088": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/44/a/44ab279ca4d5cdb919ea79057f591077c1171088",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/87/9/879b45d9f40b0828ffcdab821617ee01d7eaad9f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/87/9/879b45d9f40b0828ffcdab821617ee01d7eaad9f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/90/d/90d6f1d9a8921764a7fa6dc6a399e0fccd8673a3": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/90/d/90d6f1d9a8921764a7fa6dc6a399e0fccd8673a3",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/2b/5/2b51f50ed82b45062762392d748a235f084d09d1": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/2b/5/2b51f50ed82b45062762392d748a235f084d09d1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/6c/6/6c69788087f71d29b6dcf521f6678c0cde325b42": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/6c/6/6c69788087f71d29b6dcf521f6678c0cde325b42",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/74/9/749e525a42568b46b45c8507cc6f1c9f2469accf": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/74/9/749e525a42568b46b45c8507cc6f1c9f2469accf",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/bf/c/bfcd042450cc0d0ea2e3f050b96789db687cc3ff": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/bf/c/bfcd042450cc0d0ea2e3f050b96789db687cc3ff",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/00/6/0063d1dc47fd5b20b2138e0101cd65f96a944b6a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/00/6/0063d1dc47fd5b20b2138e0101cd65f96a944b6a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b4/c/b4cf4bf7596ccba5726d9bdb1bc4079e65df7816": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b4/c/b4cf4bf7596ccba5726d9bdb1bc4079e65df7816",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/56/2/562165150b7205a63cc39e5746a86e10c402c49d": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/56/2/562165150b7205a63cc39e5746a86e10c402c49d",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/1b/e/1be0e510668a099e15003331f80e1e527dbccd9b": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/1b/e/1be0e510668a099e15003331f80e1e527dbccd9b",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/3e/2/3e216b2dfd6cee47b1e2050d0dfc2f9acab0a9c0": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/3e/2/3e216b2dfd6cee47b1e2050d0dfc2f9acab0a9c0",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/62/8/628761f7dc0bccfb37208579f159aa4b923c01be": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/62/8/628761f7dc0bccfb37208579f159aa4b923c01be",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/8d/e/8def2e63370ca181af528a8c5d10c67cef3ce8fd": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/8d/e/8def2e63370ca181af528a8c5d10c67cef3ce8fd",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/2a/2/2a2dea2ab7170c9bb6bb5bc2677b07a1551f83c1": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/2a/2/2a2dea2ab7170c9bb6bb5bc2677b07a1551f83c1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/47/a/47a8fac2e86c780b17099f6c483b702031d24b78": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/47/a/47a8fac2e86c780b17099f6c483b702031d24b78",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/87/8/87834bad46c419e0c6f40487cd5fab89a465fae9": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/87/8/87834bad46c419e0c6f40487cd5fab89a465fae9",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b0/3/b03e86ad4c2048361cfa050f1ba39e059ba926da": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b0/3/b03e86ad4c2048361cfa050f1ba39e059ba926da",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e8/6/e861d076d742a4b9f2d2abce583979d3510a8fb1": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e8/6/e861d076d742a4b9f2d2abce583979d3510a8fb1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/bd/5/bd58dd2590fddd58a0c17667942f7d165b2873a8": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/bd/5/bd58dd2590fddd58a0c17667942f7d165b2873a8",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/4d/2/4d2cfe147436bddf73ae31794581bdb57ad50e1a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/4d/2/4d2cfe147436bddf73ae31794581bdb57ad50e1a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/4f/b/4fbc7ff11a67a948a6e13a4508c28dfb7cd20fc1": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/4f/b/4fbc7ff11a67a948a6e13a4508c28dfb7cd20fc1",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/bd/4/bd466eefed7d11229d9aeaeaa4b14d7546a6a7a6": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/bd/4/bd466eefed7d11229d9aeaeaa4b14d7546a6a7a6",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e9/8/e983354d509eebacef062b6a7b0f5eced3e6eaaa": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e9/8/e983354d509eebacef062b6a7b0f5eced3e6eaaa",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/09/5/095c108ba6dde8b6193b20bc75ce18e9fee0ef77": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/09/5/095c108ba6dde8b6193b20bc75ce18e9fee0ef77",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ab/3/ab3754260a0fee69d93534e81b060f4c278dee04": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ab/3/ab3754260a0fee69d93534e81b060f4c278dee04",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/63/d/63dfb03cd04fb8decb027bd1d8ab48b443aa8c50": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/63/d/63dfb03cd04fb8decb027bd1d8ab48b443aa8c50",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/00/f/00f28afe15b1a2d4f4c64ad8af023b9d045fbff2": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/00/f/00f28afe15b1a2d4f4c64ad8af023b9d045fbff2",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/1f/c/1fcf262968ab2efb0e07b89d84525c6fafdd5e59": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/1f/c/1fcf262968ab2efb0e07b89d84525c6fafdd5e59",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/58/7/58725ebc9d20ff743fefc357b045626438d312c7": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/58/7/58725ebc9d20ff743fefc357b045626438d312c7",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/99/e/99e5898b99c978692860ec36877ee842373417b0": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/99/e/99e5898b99c978692860ec36877ee842373417b0",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/72/0/7207f5ff202503ccd815ea67505975b15755ff4f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/72/0/7207f5ff202503ccd815ea67505975b15755ff4f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e6/5/e65408e9202529f59c2fc5b6fe3088a7ef3f067f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e6/5/e65408e9202529f59c2fc5b6fe3088a7ef3f067f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e2/e/e2ee2fb746be49ed380b419cbbce9b7797751670": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e2/e/e2ee2fb746be49ed380b419cbbce9b7797751670",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/dd/2/dd22acccc8a5b3699060f1f21bdba368f5ff5617": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/dd/2/dd22acccc8a5b3699060f1f21bdba368f5ff5617",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/c2/7/c27d0719ac807087372fd5bb3efabeda8c85a9a8": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/c2/7/c27d0719ac807087372fd5bb3efabeda8c85a9a8",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b4/8/b48bf09325bd641b5f46964c8b1650d2d8d1af03": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b4/8/b48bf09325bd641b5f46964c8b1650d2d8d1af03",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/3d/d/3dd41640c71fc2f8350e0f1b52097cd6c7787a03": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/3d/d/3dd41640c71fc2f8350e0f1b52097cd6c7787a03",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/08/2/08277a3d9aac730fce7228854f3622c92c38ff26": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/08/2/08277a3d9aac730fce7228854f3622c92c38ff26",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f0/7/f078acb06ae8561f6f4a8c35f73873554fb5a708": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f0/7/f078acb06ae8561f6f4a8c35f73873554fb5a708",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ed/3/ed3406e5737e4a57d995d5cc80983dab277f7d58": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ed/3/ed3406e5737e4a57d995d5cc80983dab277f7d58",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/92/1/92104d7d50a8b2fae52e8029b3c54e875fa0dbab": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/92/1/92104d7d50a8b2fae52e8029b3c54e875fa0dbab",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/f7/8/f78575afb9f8e2bba4afe19aaf4e0b11ded26f94": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/f7/8/f78575afb9f8e2bba4afe19aaf4e0b11ded26f94",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/fe/3/fe3be3d63e2f0257c9dc0bffa41d6a8f8308569b": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/fe/3/fe3be3d63e2f0257c9dc0bffa41d6a8f8308569b",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/7a/5/7a573264f61d910e015e1d38d46a4f32a1b8b9a4": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/7a/5/7a573264f61d910e015e1d38d46a4f32a1b8b9a4",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b6/d/b6d1b6fccc49da346f5ec187aa2b6b91604b3691": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b6/d/b6d1b6fccc49da346f5ec187aa2b6b91604b3691",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/8f/c/8fc0bec044d4e2eafef5ce334c37954250ee5fc2": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/8f/c/8fc0bec044d4e2eafef5ce334c37954250ee5fc2",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/1f/2/1f22cd967c85f1de7161ec5285730e3a2b7a09ba": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/1f/2/1f22cd967c85f1de7161ec5285730e3a2b7a09ba",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/01/f/01f022df7a60cf2d8ba3428d873d1cab64cc4628": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/01/f/01f022df7a60cf2d8ba3428d873d1cab64cc4628",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a6/c/a6c968791cd389c77e1bd07ce4749ad6387e7980": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a6/c/a6c968791cd389c77e1bd07ce4749ad6387e7980",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/bb/f/bbfc097ae50b33f700b14b1bc63d4d87c11e7349": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/bb/f/bbfc097ae50b33f700b14b1bc63d4d87c11e7349",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/09/c/09cac023f236dbd43d49aae091c31019c4448c74": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/09/c/09cac023f236dbd43d49aae091c31019c4448c74",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/09/8/098dd51cab71815b044a9b0de65e11e34a8801df": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/09/8/098dd51cab71815b044a9b0de65e11e34a8801df",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a8/4/a8417bdbfb1b37dba983256df5367ea444bfbdba": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a8/4/a8417bdbfb1b37dba983256df5367ea444bfbdba",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ed/e/ede3f1e9b28e1f8f920e357d78a331ffee53eb35": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ed/e/ede3f1e9b28e1f8f920e357d78a331ffee53eb35",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ff/0/ff0259150e86876ca1d53fe96cfbb2eab9b5d16e": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ff/0/ff0259150e86876ca1d53fe96cfbb2eab9b5d16e",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/90/d/90d054c2ab9803461e04808b24efab2dd660aef6": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/90/d/90d054c2ab9803461e04808b24efab2dd660aef6",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/df/8/df853e87db6cdf3a6bd7807f119afd655a2e5813": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/df/8/df853e87db6cdf3a6bd7807f119afd655a2e5813",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/ab/6/ab68417eac0ba3c81e184d84d5a014378d0e9668": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/ab/6/ab68417eac0ba3c81e184d84d5a014378d0e9668",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/bd/0/bd07454497285913f49b5fdfad98e97eb2966bff": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/bd/0/bd07454497285913f49b5fdfad98e97eb2966bff",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/4c/5/4c5a7d8e647bdfd68ad4acf40c327b6c75a7b384": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/4c/5/4c5a7d8e647bdfd68ad4acf40c327b6c75a7b384",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e8/d/e8d8d5cb84574b36127b59cc9fa91cc9d0c76cb0": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e8/d/e8d8d5cb84574b36127b59cc9fa91cc9d0c76cb0",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/cf/2/cf21713206cfaa01b4fb7dded52cba4be313ea06": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/cf/2/cf21713206cfaa01b4fb7dded52cba4be313ea06",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/01/e/01e166b0f47bff86a68a6b8fe1916395bd0cd4a4": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/01/e/01e166b0f47bff86a68a6b8fe1916395bd0cd4a4",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/17/b/17bc7676f992ae9e2637c5c2045188bb29bbf4b2": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/17/b/17bc7676f992ae9e2637c5c2045188bb29bbf4b2",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/65/1/651afdde9caeea06743b43608ac6304c789a2f95": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/65/1/651afdde9caeea06743b43608ac6304c789a2f95",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b9/0/b907705ffc6be53cfda618d0576bcc3e763974cd": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b9/0/b907705ffc6be53cfda618d0576bcc3e763974cd",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/77/2/772a7ca7fc64fc103b51b9a05aec70c85e6d4c58": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/77/2/772a7ca7fc64fc103b51b9a05aec70c85e6d4c58",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/e5/a/e5a4019f3b4a37bbab53cbf255341a349f852ba5": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/e5/a/e5a4019f3b4a37bbab53cbf255341a349f852ba5",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/dd/c/ddc62fc94a1035e45347c14161c3a7a0e2083f6a": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/dd/c/ddc62fc94a1035e45347c14161c3a7a0e2083f6a",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/04/5/045f558d70fcee1b32bd9a56f32adbc7841d6515": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/04/5/045f558d70fcee1b32bd9a56f32adbc7841d6515",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/b9/9/b99646e3af0d00f829bb7a6f9a8a46d57a6be48f": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/b9/9/b99646e3af0d00f829bb7a6f9a8a46d57a6be48f",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/4b/4/4b4bdc2281f59b373d46a9e42cabd3056fad8137": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/4b/4/4b4bdc2281f59b373d46a9e42cabd3056fad8137",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/62/e/62ed869b63d1c7883786dbc8dc052a1b0958be94": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/62/e/62ed869b63d1c7883786dbc8dc052a1b0958be94",
+    "has_post_data": false
+  },
+  "GET https://resources.rosettastone.com/rs3/content/data/a9/7/a97b3a5fb08a485e1a72984ba95d2ab46d276668": {
+    "count": 1,
+    "example_url": "https://resources.rosettastone.com/rs3/content/data/a9/7/a97b3a5fb08a485e1a72984ba95d2ab46d276668",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a6427af5-ba01-4604-9b29-870e4bb15c79": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a6427af5-ba01-4604-9b29-870e4bb15c79",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ea575ef7-677f-4f05-9ba2-4d5e4e01056d": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ea575ef7-677f-4f05-9ba2-4d5e4e01056d",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/77a85e7a-39ec-4342-a09e-31fcd7ac7100": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/77a85e7a-39ec-4342-a09e-31fcd7ac7100",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/17dbc53b-aa79-485a-bb05-464a92054d44": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/17dbc53b-aa79-485a-bb05-464a92054d44",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/0dcf3e2d-6142-49c9-bcf5-8390407624e5": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/0dcf3e2d-6142-49c9-bcf5-8390407624e5",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/8987abb0-5e68-4334-acb3-516a3c21203f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/8987abb0-5e68-4334-acb3-516a3c21203f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/12521d59-3a1f-42ba-a7d5-dd874d788c03": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/12521d59-3a1f-42ba-a7d5-dd874d788c03",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/e84b59eb-2062-49e4-b2f3-e408cf115880": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/e84b59eb-2062-49e4-b2f3-e408cf115880",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/2de07433-41bd-4a5a-8391-eab851c35b3a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/2de07433-41bd-4a5a-8391-eab851c35b3a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/788b1730-dff3-450d-9e0d-82f5144afb52": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/788b1730-dff3-450d-9e0d-82f5144afb52",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/832569ad-3917-43b4-a89a-a873dd716750": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/832569ad-3917-43b4-a89a-a873dd716750",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/887e8806-870b-4b02-8848-cb61febd0de2": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/887e8806-870b-4b02-8848-cb61febd0de2",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ccd52731-3014-44f1-aad8-e890677d9ee9": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ccd52731-3014-44f1-aad8-e890677d9ee9",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/02e70419-fecd-43db-b58a-80bef8225889": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/02e70419-fecd-43db-b58a-80bef8225889",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c40fa914-46b2-473c-9109-97491307d67a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c40fa914-46b2-473c-9109-97491307d67a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/51238249-e9cd-4f45-b17a-85724e4e8cab": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/51238249-e9cd-4f45-b17a-85724e4e8cab",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a68a1a51-e48f-4542-b4ff-048476fe9d3d": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a68a1a51-e48f-4542-b4ff-048476fe9d3d",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/725d51c6-bd0c-40c7-8a24-e5c8502b9dc3": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/725d51c6-bd0c-40c7-8a24-e5c8502b9dc3",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a480aa9b-2eab-4472-9bfd-c503dfc03737": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a480aa9b-2eab-4472-9bfd-c503dfc03737",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/f347165a-35a1-419d-8461-fd8e2b4dddcb": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/f347165a-35a1-419d-8461-fd8e2b4dddcb",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/adc1e348-9ba5-4b78-8f42-089550be421c": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/adc1e348-9ba5-4b78-8f42-089550be421c",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/6ecbb567-3565-4b1b-b766-492af7486b4a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/6ecbb567-3565-4b1b-b766-492af7486b4a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/41195457-a7e5-4334-aed2-f2874663738e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/41195457-a7e5-4334-aed2-f2874663738e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/b3c029f2-f3ea-4d43-9dc9-ca9f337e877d": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/b3c029f2-f3ea-4d43-9dc9-ca9f337e877d",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/6be596fd-5513-4c72-b98e-c5280912b516": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/6be596fd-5513-4c72-b98e-c5280912b516",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/7f7ce324-d6ed-4320-a9e1-1964dcbfc72f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/7f7ce324-d6ed-4320-a9e1-1964dcbfc72f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/2930cd78-6a14-4627-bd45-ae713a01c7cb": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/2930cd78-6a14-4627-bd45-ae713a01c7cb",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/98b64dc8-acbd-4298-873c-cf6359ca3420": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/98b64dc8-acbd-4298-873c-cf6359ca3420",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/d3bc687b-f782-477f-a706-bfa74630f219": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/d3bc687b-f782-477f-a706-bfa74630f219",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c3fe5c69-4b2a-4478-baf1-91fe93bf93e2": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c3fe5c69-4b2a-4478-baf1-91fe93bf93e2",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/8f8359ab-0529-4f6f-a106-c56390411fa1": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/8f8359ab-0529-4f6f-a106-c56390411fa1",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a361460f-d0f1-4e08-9459-e58a3133511d": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a361460f-d0f1-4e08-9459-e58a3133511d",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a49bd035-37ec-4751-9c63-4cabe120e495": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a49bd035-37ec-4751-9c63-4cabe120e495",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/204fba63-2238-420a-be88-7f801da376b6": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/204fba63-2238-420a-be88-7f801da376b6",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/fe64490d-1e78-4e19-8542-dd622d28f8de": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/fe64490d-1e78-4e19-8542-dd622d28f8de",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/12b43a27-0cb5-4153-9e3e-f7b2a7e040e8": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/12b43a27-0cb5-4153-9e3e-f7b2a7e040e8",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/499d69b6-b4a2-4636-8f9c-89ab6187c717": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/499d69b6-b4a2-4636-8f9c-89ab6187c717",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/f0ab2a60-5a6f-4085-913a-9fcf604feb51": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/f0ab2a60-5a6f-4085-913a-9fcf604feb51",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/7c21b0d8-dd11-4125-a815-caebf511d20a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/7c21b0d8-dd11-4125-a815-caebf511d20a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/5f0da322-620e-4955-8a4b-bdd9036755a7": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/5f0da322-620e-4955-8a4b-bdd9036755a7",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/0ef4cf21-2642-40ff-974d-1e67d64e6801": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/0ef4cf21-2642-40ff-974d-1e67d64e6801",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/3256a41c-2f1c-442e-9d8d-1a19664ea9af": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/3256a41c-2f1c-442e-9d8d-1a19664ea9af",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/641e3f73-7b13-46cf-bc43-cf741bb2012a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/641e3f73-7b13-46cf-bc43-cf741bb2012a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c40bfa4a-bb7c-41f5-a9f8-6d94fe1b4252": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c40bfa4a-bb7c-41f5-a9f8-6d94fe1b4252",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ba6fbe05-baa6-48e6-8627-e2a8799d44f9": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ba6fbe05-baa6-48e6-8627-e2a8799d44f9",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c85c3509-9afd-4084-acf6-a495a23398f5": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c85c3509-9afd-4084-acf6-a495a23398f5",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/1e508f0f-a3ff-4a68-ba3c-59278caf1b89": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/1e508f0f-a3ff-4a68-ba3c-59278caf1b89",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/45a0b48f-5447-4f97-95fc-1bb83bd25dc0": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/45a0b48f-5447-4f97-95fc-1bb83bd25dc0",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a50a0cb2-eedf-4671-9916-50a065604c98": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a50a0cb2-eedf-4671-9916-50a065604c98",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a254f2f9-6931-4da7-97b3-9062bb3dabbc": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a254f2f9-6931-4da7-97b3-9062bb3dabbc",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/7fea26b7-4d99-4d71-a7f8-655db1f983a2": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/7fea26b7-4d99-4d71-a7f8-655db1f983a2",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/30e3ad8c-5c67-4f76-94c3-91f94aa05856": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/30e3ad8c-5c67-4f76-94c3-91f94aa05856",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/be1c4e66-2844-4ae8-a582-a2b0214f202d": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/be1c4e66-2844-4ae8-a582-a2b0214f202d",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/308325b2-e7b1-48b6-8f03-8f50c7555a27": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/308325b2-e7b1-48b6-8f03-8f50c7555a27",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/99421b95-03a9-44ea-a4dc-f56d1d2f93eb": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/99421b95-03a9-44ea-a4dc-f56d1d2f93eb",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/e93cf76d-c3ed-4ab0-9ee6-3fd5b411b20e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/e93cf76d-c3ed-4ab0-9ee6-3fd5b411b20e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/81e72ccb-ae77-497c-b230-7b3adb5613c3": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/81e72ccb-ae77-497c-b230-7b3adb5613c3",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/4cefed83-9c0e-4545-b495-91e941664eef": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/4cefed83-9c0e-4545-b495-91e941664eef",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/5fa8cd87-2c28-4def-95ed-4ad2170eadb9": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/5fa8cd87-2c28-4def-95ed-4ad2170eadb9",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a9e83ce0-6276-4627-98dc-42db77d35fca": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a9e83ce0-6276-4627-98dc-42db77d35fca",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/6e67e980-3983-46fc-9fac-bef805f9f822": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/6e67e980-3983-46fc-9fac-bef805f9f822",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/130fb53f-0a00-4a3d-a294-8377e7caa5f4": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/130fb53f-0a00-4a3d-a294-8377e7caa5f4",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a70ab80d-8aee-4479-a173-498aa5e97dfc": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a70ab80d-8aee-4479-a173-498aa5e97dfc",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/f584c1e6-e4e0-46ab-94ca-382124fc48cb": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/f584c1e6-e4e0-46ab-94ca-382124fc48cb",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ed5c0389-9366-41a3-b7a8-f24c5703a424": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ed5c0389-9366-41a3-b7a8-f24c5703a424",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/521f19ea-ca48-4a66-bcb9-762fe605a2a0": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/521f19ea-ca48-4a66-bcb9-762fe605a2a0",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a6f0fdea-8875-4aec-b25a-8056405c32e1": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a6f0fdea-8875-4aec-b25a-8056405c32e1",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/3dd7a45e-74b8-4da7-9d39-3a346047f6e9": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/3dd7a45e-74b8-4da7-9d39-3a346047f6e9",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/b64a16d4-5cf7-44dd-bb66-bf5d0e334e1e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/b64a16d4-5cf7-44dd-bb66-bf5d0e334e1e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a047ace5-cdf7-4551-905c-7cb78f64882f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a047ace5-cdf7-4551-905c-7cb78f64882f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/1f935b6d-0ca0-479d-b26f-b3a3cebfa35e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/1f935b6d-0ca0-479d-b26f-b3a3cebfa35e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/3756a26a-cb85-4b49-9180-e88c819346ed": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/3756a26a-cb85-4b49-9180-e88c819346ed",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/2dd931f4-f09e-4bf1-8de7-bc905f343fb6": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/2dd931f4-f09e-4bf1-8de7-bc905f343fb6",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/7b04f933-77d9-4c0f-af4d-a381e73663cf": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/7b04f933-77d9-4c0f-af4d-a381e73663cf",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ccb8c54c-f819-4715-955e-efe69e3c7611": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ccb8c54c-f819-4715-955e-efe69e3c7611",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/919d4fb6-9ad3-4ecf-b1e0-0bb5c9b85d2f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/919d4fb6-9ad3-4ecf-b1e0-0bb5c9b85d2f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/12b2d5b1-6856-41ba-ab2e-28cc98775be8": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/12b2d5b1-6856-41ba-ab2e-28cc98775be8",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/de296c3e-90c9-417e-b96f-f696b8f5814c": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/de296c3e-90c9-417e-b96f-f696b8f5814c",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/1afb4198-5539-44e1-8738-9b675cc99f75": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/1afb4198-5539-44e1-8738-9b675cc99f75",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/17cfba50-a038-4819-8a9b-675c93583c73": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/17cfba50-a038-4819-8a9b-675c93583c73",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/9fed1f4f-1ecb-46bc-a3ad-60615680b147": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/9fed1f4f-1ecb-46bc-a3ad-60615680b147",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/418d1124-4b33-43d1-a47a-5b9592abe33b": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/418d1124-4b33-43d1-a47a-5b9592abe33b",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/3ff129f1-f2fc-43e8-b122-7363788640c2": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/3ff129f1-f2fc-43e8-b122-7363788640c2",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/40bdb696-d5bd-4e23-a2b8-712a2c9e1670": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/40bdb696-d5bd-4e23-a2b8-712a2c9e1670",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/f8e0dd43-1d55-473f-ba71-af645d548aa6": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/f8e0dd43-1d55-473f-ba71-af645d548aa6",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/d542867b-9bcd-4cfc-be28-d0e0736b60af": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/d542867b-9bcd-4cfc-be28-d0e0736b60af",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/b418a2d3-9c78-45d4-b449-9c8b65827ce5": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/b418a2d3-9c78-45d4-b449-9c8b65827ce5",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/7673b181-d854-4d5c-8441-34eb8a1ec856": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/7673b181-d854-4d5c-8441-34eb8a1ec856",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/af29779c-3649-4597-94fa-b12bf114185c": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/af29779c-3649-4597-94fa-b12bf114185c",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/608eb20f-c0ce-4b64-874a-52dd548a11c5": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/608eb20f-c0ce-4b64-874a-52dd548a11c5",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/0c30ae35-cc70-48df-b1dd-ce58139da6ed": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/0c30ae35-cc70-48df-b1dd-ce58139da6ed",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a3424543-1301-459b-b62d-90e288b0ab99": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a3424543-1301-459b-b62d-90e288b0ab99",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/758b93d9-ab39-4051-a75e-5be74c71c706": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/758b93d9-ab39-4051-a75e-5be74c71c706",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/d02555b1-8f07-4a0e-be3d-56f45bfc3b35": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/d02555b1-8f07-4a0e-be3d-56f45bfc3b35",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/e5b6b03e-46f3-435a-bb29-1dcc6058f4c2": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/e5b6b03e-46f3-435a-bb29-1dcc6058f4c2",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/64372a0f-08d0-4f88-b5f7-2216feb50cbe": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/64372a0f-08d0-4f88-b5f7-2216feb50cbe",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/48703c12-226c-458c-bd5a-ce03a436fee2": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/48703c12-226c-458c-bd5a-ce03a436fee2",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ceb0f3cc-02c4-436e-8f5f-6517979af877": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ceb0f3cc-02c4-436e-8f5f-6517979af877",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/57b8331a-a85b-4d37-a75d-acae3558f696": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/57b8331a-a85b-4d37-a75d-acae3558f696",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/234715ef-a2a6-435f-ab5d-3eda832c2fb7": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/234715ef-a2a6-435f-ab5d-3eda832c2fb7",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a00fbf99-d590-4750-84cf-dd44e98fe6ca": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a00fbf99-d590-4750-84cf-dd44e98fe6ca",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a62bad59-ef3c-46ad-bdc2-4bbfba097eae": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a62bad59-ef3c-46ad-bdc2-4bbfba097eae",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/9c650c86-af8c-4f73-a9b2-0944de43f6c2": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/9c650c86-af8c-4f73-a9b2-0944de43f6c2",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/5fff8357-bcc4-4652-bbe7-9bfc3f72f375": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/5fff8357-bcc4-4652-bbe7-9bfc3f72f375",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/8aa735c7-b4ce-4cbf-936e-38988e155b5f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/8aa735c7-b4ce-4cbf-936e-38988e155b5f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/40625a31-e1cd-4d5a-8dc6-e4cc69f3d406": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/40625a31-e1cd-4d5a-8dc6-e4cc69f3d406",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/4e588199-17a4-49bf-b8f4-f31cde1eca8a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/4e588199-17a4-49bf-b8f4-f31cde1eca8a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/53e25c8a-c4ef-4e00-8cb8-9a5ac2580d18": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/53e25c8a-c4ef-4e00-8cb8-9a5ac2580d18",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a39de4a2-1c0e-4d73-bed9-d76c6f89cff1": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a39de4a2-1c0e-4d73-bed9-d76c6f89cff1",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/49289d9e-623a-4cf6-ac86-2c0e2de50fbd": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/49289d9e-623a-4cf6-ac86-2c0e2de50fbd",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/61cfcba1-99c9-4f06-ba1d-7a04472866e6": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/61cfcba1-99c9-4f06-ba1d-7a04472866e6",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/71b7e079-9535-472c-84c4-904b091bc53e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/71b7e079-9535-472c-84c4-904b091bc53e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/14ff8b76-2deb-41f0-87a4-2a06b11b0d7e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/14ff8b76-2deb-41f0-87a4-2a06b11b0d7e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a3a3e4cb-1152-4864-92be-a90d2d3f2926": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a3a3e4cb-1152-4864-92be-a90d2d3f2926",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/4a5f1244-d94a-4ece-adea-32ac0d6f286f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/4a5f1244-d94a-4ece-adea-32ac0d6f286f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/4bab7bf6-ea40-4b5f-8d04-2830c4c9fd9a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/4bab7bf6-ea40-4b5f-8d04-2830c4c9fd9a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/1ce2d909-ed27-4ccc-a0e3-8945c99b62f7": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/1ce2d909-ed27-4ccc-a0e3-8945c99b62f7",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/1003db13-9139-4361-98b2-29d45039ef14": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/1003db13-9139-4361-98b2-29d45039ef14",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/87bc3cec-b281-41c6-b01a-8e3045c2affe": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/87bc3cec-b281-41c6-b01a-8e3045c2affe",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c58f6586-102c-41b0-a5a6-1b87a2fe7be2": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c58f6586-102c-41b0-a5a6-1b87a2fe7be2",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/cb2c588e-6fc8-493c-abda-03247267b63e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/cb2c588e-6fc8-493c-abda-03247267b63e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/3b0e8c44-bccd-4ed4-8980-cc00c933bbd7": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/3b0e8c44-bccd-4ed4-8980-cc00c933bbd7",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/8073300b-626d-413d-a09d-2796bc139945": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/8073300b-626d-413d-a09d-2796bc139945",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c07b35c2-7722-427a-a96c-2ba4a9d3bf82": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c07b35c2-7722-427a-a96c-2ba4a9d3bf82",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/9f5cab8f-0dfe-41c2-92ba-64868fa27449": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/9f5cab8f-0dfe-41c2-92ba-64868fa27449",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/4f313931-b069-4f91-a96f-480681494349": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/4f313931-b069-4f91-a96f-480681494349",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/74956cf7-7650-42b3-ad7b-7c63ea0e284d": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/74956cf7-7650-42b3-ad7b-7c63ea0e284d",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/0a704485-e723-4a29-8bc7-cc3455a3f3de": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/0a704485-e723-4a29-8bc7-cc3455a3f3de",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/6e1768d1-a421-40db-9c58-02c720c3963a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/6e1768d1-a421-40db-9c58-02c720c3963a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/6678f8a1-25e0-41d6-ac51-382b333ffd1b": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/6678f8a1-25e0-41d6-ac51-382b333ffd1b",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/581f079f-13c6-4b4e-a33d-bfbdf76ff1ae": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/581f079f-13c6-4b4e-a33d-bfbdf76ff1ae",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/01cab438-74ea-4c92-a764-c8259584fb44": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/01cab438-74ea-4c92-a764-c8259584fb44",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/539c66c2-8a59-43aa-9c5a-aeba8762bf76": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/539c66c2-8a59-43aa-9c5a-aeba8762bf76",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a879d825-ec3e-4683-a902-ac97303688dc": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a879d825-ec3e-4683-a902-ac97303688dc",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/e613712d-bf33-4dc6-88ac-b9d135305546": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/e613712d-bf33-4dc6-88ac-b9d135305546",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ca267ddc-2c14-4518-95a6-13dbee5a3b51": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ca267ddc-2c14-4518-95a6-13dbee5a3b51",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/4ea39621-65e1-4aa4-b50c-26d3891e578f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/4ea39621-65e1-4aa4-b50c-26d3891e578f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/2d769930-eff0-4d25-8a4b-d85727eac50f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/2d769930-eff0-4d25-8a4b-d85727eac50f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ada7c011-c200-4622-a82f-911454cfd88c": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ada7c011-c200-4622-a82f-911454cfd88c",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/3ef78271-7ede-4c4d-b993-7b3a30d43631": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/3ef78271-7ede-4c4d-b993-7b3a30d43631",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/a7f52410-2b91-41dd-9262-0139ad07888b": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/a7f52410-2b91-41dd-9262-0139ad07888b",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/82b2f389-cf6e-4035-b137-706655c59b9e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/82b2f389-cf6e-4035-b137-706655c59b9e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/fdab63e4-e11e-4718-96d6-13b1ca78a100": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/fdab63e4-e11e-4718-96d6-13b1ca78a100",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/ecdd16f3-45e6-411c-aa97-c5de0579d6e6": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/ecdd16f3-45e6-411c-aa97-c5de0579d6e6",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/f9f1d136-e960-420a-b228-71a2471491a0": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/f9f1d136-e960-420a-b228-71a2471491a0",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/4d1a7724-a2ad-4d4f-b3ae-6ef2bdf26f07": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/4d1a7724-a2ad-4d4f-b3ae-6ef2bdf26f07",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/db4ea118-5465-4996-8b67-fcb223d1576e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/db4ea118-5465-4996-8b67-fcb223d1576e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/f7779563-182e-4e14-ba4f-4131ce6457ca": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/f7779563-182e-4e14-ba4f-4131ce6457ca",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/d003d26a-a995-49c0-bc16-ceb3563ca1f7": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/d003d26a-a995-49c0-bc16-ceb3563ca1f7",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/373db38f-a650-449d-b3d9-0d93b85c0d8a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/373db38f-a650-449d-b3d9-0d93b85c0d8a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c348e65e-819f-420b-9ce1-ca844ba27592": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c348e65e-819f-420b-9ce1-ca844ba27592",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/1d4a9f7f-5460-4d94-875b-cef90099a06f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/1d4a9f7f-5460-4d94-875b-cef90099a06f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/d31e35ad-6bb1-4bea-a573-9c97a6dca896": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/d31e35ad-6bb1-4bea-a573-9c97a6dca896",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/fda425a7-38f4-4b13-98dc-6c20b974098e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/fda425a7-38f4-4b13-98dc-6c20b974098e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/1888ed80-9ac1-40ac-aaa8-07862f5c948e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/1888ed80-9ac1-40ac-aaa8-07862f5c948e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/63d085e8-0109-4f26-8d77-ecebdeeb1449": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/63d085e8-0109-4f26-8d77-ecebdeeb1449",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/e589dbfe-9688-49f8-b186-9d4bebc3ce28": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/e589dbfe-9688-49f8-b186-9d4bebc3ce28",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c3da6290-bf4c-4b77-b112-af86cfd18a8f": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c3da6290-bf4c-4b77-b112-af86cfd18a8f",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/bf9e9994-7525-4fd4-a777-dbd5c56e7f85": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/bf9e9994-7525-4fd4-a777-dbd5c56e7f85",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/17afb5fe-291b-45fe-b1db-798809aa269e": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/17afb5fe-291b-45fe-b1db-798809aa269e",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/0e4ae950-c01a-491c-8cfa-ac031c1577dc": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/0e4ae950-c01a-491c-8cfa-ac031c1577dc",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/c2f2112d-e3ea-4938-a31a-d9b5f98d127c": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/c2f2112d-e3ea-4938-a31a-d9b5f98d127c",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/8f340b43-d1e3-4fef-ae10-ad61f3fd357c": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/8f340b43-d1e3-4fef-ae10-ad61f3fd357c",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/fbc81f6d-06dd-4d09-86cc-89c0621d12c1": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/fbc81f6d-06dd-4d09-86cc-89c0621d12c1",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/bf2a8323-4f55-486c-9053-b896d73d4d65": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/bf2a8323-4f55-486c-9053-b896d73d4d65",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/4923fee8-4f78-4f07-bf7e-2cb9b9f8bd67": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/4923fee8-4f78-4f07-bf7e-2cb9b9f8bd67",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/cdc851cd-4464-4b7f-846b-0bad4709569d": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/cdc851cd-4464-4b7f-846b-0bad4709569d",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/b644b769-3bb8-4be8-9484-82a079295691": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/b644b769-3bb8-4be8-9484-82a079295691",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/19221a9f-2214-4542-80a5-17b74ca48b20": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/19221a9f-2214-4542-80a5-17b74ca48b20",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/72825603-ee70-4244-9200-db756b22cb3a": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/72825603-ee70-4244-9200-db756b22cb3a",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/8b1fe74f-6119-418e-8cc6-9f5b27a4e555": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/8b1fe74f-6119-418e-8cc6-9f5b27a4e555",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/1463fbaa-17fe-43a9-b779-aebcc9683dd6": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/1463fbaa-17fe-43a9-b779-aebcc9683dd6",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/f48f41f4-b3f9-4cbb-8886-df916b0e07e8": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/f48f41f4-b3f9-4cbb-8886-df916b0e07e8",
+    "has_post_data": false
+  },
+  "GET blob://https://totale.rosettastone.com/5003ffc3-c584-4426-97b8-28f31219e2b6": {
+    "count": 1,
+    "example_url": "blob:https://totale.rosettastone.com/5003ffc3-c584-4426-97b8-28f31219e2b6",
+    "has_post_data": false
+  },
+  "POST https://lcp.rosettastone.com/api/v3/session/heartbeat": {
+    "count": 1,
+    "example_url": "https://lcp.rosettastone.com/api/v3/session/heartbeat",
+    "has_post_data": false
+  }
+}
