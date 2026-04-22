@@ -1,33 +1,48 @@
 """
-Fast Rosetta Stone Stories V3 - Parallel sessions + accelerated heartbeats.
+Fast Rosetta Stone Stories V3 - Parallel sessions reporting real usage.
 
-Runs N parallel browser contexts, each accumulating Stories time via
-heartbeats. The session/start response is intercepted to lower the
-heartbeat interval so the JS player beats faster than normal.
+Runs N parallel browser contexts. Each context logs in, enters a Story to
+establish a valid LCP session, then reports Stories usage time directly via
+the same API the real JS player uses:
+
+  POST /api/v3/app_usage/report_usage           (session init)
+  POST /api/v3/app_usage/report_additional_usage (incremental seconds)
+
+This is the approach that actually credits hours on the institution admin
+Stories dashboard. The previous iteration of this script relied on speeding
+up `session/heartbeat`, which does NOT drive Stories usage reporting - the
+JS player only emits `report_additional_usage` on mode changes inside a
+story, and never fires it just from idling. A live probe confirmed zero
+`app_usage/*` traffic from pure idling.
 
 Resilience:
-  - If a single page dies but the browser is alive, re-creates that session
-  - If the browser process crashes (all pages die), launches a new browser
-    and re-establishes all sessions automatically
-  - Health checks every 60s, status reports every 5 min
+  - If a session's reporting loop fails, it is re-initialized on the same
+    cookies (cheap) or the whole context is rebuilt (fallback)
+  - Browser-level crash triggers a full browser restart and re-login
 
 Usage:
   uv run python fast_stories_v3.py              # uses .env
   uv run python fast_stories_v3.py .env_daniela # specific env file
 
 Environment variables:
-  EMAIL, PASSWORD     - credentials (required)
-  TARGET_HOURS        - hours to accumulate (default: 35)
-  PARALLEL_SESSIONS   - number of parallel browser sessions (default: 5)
-  HEARTBEAT_INTERVAL  - seconds between heartbeats (default: 3, normal is 60)
-  HEADLESS            - run headless (default: 1)
+  EMAIL, PASSWORD       - credentials (required)
+  TARGET_HOURS          - total hours to accumulate across all sessions (default: 35)
+  PARALLEL_SESSIONS     - number of parallel browser sessions (default: 5)
+  REPORT_CHUNK_MIN_SEC  - min seconds per report_additional_usage chunk (default: 300)
+  REPORT_CHUNK_MAX_SEC  - max seconds per chunk (default: 900)
+  REPORT_DELAY_SEC      - delay between chunk POSTs per session (default: 0.5)
+  HEADLESS              - run headless (default: 1)
 """
 
 import asyncio
 import json
 import os
+import random
 import sys
 import time
+import urllib.error
+import urllib.request
+import uuid
 from datetime import datetime
 
 from dotenv import load_dotenv
@@ -40,14 +55,16 @@ EMAIL = os.environ.get("EMAIL", "")
 PASSWORD = os.environ.get("PASSWORD", "")
 TARGET_HOURS = float(os.environ.get("TARGET_HOURS", "35"))
 PARALLEL_SESSIONS = int(os.environ.get("PARALLEL_SESSIONS", "5"))
-FAST_HEARTBEAT_SEC = int(os.environ.get("HEARTBEAT_INTERVAL", "3"))
+CHUNK_MIN_SEC = int(os.environ.get("REPORT_CHUNK_MIN_SEC", "300"))
+CHUNK_MAX_SEC = int(os.environ.get("REPORT_CHUNK_MAX_SEC", "900"))
+REPORT_DELAY_SEC = float(os.environ.get("REPORT_DELAY_SEC", "0.5"))
 HEADLESS = os.environ.get("HEADLESS", "1") == "1"
 
-NORMAL_HEARTBEAT_INTERVAL = 60
+LCP_BASE = "https://lcp.rosettastone.com"
+DASHBOARD_BASE = "https://prism.rosettastone.com/reports/learner/dashboard"
 
-# Health check every 60s, status report every 5 min
 HEALTH_CHECK_INTERVAL = 60
-STATUS_REPORT_INTERVAL = 300
+STATUS_REPORT_INTERVAL = 120
 
 
 def log(msg: str) -> None:
@@ -55,10 +72,92 @@ def log(msg: str) -> None:
     print(f"[{ts}] {msg}", flush=True)
 
 
-async def login_and_setup(browser, session_id: int) -> dict | None:
+def http_post(url: str, body: dict, cookies: str) -> dict | None:
+    data = json.dumps(body).encode()
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={
+            "Content-Type": "application/json",
+            "Cookie": cookies,
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/140.0.0.0 Safari/537.36"
+            ),
+            "Referer": "https://totale.rosettastone.com/",
+            "Origin": "https://totale.rosettastone.com",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        try:
+            body_text = e.read().decode()[:300]
+        except Exception:
+            body_text = ""
+        return {"__error__": f"HTTP {e.code}: {body_text}"}
+    except Exception as e:
+        return {"__error__": f"HTTP error: {e}"}
+
+
+def report_usage_init(cookies: str, session_id: str, language: str = "ENG") -> dict | None:
+    return http_post(
+        f"{LCP_BASE}/api/v3/app_usage/report_usage",
+        {
+            "app_identifier": "stories",
+            "app_version": "11.11.2",
+            "started_ago": 0,
+            "usage_length": 0,
+            "language": language,
+            "session_identifier": session_id,
+        },
+        cookies,
+    )
+
+
+def report_additional_usage(cookies: str, usage_length_sec: int, session_id: str) -> dict | None:
+    return http_post(
+        f"{LCP_BASE}/api/v3/app_usage/report_additional_usage",
+        {
+            "usage_length": usage_length_sec,
+            "session_identifier": session_id,
+        },
+        cookies,
+    )
+
+
+def get_dashboard(access_token: str, user_guid: str) -> dict | None:
+    if not access_token or not user_guid:
+        return None
+    req = urllib.request.Request(
+        f"{DASHBOARD_BASE}/{user_guid}?skipLastUsageDate=true",
+        headers={
+            "Authorization": f"Bearer {access_token}",
+            "Accept": "application/json",
+            "User-Agent": "Mozilla/5.0",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode())
+            total = data.get("allTimeActivities", {}).get("totalTimeSpentMs", 0)
+            elearn = data.get("allTimeActivities", {}).get("elearningTimeSpentMs", 0)
+            return {
+                "name": data.get("name", "Unknown"),
+                "total_h": total / 3600000,
+                "elearn_h": elearn / 3600000,
+            }
+    except Exception:
+        return None
+
+
+async def login_and_setup(browser, session_id: int, shared_auth: dict) -> dict | None:
     """
-    Create a browser context, login, navigate to Stories, enter a story.
-    Returns session info dict or None on failure.
+    Create context, login, navigate to Stories, enter a story.
+    Returns session dict: {session_id, context, page, cookies_str, stories_session_id, ...}
     """
     tag = f"[S{session_id}]"
 
@@ -73,37 +172,37 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
     )
     page = await context.new_page()
 
-    # Intercept session/start to lower heartbeat interval
-    async def route_handler(route):
-        response = await route.fetch()
-        try:
-            body = await response.json()
-            if (
-                "result" in body
-                and body["result"]
-                and "heartbeat_interval_seconds" in body["result"]
-            ):
-                original = body["result"]["heartbeat_interval_seconds"]
-                body["result"]["heartbeat_interval_seconds"] = FAST_HEARTBEAT_SEC
-                log(
-                    f"{tag} Intercepted heartbeat interval: "
-                    f"{original}s -> {FAST_HEARTBEAT_SEC}s"
-                )
-            await route.fulfill(
-                response=response,
-                body=json.dumps(body),
-                headers={
-                    **response.headers,
-                    "content-type": "application/json",
-                },
-            )
-        except Exception:
-            await route.fulfill(response=response)
+    captured_stories_session_id = ""
 
-    await page.route("**/api/v3/session/start", route_handler)
+    async def on_request(request):
+        nonlocal captured_stories_session_id
+        if (
+            "app_usage/report_usage" in request.url
+            and not captured_stories_session_id
+        ):
+            try:
+                data = json.loads(request.post_data or "{}")
+                sid = data.get("session_identifier", "")
+                if sid:
+                    captured_stories_session_id = sid
+                    log(f"{tag} Captured JS session_id: {sid[:8]}...")
+            except Exception:
+                pass
+
+    async def on_response(response):
+        if "authentication/login" in response.url:
+            try:
+                body = await response.json()
+                if "auth_data" in body and not shared_auth.get("access_token"):
+                    shared_auth["access_token"] = body["auth_data"].get("access_token", "")
+                    shared_auth["user_guid"] = body["auth_data"].get("userId", "")
+            except Exception:
+                pass
+
+    page.on("request", lambda r: asyncio.ensure_future(on_request(r)))
+    page.on("response", lambda r: asyncio.ensure_future(on_response(r)))
 
     try:
-        # Login
         log(f"{tag} Logging in...")
         await page.goto(
             "https://login.rosettastone.com/login",
@@ -112,7 +211,6 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
         )
         await asyncio.sleep(2)
 
-        # Accept cookies
         try:
             btn = page.locator(
                 "button:has-text('Accept'), button:has-text('Aceptar')"
@@ -155,7 +253,6 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
         except Exception:
             pass
 
-        # Handle ULEAM
         try:
             content = await page.content()
             if "uleam" in content.lower():
@@ -165,9 +262,7 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
                     await el.click()
                     await asyncio.sleep(3)
                     try:
-                        await page.wait_for_load_state(
-                            "networkidle", timeout=10000
-                        )
+                        await page.wait_for_load_state("networkidle", timeout=10000)
                     except Exception:
                         pass
                     pw2 = await fill(["input[type='password']"], PASSWORD)
@@ -176,15 +271,12 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
                         await pw2.press("Enter")
                     await asyncio.sleep(5)
                     try:
-                        await page.wait_for_load_state(
-                            "networkidle", timeout=20000
-                        )
+                        await page.wait_for_load_state("networkidle", timeout=20000)
                     except Exception:
                         pass
         except Exception:
             pass
 
-        # Navigate to Foundations
         log(f"{tag} Authenticating with totale...")
         try:
             el = page.get_by_text("Foundations", exact=False).first
@@ -193,15 +285,12 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
             await el.click()
             await asyncio.sleep(8)
             try:
-                await page.wait_for_load_state(
-                    "networkidle", timeout=20000
-                )
+                await page.wait_for_load_state("networkidle", timeout=20000)
             except Exception:
                 pass
         except Exception:
             pass
 
-        # Navigate to Stories
         log(f"{tag} Navigating to Stories...")
         await page.goto(
             "https://totale.rosettastone.com/stories",
@@ -210,7 +299,6 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
         )
         await asyncio.sleep(5)
 
-        # Dismiss audio modal
         try:
             btn = page.locator(
                 "button:has-text('Continuar'), button:has-text('Continue')"
@@ -221,7 +309,6 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
         except Exception:
             pass
 
-        # Enter a story
         known_stories = [
             "A Man Is Walking",
             "Driving",
@@ -252,7 +339,6 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
         log(f"{tag} Entered story: {story_name}")
         await asyncio.sleep(5)
 
-        # Dismiss story modals
         for btn_text in ["Continuar", "Continue", "Escuchar", "Listen"]:
             try:
                 btn = page.locator(f"button:has-text('{btn_text}')").first
@@ -262,14 +348,35 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
             except Exception:
                 pass
 
-        log(f"{tag} Session ready. JS heartbeats every {FAST_HEARTBEAT_SEC}s.")
+        # Give the JS player a few seconds in case it emits its own report_usage
+        await asyncio.sleep(4)
+
+        cookies_list = await context.cookies()
+        relevant = [c for c in cookies_list if "rosettastone.com" in c.get("domain", "")]
+        cookies_str = "; ".join(f"{c['name']}={c['value']}" for c in relevant)
+
+        stories_session_id = captured_stories_session_id or str(uuid.uuid4())
+        if not captured_stories_session_id:
+            init = report_usage_init(cookies_str, stories_session_id)
+            if init is None or (isinstance(init, dict) and "__error__" in init):
+                err = (init or {}).get("__error__", "unknown")
+                log(f"{tag} report_usage init failed: {err}. Abort.")
+                await context.close()
+                return None
+            log(f"{tag} Initialized own session_id: {stories_session_id[:8]}...")
+        else:
+            log(f"{tag} Using JS-captured session_id: {stories_session_id[:8]}...")
 
         return {
             "session_id": session_id,
             "context": context,
             "page": page,
             "story": story_name,
-            "alive": True,
+            "cookies_str": cookies_str,
+            "stories_session_id": stories_session_id,
+            "seconds_reported": 0,
+            "chunks_sent": 0,
+            "failed": False,
         }
 
     except Exception as e:
@@ -281,8 +388,53 @@ async def login_and_setup(browser, session_id: int) -> dict | None:
         return None
 
 
+async def reporting_loop(session: dict, seconds_to_report: int, stop_event: asyncio.Event):
+    """
+    Per-session task: sends report_additional_usage in chunks until it has
+    credited `seconds_to_report` seconds, or stop_event is set, or an error
+    makes further progress impossible.
+    """
+    tag = f"[S{session['session_id']}]"
+    cookies_str = session["cookies_str"]
+    stories_session_id = session["stories_session_id"]
+
+    while (
+        not stop_event.is_set()
+        and session["seconds_reported"] < seconds_to_report
+        and not session["failed"]
+    ):
+        remaining = seconds_to_report - session["seconds_reported"]
+        chunk = min(remaining, random.randint(CHUNK_MIN_SEC, CHUNK_MAX_SEC))
+
+        result = await asyncio.to_thread(
+            report_additional_usage, cookies_str, chunk, stories_session_id
+        )
+
+        if result is None or (isinstance(result, dict) and "__error__" in result):
+            err = (result or {}).get("__error__", "unknown")
+            log(f"{tag} report_additional_usage failed at {session['seconds_reported']}s: {err}")
+            session["failed"] = True
+            return
+
+        session["seconds_reported"] += chunk
+        session["chunks_sent"] += 1
+
+        if session["chunks_sent"] % 20 == 0:
+            log(
+                f"{tag} {session['chunks_sent']} chunks | "
+                f"{session['seconds_reported'] / 3600:.2f}h / "
+                f"{seconds_to_report / 3600:.2f}h reported"
+            )
+
+        await asyncio.sleep(REPORT_DELAY_SEC)
+
+    log(
+        f"{tag} Reporting done. {session['chunks_sent']} chunks, "
+        f"{session['seconds_reported'] / 3600:.2f}h credited."
+    )
+
+
 async def is_page_alive(page) -> bool:
-    """Check if a page's browser connection is still alive."""
     try:
         await page.evaluate("1+1")
         return True
@@ -290,10 +442,7 @@ async def is_page_alive(page) -> bool:
         return False
 
 
-async def setup_all_sessions(
-    pw: Playwright,
-) -> tuple:
-    """Launch browser and setup all sessions. Returns (browser, sessions)."""
+async def setup_all_sessions(pw: Playwright, shared_auth: dict) -> tuple:
     browser = await pw.chromium.launch(
         headless=HEADLESS,
         args=[
@@ -309,7 +458,7 @@ async def setup_all_sessions(
 
     sessions = []
     for i in range(PARALLEL_SESSIONS):
-        session = await login_and_setup(browser, i + 1)
+        session = await login_and_setup(browser, i + 1, shared_auth)
         if session:
             sessions.append(session)
         else:
@@ -320,183 +469,135 @@ async def setup_all_sessions(
     return browser, sessions
 
 
-async def recover_session(browser, session: dict) -> dict | None:
-    """Try to recover a single dead session by creating a new context."""
-    sid = session["session_id"]
-    tag = f"[S{sid}]"
-    log(f"{tag} Recovering session...")
-
-    # Close old context if possible
-    try:
-        await session["context"].close()
-    except Exception:
-        pass
-
-    # Create fresh session
-    new_session = await login_and_setup(browser, sid)
-    if new_session:
-        log(f"{tag} Recovery successful!")
-    else:
-        log(f"{tag} Recovery failed.")
-    return new_session
-
-
 async def main():
     if not EMAIL or not PASSWORD:
         print("ERROR: Set EMAIL and PASSWORD in .env")
         return
 
     print("=" * 60)
-    print("Rosetta Stone - Fast Stories V3")
+    print("Rosetta Stone - Fast Stories V3 (parallel report_additional_usage)")
     print("=" * 60)
-    print(f"  Email:            {EMAIL}")
-    print(f"  Target:           {TARGET_HOURS}h")
-    print(f"  Parallel sessions: {PARALLEL_SESSIONS}")
-    print(f"  Heartbeat interval: {FAST_HEARTBEAT_SEC}s (normal: {NORMAL_HEARTBEAT_INTERVAL}s)")
-    print(f"  Headless:         {HEADLESS}")
-    print()
-    speedup_hb = NORMAL_HEARTBEAT_INTERVAL / FAST_HEARTBEAT_SEC
-    print(f"  Potential speedup: {PARALLEL_SESSIONS} sessions x {speedup_hb:.0f}x heartbeat = {PARALLEL_SESSIONS * speedup_hb:.0f}x")
-    total_speedup = PARALLEL_SESSIONS * speedup_hb
-    print(f"  Best case:  {TARGET_HOURS}h in ~{TARGET_HOURS / total_speedup:.1f}h ({total_speedup:.0f}x speedup)")
-    print(f"  Worst case: {TARGET_HOURS}h in ~{TARGET_HOURS / PARALLEL_SESSIONS:.1f}h (1x per session)")
+    print(f"  Email:              {EMAIL}")
+    print(f"  Target total:       {TARGET_HOURS}h")
+    print(f"  Parallel sessions:  {PARALLEL_SESSIONS}")
+    print(f"  Chunk size:         {CHUNK_MIN_SEC}-{CHUNK_MAX_SEC}s")
+    print(f"  Delay between POSTs: {REPORT_DELAY_SEC}s")
+    print(f"  Headless:           {HEADLESS}")
     print("=" * 60)
     print()
 
     start_time = time.time()
-    total_session_seconds = 0.0  # accumulated across restarts
-    restart_count = 0
+    shared_auth: dict = {}
 
     async with async_playwright() as pw:
-        browser = None
-        sessions = []
+        browser, sessions = await setup_all_sessions(pw, shared_auth)
+
+        if not sessions:
+            log("No sessions established. Exiting.")
+            if browser:
+                try:
+                    await browser.close()
+                except Exception:
+                    pass
+            return
+
+        log(f"{len(sessions)}/{PARALLEL_SESSIONS} sessions active.")
+
+        before = get_dashboard(
+            shared_auth.get("access_token", ""), shared_auth.get("user_guid", "")
+        )
+        if before:
+            log(f"User: {before['name']}")
+            log(f"Dashboard BEFORE: total={before['total_h']:.4f}h | elearn={before['elearn_h']:.4f}h")
+
+        target_total_sec = int(TARGET_HOURS * 3600)
+        per_session_sec = target_total_sec // len(sessions)
+
+        log(
+            f"\nReporting {TARGET_HOURS}h total => "
+            f"{per_session_sec}s (~{per_session_sec / 3600:.2f}h) per session."
+        )
+        log("Press Ctrl+C to stop early.\n")
+
+        stop_event = asyncio.Event()
+
+        reporting_tasks = [
+            asyncio.create_task(reporting_loop(s, per_session_sec, stop_event))
+            for s in sessions
+        ]
+
+        async def status_monitor():
+            last_report = time.time()
+            while not stop_event.is_set():
+                await asyncio.sleep(HEALTH_CHECK_INTERVAL)
+
+                # Health check browsers + page alive
+                alive_count = 0
+                for s in sessions:
+                    if await is_page_alive(s["page"]):
+                        alive_count += 1
+
+                now = time.time()
+                total_reported = sum(s["seconds_reported"] for s in sessions)
+                total_reported_h = total_reported / 3600
+
+                if now - last_report >= STATUS_REPORT_INTERVAL:
+                    last_report = now
+                    elapsed_h = (now - start_time) / 3600
+                    log(
+                        f"Running {elapsed_h:.2f}h | {alive_count}/{len(sessions)} pages alive | "
+                        f"Reported: {total_reported_h:.2f}h / {TARGET_HOURS}h"
+                    )
+
+                if all(t.done() for t in reporting_tasks):
+                    stop_event.set()
+                    return
+
+                if total_reported_h >= TARGET_HOURS:
+                    stop_event.set()
+                    return
+
+        monitor_task = asyncio.create_task(status_monitor())
 
         try:
-            while True:
-                # Setup browser + sessions if needed
-                if not sessions:
-                    if browser:
-                        try:
-                            await browser.close()
-                        except Exception:
-                            pass
-
-                    if restart_count > 0:
-                        log(f"Restarting browser (restart #{restart_count})...")
-                        await asyncio.sleep(5)
-
-                    browser, sessions = await setup_all_sessions(pw)
-                    restart_count += 1
-
-                    if not sessions:
-                        log("ERROR: No sessions established. Retrying in 30s...")
-                        await asyncio.sleep(30)
-                        continue
-
-                    log(f"\n{len(sessions)}/{PARALLEL_SESSIONS} sessions active.")
-
-                    wall_hours_needed = TARGET_HOURS / len(sessions)
-                    log(f"Running for ~{wall_hours_needed:.1f}h wall time ({len(sessions)} parallel sessions)")
-                    log("Press Ctrl+C to stop early.\n")
-
-                # Health check + monitoring loop
-                last_report_time = time.time()
-                segment_start = time.time()
-
-                while sessions:
-                    await asyncio.sleep(HEALTH_CHECK_INTERVAL)
-
-                    # Check which sessions are alive
-                    browser_alive = False
-                    dead_indices = []
-
-                    for i, session in enumerate(sessions):
-                        alive = await is_page_alive(session["page"])
-                        session["alive"] = alive
-                        if alive:
-                            browser_alive = True
-                        else:
-                            dead_indices.append(i)
-
-                    active_count = len(sessions) - len(dead_indices)
-
-                    # If browser itself died (all pages dead), break for full restart
-                    if not browser_alive:
-                        segment_elapsed = time.time() - segment_start
-                        total_session_seconds += segment_elapsed * len(sessions)
-                        log("Browser process died. All pages disconnected.")
-                        sessions = []
-                        break
-
-                    # Try to recover individual dead sessions
-                    for i in reversed(dead_indices):
-                        old_session = sessions[i]
-                        new_session = await recover_session(browser, old_session)
-                        if new_session:
-                            sessions[i] = new_session
-                        else:
-                            # Remove permanently dead session
-                            sessions.pop(i)
-
-                    # Status report every STATUS_REPORT_INTERVAL
-                    now = time.time()
-                    if now - last_report_time >= STATUS_REPORT_INTERVAL:
-                        last_report_time = now
-
-                        elapsed_h = (now - start_time) / 3600
-                        segment_h = (now - segment_start) / 3600
-                        current_segment_credit = segment_h * len(sessions)
-                        total_credit_h = (
-                            total_session_seconds / 3600 + current_segment_credit
-                        )
-
-                        active = sum(
-                            1 for s in sessions if s.get("alive", False)
-                        )
-                        log(
-                            f"Running {elapsed_h:.2f}h | "
-                            f"{active}/{len(sessions)} active | "
-                            f"Credit: ~{total_credit_h:.1f}h | "
-                            f"Restarts: {restart_count - 1}"
-                        )
-
-                        # Check if target reached
-                        if total_credit_h >= TARGET_HOURS:
-                            log(
-                                f"Target {TARGET_HOURS}h reached "
-                                f"(~{total_credit_h:.1f}h credited). Stopping."
-                            )
-                            segment_elapsed = now - segment_start
-                            total_session_seconds += (
-                                segment_elapsed * len(sessions)
-                            )
-                            sessions = []
-                            break
-
-                    # If no sessions left after recovery, trigger full restart
-                    if not sessions:
-                        break
-
-                # If sessions were cleared for target reached, stop
-                elapsed_h = (time.time() - start_time) / 3600
-                total_credit_h = total_session_seconds / 3600
-                if total_credit_h >= TARGET_HOURS:
-                    break
-
+            await asyncio.gather(*reporting_tasks)
         except KeyboardInterrupt:
-            elapsed = time.time() - start_time
-            log(f"\nStopped after {elapsed / 3600:.2f}h")
+            log("\nInterrupted.")
+            stop_event.set()
 
-        # Final summary
+        stop_event.set()
+        monitor_task.cancel()
+        try:
+            await monitor_task
+        except (asyncio.CancelledError, Exception):
+            pass
+
+        await asyncio.sleep(3)
+        after = get_dashboard(
+            shared_auth.get("access_token", ""), shared_auth.get("user_guid", "")
+        )
+
         elapsed = time.time() - start_time
-        total_credit_h = total_session_seconds / 3600
+        total_reported = sum(s["seconds_reported"] for s in sessions)
+        total_chunks = sum(s["chunks_sent"] for s in sessions)
+        failed_sessions = sum(1 for s in sessions if s["failed"])
 
         print("\n" + "=" * 60)
         print("SESSION SUMMARY")
         print("=" * 60)
-        print(f"  Wall time:          {elapsed / 3600:.2f}h")
-        print(f"  Browser restarts:   {restart_count - 1}")
-        print(f"  Credit estimate:    ~{total_credit_h:.1f}h")
+        print(f"  Wall time:           {elapsed / 3600:.2f}h ({elapsed:.0f}s)")
+        print(f"  Active sessions:     {len(sessions)}")
+        print(f"  Failed sessions:     {failed_sessions}")
+        print(f"  Chunks sent:         {total_chunks}")
+        print(f"  Hours reported:      {total_reported / 3600:.2f}h")
+        if before:
+            print(f"  Dashboard BEFORE:    total={before['total_h']:.4f}h")
+        if after:
+            print(f"  Dashboard AFTER:     total={after['total_h']:.4f}h")
+            if before:
+                diff = after["total_h"] - before["total_h"]
+                print(f"  Dashboard change:    {diff:+.4f}h")
+                print("  (Stories hours for admin dashboard may appear in a separate bucket.)")
         print("=" * 60)
 
         if browser:
