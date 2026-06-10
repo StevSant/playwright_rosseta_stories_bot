@@ -69,12 +69,45 @@ class FastStoriesRunner:
 
     async def run(self) -> FastReportResult:
         """
-        Run all parallel reporting sessions until the target hours are credited,
-        a stop is requested, or progress becomes impossible.
+        Credit a small, randomized slice of hours for this invocation.
+
+        The per-run amount is bounded by SESSION_HOURS_MIN/MAX and the
+        remaining daily and cumulative budgets.  Progress is persisted so
+        successive scheduler runs accumulate gradually toward TARGET_HOURS.
         """
         cfg = self._config
         self._log_header()
 
+        # ── State & budget ────────────────────────────────────────────────
+        account_key = cfg.state_key or cfg.email
+        store = StateStore(cfg.state_dir, account_key)
+
+        # Seed an account-specific RNG so different accounts randomize
+        # independently even when invoked at the same clock time.
+        account_seed = int.from_bytes(account_key.encode()[:8], "little")
+        account_rng = random.Random(account_seed ^ int(time.time()))
+
+        state = store.load()
+        budget = compute_budget(
+            state=state,
+            target_seconds=int(cfg.target_hours * 3600),
+            session_min_sec=int(cfg.session_hours_min * 3600),
+            session_max_sec=int(cfg.session_hours_max * 3600),
+            max_daily_sec=int(cfg.max_hours_per_day * 3600),
+            rng=account_rng,
+        )
+
+        cumulative_h = state.get("cumulative_seconds", 0) / 3600
+        self._logger.info(
+            f"State: cumulative={cumulative_h:.3f}h / {cfg.target_hours}h target. "
+            f"Budget: {budget.reason}"
+        )
+
+        if budget.this_run_seconds <= 0:
+            self._logger.info("Nothing to credit this run. Exiting without launching browser.")
+            return FastReportResult()
+
+        # ── Browser sessions ──────────────────────────────────────────────
         start_time = time.time()
         shared_auth: dict = {}
 
@@ -98,20 +131,29 @@ class FastStoriesRunner:
                     f"elearn={before['elearn_h']:.4f}h"
                 )
 
-            target_total_sec = int(cfg.target_hours * 3600)
-            per_session_sec = target_total_sec // len(sessions)
+            # Distribute this-run budget across sessions (not the full target).
+            this_run_sec = budget.this_run_seconds
+            per_session_sec = this_run_sec // len(sessions)
             self._logger.info(
-                f"Reporting {cfg.target_hours}h total => {per_session_sec}s "
-                f"(~{per_session_sec / 3600:.2f}h) per session. Ctrl+C to stop early."
+                f"This run: {this_run_sec / 3600:.3f}h total => {per_session_sec}s "
+                f"(~{per_session_sec / 3600:.3f}h) per session. Ctrl+C to stop early."
             )
 
             stop_event = asyncio.Event()
             reporting_tasks = [
-                asyncio.create_task(self._reporting_loop(s, per_session_sec, stop_event))
+                asyncio.create_task(
+                    self._reporting_loop(s, per_session_sec, stop_event, account_rng)
+                )
                 for s in sessions
             ]
             monitor_task = asyncio.create_task(
-                self._status_monitor(sessions, reporting_tasks, stop_event, start_time)
+                self._status_monitor(
+                    sessions,
+                    reporting_tasks,
+                    stop_event,
+                    start_time,
+                    this_run_hours=this_run_sec / 3600,
+                )
             )
 
             try:
@@ -133,6 +175,14 @@ class FastStoriesRunner:
 
             result = self._summarize(sessions, start_time, before, after)
             await self._close_browser(browser)
+
+        # ── Persist progress ──────────────────────────────────────────────
+        total_reported_sec = int(result.hours_reported * 3600)
+        updated = store.add_seconds(total_reported_sec)
+        self._logger.info(
+            f"State updated: cumulative={updated['cumulative_seconds'] / 3600:.3f}h, "
+            f"today={updated['today_seconds'] / 3600:.3f}h  [{store.path}]"
+        )
 
         self._logger.info("Done. Ask the institution admin to check Stories hours.")
         return result
@@ -185,6 +235,7 @@ class FastStoriesRunner:
         """Create context, login, navigate to Stories, enter a story."""
         cfg = self._config
         tag = f"[S{session_id}]"
+        setup_start = time.time()
 
         context = await browser.new_context(
             viewport={"width": 1366, "height": 768},
@@ -267,9 +318,18 @@ class FastStoriesRunner:
             cookies_str = await self._collect_cookies(context)
             stories_session_id = captured_session_id or str(uuid.uuid4())
 
+            # Realistic started_ago: actual seconds spent on browser setup.
+            # This tells the server the story started when the browser did,
+            # not at the exact instant of the first API call.
+            started_ago_sec = int(time.time() - setup_start)
+
             if not captured_session_id:
                 init = await asyncio.to_thread(
-                    self._api.report_usage_init, cookies_str, stories_session_id, cfg.language
+                    self._api.report_usage_init,
+                    cookies_str,
+                    stories_session_id,
+                    cfg.language,
+                    started_ago_sec,
                 )
                 if init is None or (isinstance(init, dict) and "__error__" in init):
                     err = (init or {}).get("__error__", "unknown")
@@ -289,6 +349,7 @@ class FastStoriesRunner:
                 "story": story_name,
                 "cookies_str": cookies_str,
                 "stories_session_id": stories_session_id,
+                "started_ago": started_ago_sec,
                 "seconds_reported": 0,
                 "chunks_sent": 0,
                 "failed": False,
@@ -305,11 +366,29 @@ class FastStoriesRunner:
     # ==================== Reporting ====================
 
     async def _reporting_loop(
-        self, session: dict, seconds_to_report: int, stop_event: asyncio.Event
+        self,
+        session: dict,
+        seconds_to_report: int,
+        stop_event: asyncio.Event,
+        rng: random.Random,
     ) -> None:
-        """Send report_additional_usage in chunks until the target is credited."""
+        """
+        Send report_additional_usage in chunks until the per-run budget is
+        credited for this session.
+
+        Delays between POSTs are jittered between
+        ``report_delay_min_sec`` and ``report_delay_max_sec`` using the
+        shared per-account RNG so timing differs across accounts.
+        """
         cfg = self._config
         tag = f"[S{session['session_id']}]"
+
+        # The first chunk size doubles as a realistic ``started_ago`` value:
+        # it tells the server the story began that many seconds ago, which is
+        # plausible because we actually waited for browser setup before hitting
+        # the API.
+        first_chunk = min(seconds_to_report, rng.randint(cfg.chunk_min_sec, cfg.chunk_max_sec))
+        session["started_ago"] = first_chunk
 
         while (
             not stop_event.is_set()
@@ -317,7 +396,7 @@ class FastStoriesRunner:
             and not session["failed"]
         ):
             remaining = seconds_to_report - session["seconds_reported"]
-            chunk = min(remaining, random.randint(cfg.chunk_min_sec, cfg.chunk_max_sec))
+            chunk = min(remaining, rng.randint(cfg.chunk_min_sec, cfg.chunk_max_sec))
 
             result = await asyncio.to_thread(
                 self._api.report_additional_usage,
@@ -338,18 +417,19 @@ class FastStoriesRunner:
             session["seconds_reported"] += chunk
             session["chunks_sent"] += 1
 
-            if session["chunks_sent"] % 20 == 0:
+            if session["chunks_sent"] % 10 == 0:
                 self._logger.info(
                     f"{tag} {session['chunks_sent']} chunks | "
-                    f"{session['seconds_reported'] / 3600:.2f}h / "
-                    f"{seconds_to_report / 3600:.2f}h reported"
+                    f"{session['seconds_reported'] / 3600:.3f}h / "
+                    f"{seconds_to_report / 3600:.3f}h reported"
                 )
 
-            await asyncio.sleep(cfg.report_delay_sec)
+            delay = rng.uniform(cfg.report_delay_min_sec, cfg.report_delay_max_sec)
+            await asyncio.sleep(delay)
 
         self._logger.info(
             f"{tag} Reporting done. {session['chunks_sent']} chunks, "
-            f"{session['seconds_reported'] / 3600:.2f}h credited."
+            f"{session['seconds_reported'] / 3600:.3f}h credited."
         )
 
     async def _status_monitor(
@@ -358,6 +438,7 @@ class FastStoriesRunner:
         reporting_tasks: list,
         stop_event: asyncio.Event,
         start_time: float,
+        this_run_hours: float = 0.0,
     ) -> None:
         last_report = time.time()
         while not stop_event.is_set():
@@ -372,13 +453,13 @@ class FastStoriesRunner:
                 self._logger.info(
                     f"Running {(now - start_time) / 3600:.2f}h | "
                     f"{alive_count}/{len(sessions)} pages alive | "
-                    f"Reported: {total_reported_h:.2f}h / {self._config.target_hours}h"
+                    f"Reported: {total_reported_h:.3f}h / {this_run_hours:.3f}h this run"
                 )
 
             if all(t.done() for t in reporting_tasks):
                 stop_event.set()
                 return
-            if total_reported_h >= self._config.target_hours:
+            if this_run_hours > 0 and total_reported_h >= this_run_hours:
                 stop_event.set()
                 return
 
@@ -533,9 +614,13 @@ class FastStoriesRunner:
         self._logger.info("Fast Stories (parallel report_additional_usage)")
         self._logger.info(f"  Email:             {cfg.email}")
         self._logger.info(f"  Target total:      {cfg.target_hours}h")
+        self._logger.info(f"  Session window:    {cfg.session_hours_min}-{cfg.session_hours_max}h / run")
+        self._logger.info(f"  Daily cap:         {cfg.max_hours_per_day}h / day")
         self._logger.info(f"  Parallel sessions: {cfg.parallel_sessions}")
         self._logger.info(f"  Chunk size:        {cfg.chunk_min_sec}-{cfg.chunk_max_sec}s")
+        self._logger.info(f"  Post delay:        {cfg.report_delay_min_sec}-{cfg.report_delay_max_sec}s (jittered)")
         self._logger.info(f"  Headless:          {cfg.headless}")
+        self._logger.info(f"  State dir:         {cfg.state_dir}")
         self._logger.info("=" * 60)
 
     def _summarize(self, sessions, start_time, before, after) -> FastReportResult:

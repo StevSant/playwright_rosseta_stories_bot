@@ -27,8 +27,11 @@ from .fast import (
     FastStoriesRunner,
     FastReportConfig,
     FastReportResult,
+    SessionBudget,
+    StateStore,
     UsageApiClient,
     DashboardReader,
+    compute_budget,
 )
 
 # Configuration
@@ -110,8 +113,11 @@ __all__ = [
     "FastStoriesRunner",
     "FastReportConfig",
     "FastReportResult",
+    "SessionBudget",
+    "StateStore",
     "UsageApiClient",
     "DashboardReader",
+    "compute_budget",
     # Configuration
     "AppConfig",
     "BrowserConfig",
