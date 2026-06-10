@@ -34,15 +34,27 @@ class UsageApiClient:
         self._app_version = app_version
 
     def report_usage_init(
-        self, cookies: str, session_id: str, language: str = "ENG"
+        self,
+        cookies: str,
+        session_id: str,
+        language: str = "ENG",
+        started_ago: int = 0,
     ) -> Optional[dict]:
-        """Initialize a Stories usage session (called once on entering a story)."""
+        """
+        Initialize a Stories usage session (called once on entering a story).
+
+        ``started_ago`` is the number of seconds that have elapsed since the
+        story was (simulated to have) started.  Pass a realistic non-zero value
+        — e.g. the size of the first chunk about to be reported — so the
+        server does not see every session starting at the exact moment of the
+        first API call.
+        """
         return self._post(
             URLs.REPORT_USAGE,
             {
                 "app_identifier": self._app_identifier,
                 "app_version": self._app_version,
-                "started_ago": 0,
+                "started_ago": started_ago,
                 "usage_length": 0,
                 "language": language,
                 "session_identifier": session_id,

@@ -20,6 +20,10 @@ class StoriesLocators:
     # Story cards
     STORY_LINKS: str = "a[href*='/stories/']"
 
+    # Story tile title wrapper. The SPA renders tiles as divs (no anchors);
+    # .text-fit-inner wraps exactly the story titles and nothing else.
+    STORY_TITLE: str = ".text-fit-inner"
+
     # Story detection patterns
     STORIES_SECTION_PATTERN: Pattern[str] = _compile_pattern(r"^historias$|^stories$")
 

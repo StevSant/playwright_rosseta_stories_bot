@@ -29,6 +29,7 @@ from typing import Optional
 from playwright.async_api import async_playwright, Playwright
 
 from ..core import Logger, URLs, channel_candidates, get_logger
+from ..locators import StoriesLocators
 from .config import FastReportConfig
 from .dashboard import DashboardReader
 from .result import FastReportResult
@@ -36,19 +37,8 @@ from .usage_api import UsageApiClient
 
 HEALTH_CHECK_INTERVAL = 60
 STATUS_REPORT_INTERVAL = 120
-
-# Stories known to exist for the target curriculum; we click the first match.
-KNOWN_STORIES = [
-    "A Man Is Walking",
-    "Driving",
-    "Maria and Rob: The Cat in the Tree",
-    "Road Trip: Goodbye!",
-    "The Big Yellow Sun",
-    "The Boy from Hana",
-    "The Small Farm",
-    "Cats",
-    "Hello from San Francisco",
-]
+STORY_LOAD_TIMEOUT_SEC = 60
+STORY_LOAD_POLL_SEC = 2
 
 
 class FastStoriesRunner:
@@ -59,6 +49,11 @@ class FastStoriesRunner:
         self._logger = logger or get_logger("FastStories")
         self._api = UsageApiClient(config.user_agent)
         self._dashboard = DashboardReader()
+        self._locators = StoriesLocators()
+        # Times each story has been claimed by a session, keyed by story name.
+        # Sessions pick the least-claimed story so they spread across stories
+        # instead of all piling onto the first visible one.
+        self._story_claims: dict = {}
 
     # ==================== Public API ====================
 
@@ -244,8 +239,9 @@ class FastStoriesRunner:
             await page.goto(URLs.STORIES, wait_until="networkidle", timeout=60000)
             await asyncio.sleep(5)
             await self._click_first_button(page, ["Continuar", "Continue"], timeout=3000)
+            await self._wait_for_stories(page, tag)
 
-            story_name = await self._enter_known_story(page)
+            story_name = await self._enter_distinct_story(page, tag)
             if not story_name:
                 self._logger.error(f"{tag} Could not click any story")
                 await context.close()
@@ -443,16 +439,64 @@ class FastStoriesRunner:
         except Exception:
             pass
 
-    async def _enter_known_story(self, page) -> Optional[str]:
-        for name in KNOWN_STORIES:
+    async def _wait_for_stories(self, page, tag: str) -> None:
+        """The story list renders well after networkidle; poll until tiles exist."""
+        deadline = time.time() + STORY_LOAD_TIMEOUT_SEC
+        while time.time() < deadline:
             try:
-                el = page.get_by_text(name, exact=True).first
-                if await el.is_visible(timeout=1000):
-                    await el.click()
-                    return name
+                if await page.locator(self._locators.STORY_TITLE).count() > 0:
+                    return
+            except Exception:
+                pass
+            await asyncio.sleep(STORY_LOAD_POLL_SEC)
+        self._logger.warn(f"{tag} Story list did not render within {STORY_LOAD_TIMEOUT_SEC}s")
+
+    async def _enter_distinct_story(self, page, tag: str) -> Optional[str]:
+        """
+        Click a story, preferring ones no other session has claimed yet.
+
+        Stories are discovered from the page's story tiles; the hardcoded
+        known-name list is only a fallback. Candidates are tried least-claimed
+        first, so each session lands on a different story until all are taken,
+        then claims wrap around evenly.
+        """
+        candidates = await self._discover_stories(page)
+        if not candidates:
+            self._logger.warn(f"{tag} No story tiles found, falling back to known names")
+            candidates = [
+                (name, page.get_by_text(name, exact=True).first)
+                for name in self._locators.KNOWN_STORIES
+            ]
+
+        candidates.sort(key=lambda c: self._story_claims.get(c[0], 0))
+
+        for name, el in candidates:
+            try:
+                if not await el.is_visible(timeout=1000):
+                    continue
+                await el.scroll_into_view_if_needed()
+                await el.click()
+                self._story_claims[name] = self._story_claims.get(name, 0) + 1
+                return name
             except Exception:
                 continue
         return None
+
+    async def _discover_stories(self, page) -> list:
+        """Return [(story_name, locator)] for every story tile on the page."""
+        stories = []
+        seen = set()
+        try:
+            titles = page.locator(self._locators.STORY_TITLE)
+            texts = await titles.all_inner_texts()
+            for i, text in enumerate(texts):
+                name = text.strip()
+                if name and name not in seen:
+                    seen.add(name)
+                    stories.append((name, titles.nth(i)))
+        except Exception:
+            pass
+        return stories
 
     async def _collect_cookies(self, context) -> str:
         cookies_list = await context.cookies()
