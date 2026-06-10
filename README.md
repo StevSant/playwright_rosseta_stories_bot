@@ -48,9 +48,9 @@ data/
 Crear un archivo `.env`:
 
 ```env
-EMAIL=tu_email@ejemplo.com
-PASSWORD=tu_password
-PLAYWRIGHT_HEADLESS=1
+ROSETTA_EMAIL=tu_email@ejemplo.com
+ROSETTA_PASSWORD=tu_password
+BROWSER_HEADLESS=1
 LESSON_NAME=A Visit to Hollywood|Una visita a Hollywood
 TARGET_HOURS=35
 DEBUG=1
@@ -58,9 +58,9 @@ DEBUG=1
 
 | Variable | Descripción | Default |
 |----------|-------------|---------|
-| `EMAIL` | Email de la cuenta Rosetta Stone | (requerido) |
-| `PASSWORD` | Contraseña | (requerido) |
-| `PLAYWRIGHT_HEADLESS` | Modo headless (1=sí, 0=no) | `1` |
+| `ROSETTA_EMAIL` | Email de la cuenta Rosetta Stone | (requerido) |
+| `ROSETTA_PASSWORD` | Contraseña | (requerido) |
+| `BROWSER_HEADLESS` | Modo headless (1=sí, 0=no) | `1` |
 | `LESSON_NAME` | Nombre de la lección (regex) | `A Visit to Hollywood\|Una visita a Hollywood` |
 | `TARGET_HOURS` | Horas objetivo por usuario | `35` |
 | `DEBUG` | Habilitar debug/screenshots | `1` |

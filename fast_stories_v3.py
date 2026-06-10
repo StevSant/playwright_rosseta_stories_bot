@@ -51,14 +51,14 @@ from playwright.async_api import async_playwright, Playwright
 env_file = sys.argv[1] if len(sys.argv) > 1 else ".env"
 load_dotenv(env_file, override=True)
 
-EMAIL = os.environ.get("EMAIL", "")
-PASSWORD = os.environ.get("PASSWORD", "")
+EMAIL = os.environ.get("ROSETTA_EMAIL", "")
+PASSWORD = os.environ.get("ROSETTA_PASSWORD", "")
 TARGET_HOURS = float(os.environ.get("TARGET_HOURS", "35"))
 PARALLEL_SESSIONS = int(os.environ.get("PARALLEL_SESSIONS", "5"))
 CHUNK_MIN_SEC = int(os.environ.get("REPORT_CHUNK_MIN_SEC", "300"))
 CHUNK_MAX_SEC = int(os.environ.get("REPORT_CHUNK_MAX_SEC", "900"))
 REPORT_DELAY_SEC = float(os.environ.get("REPORT_DELAY_SEC", "0.5"))
-HEADLESS = os.environ.get("HEADLESS", "1") == "1"
+HEADLESS = os.environ.get("BROWSER_HEADLESS", "1") == "1"
 
 LCP_BASE = "https://lcp.rosettastone.com"
 DASHBOARD_BASE = "https://prism.rosettastone.com/reports/learner/dashboard"

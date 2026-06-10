@@ -35,18 +35,18 @@ class AppConfig:
     @classmethod
     def from_env(cls) -> "AppConfig":
         """Create configuration from environment variables."""
-        email = os.getenv("EMAIL")
-        password = os.getenv("PASSWORD")
+        email = os.getenv("ROSETTA_EMAIL")
+        password = os.getenv("ROSETTA_PASSWORD")
 
         if not email or not password:
             raise ConfigurationError(
-                "EMAIL and PASSWORD environment variables are required"
+                "ROSETTA_EMAIL and ROSETTA_PASSWORD environment variables are required"
             )
 
-        headless_env = os.getenv("PLAYWRIGHT_HEADLESS", "1")
+        headless_env = os.getenv("BROWSER_HEADLESS", "1")
         headless = headless_env.lower() not in ("0", "false", "no")
 
-        slow_mo = int(os.getenv("PLAYWRIGHT_SLOW_MO", "500"))
+        slow_mo = int(os.getenv("BROWSER_SLOW_MO", "500"))
         debug_enabled = os.getenv("DEBUG", "1").lower() not in ("0", "false", "no")
 
         browser_config = BrowserConfig(headless=headless, slow_mo=slow_mo)
