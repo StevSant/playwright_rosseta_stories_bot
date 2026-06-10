@@ -13,6 +13,14 @@ Stories dashboard. Speeding up ``session/heartbeat`` does NOT drive Stories
 usage reporting - the JS player only emits ``report_additional_usage`` on mode
 changes inside a story, never from idling (confirmed by a live probe).
 
+Gradual-accumulation design
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Each invocation credits only a small, randomized amount of hours (bounded by
+SESSION_HOURS_MIN/MAX and MAX_HOURS_PER_DAY), then exits.  Cumulative progress
+is persisted to a per-account JSON state file (see :mod:`~.state_store`).
+Running once or twice a day via Windows Task Scheduler spreads TARGET_HOURS
+over many weeks like a real learner.
+
 The session setup, per-session reporting loop, and health monitor are kept
 together here because they form one tightly-coupled async flow. The reusable,
 independently-testable pieces (the API client, dashboard reader, config, and
@@ -33,6 +41,8 @@ from ..locators import StoriesLocators
 from .config import FastReportConfig
 from .dashboard import DashboardReader
 from .result import FastReportResult
+from .session_budget import compute_budget
+from .state_store import StateStore
 from .usage_api import UsageApiClient
 
 HEALTH_CHECK_INTERVAL = 60
