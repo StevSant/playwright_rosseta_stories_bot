@@ -2,6 +2,26 @@
 
 Bot de automatización para Rosetta Stone usando Playwright, implementado con una arquitectura modular siguiendo principios de diseño limpio.
 
+## ⚡ Estrategia: rápido primero, bot completo como fallback
+
+El punto de entrada por defecto es **`run.py`**, un orquestador con dos fases:
+
+1. **`fast_stories_v3.py`** — abre N sesiones paralelas que acreditan horas de
+   Stories directamente vía la API `app_usage` (rápido; es lo que mueve el panel
+   de admin de la institución).
+2. **Fallback** — si v3 no progresa (ninguna sesión establecida, o la API deja
+   de acreditar horas porque cambió/fue bloqueada), el orquestador lanza el bot
+   completo de Playwright en `rosetta_bot`, que reproduce las Stories de forma
+   real en un navegador.
+
+```bash
+uv run run.py              # usa .env
+uv run run.py .env_daniela # archivo .env específico (misma convención que v3)
+```
+
+`main.py` se mantiene como entrada directa del bot completo (solo navegador),
+sin la fase rápida.
+
 ## ⏱️ Sistema de Tracking de Horas
 
 El bot incluye un sistema automático de seguimiento de horas por usuario:
@@ -44,6 +64,9 @@ DEBUG=1
 | `LESSON_NAME` | Nombre de la lección (regex) | `A Visit to Hollywood\|Una visita a Hollywood` |
 | `TARGET_HOURS` | Horas objetivo por usuario | `35` |
 | `DEBUG` | Habilitar debug/screenshots | `1` |
+| `FALLBACK_MIN_HOURS` | Si v3 acredita menos horas que esto, se activa el bot completo | `0.1` |
+| `FALLBACK_MODE` | Workflow del bot en el fallback: `stories` o `lesson` | `stories` |
+| `PARALLEL_SESSIONS` | Sesiones paralelas de `fast_stories_v3` | `5` |
 
 ### Ejecución Local
 
@@ -51,7 +74,10 @@ DEBUG=1
 # Instalar dependencias
 uv sync
 
-# Ejecutar el bot
+# Ejecutar el orquestador (rápido + fallback) — recomendado
+uv run run.py
+
+# Ejecutar solo el bot completo de navegador
 uv run main.py
 
 # Ver estado de horas de todos los usuarios

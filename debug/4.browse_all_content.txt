@@ -1,4 +1,0 @@
-URL: https://totale.rosettastone.com/explore
-Title: Welcome to Rosetta Stone!
-Frames: 1
-  [0] name= url=https://totale.rosettastone.com/explore

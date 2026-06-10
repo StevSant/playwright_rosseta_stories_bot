@@ -469,10 +469,21 @@ async def setup_all_sessions(pw: Playwright, shared_auth: dict) -> tuple:
     return browser, sessions
 
 
-async def main():
+async def main() -> dict:
+    """
+    Run all parallel reporting sessions.
+
+    Returns a result dict the orchestrator (run.py) uses to decide whether to
+    fall back to the full browser bot:
+        {
+            "active_sessions": int,   # sessions that established a valid LCP session
+            "hours_reported":  float, # total Stories hours credited via the API
+            "failed_sessions": int,   # sessions whose reporting loop errored out
+        }
+    """
     if not EMAIL or not PASSWORD:
         print("ERROR: Set EMAIL and PASSWORD in .env")
-        return
+        return {"active_sessions": 0, "hours_reported": 0.0, "failed_sessions": 0}
 
     print("=" * 60)
     print("Rosetta Stone - Fast Stories V3 (parallel report_additional_usage)")
@@ -499,7 +510,7 @@ async def main():
                     await browser.close()
                 except Exception:
                     pass
-            return
+            return {"active_sessions": 0, "hours_reported": 0.0, "failed_sessions": 0}
 
         log(f"{len(sessions)}/{PARALLEL_SESSIONS} sessions active.")
 
@@ -607,6 +618,12 @@ async def main():
                 pass
 
     log("Done. Ask the institution admin to check Stories hours.")
+
+    return {
+        "active_sessions": len(sessions),
+        "hours_reported": total_reported / 3600,
+        "failed_sessions": failed_sessions,
+    }
 
 
 if __name__ == "__main__":

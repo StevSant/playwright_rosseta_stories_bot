@@ -16,3 +16,13 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Debug / capture artifacts (regenerated at runtime, never committed)
+debug/
+data/intercept/
+data/intercept_play/
+debug_*.png
+network_capture.json
+
+# Tooling caches
+.mypy_cache/

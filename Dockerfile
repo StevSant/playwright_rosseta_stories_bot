@@ -47,4 +47,5 @@ RUN uv sync --locked
 RUN uv run playwright install --with-deps
 
 # Default command (can be overridden)
-CMD ["uv", "run", "./main.py"]
+# Orchestrator: fast_stories_v3 first, full Playwright bot as fallback.
+CMD ["uv", "run", "./run.py"]
