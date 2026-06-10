@@ -19,6 +19,18 @@ Structure:
 # Main bot class
 from .bot import RosettaStoneBot
 
+# Orchestrator (fast path + browser-bot fallback)
+from .orchestrator import Orchestrator
+
+# Fast Stories usage-reporting capability
+from .fast import (
+    FastStoriesRunner,
+    FastReportConfig,
+    FastReportResult,
+    UsageApiClient,
+    DashboardReader,
+)
+
 # Configuration
 from .config import AppConfig, BrowserConfig
 
@@ -92,6 +104,14 @@ __version__ = "3.0.0"
 __all__ = [
     # Main bot
     "RosettaStoneBot",
+    # Orchestrator
+    "Orchestrator",
+    # Fast Stories capability
+    "FastStoriesRunner",
+    "FastReportConfig",
+    "FastReportResult",
+    "UsageApiClient",
+    "DashboardReader",
     # Configuration
     "AppConfig",
     "BrowserConfig",

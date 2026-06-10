@@ -4,23 +4,24 @@ Bot de automatización para Rosetta Stone usando Playwright, implementado con un
 
 ## ⚡ Estrategia: rápido primero, bot completo como fallback
 
-El punto de entrada por defecto es **`run.py`**, un orquestador con dos fases:
+El punto de entrada único es **`main.py`**, que ejecuta el `Orchestrator` del
+paquete `rosetta_bot` en dos fases:
 
-1. **`fast_stories_v3.py`** — abre N sesiones paralelas que acreditan horas de
-   Stories directamente vía la API `app_usage` (rápido; es lo que mueve el panel
-   de admin de la institución).
-2. **Fallback** — si v3 no progresa (ninguna sesión establecida, o la API deja
-   de acreditar horas porque cambió/fue bloqueada), el orquestador lanza el bot
-   completo de Playwright en `rosetta_bot`, que reproduce las Stories de forma
-   real en un navegador.
+1. **Fase rápida** (`rosetta_bot.fast.FastStoriesRunner`) — abre N sesiones
+   paralelas que acreditan horas de Stories directamente vía la API `app_usage`
+   (rápido; es lo que mueve el panel de admin de la institución).
+2. **Fallback** (`rosetta_bot.RosettaStoneBot`) — si la fase rápida no progresa
+   (ninguna sesión establecida, o la API deja de acreditar horas porque cambió
+   o fue bloqueada), el orquestador lanza el bot completo de Playwright, que
+   reproduce las Stories de forma real en un navegador.
 
 ```bash
-uv run run.py              # usa .env
-uv run run.py .env_daniela # archivo .env específico (misma convención que v3)
+uv run main.py              # usa .env
+uv run main.py .env_daniela # archivo .env específico
 ```
 
-`main.py` se mantiene como entrada directa del bot completo (solo navegador),
-sin la fase rápida.
+La capacidad rápida ya no es un script suelto: vive dentro del paquete en
+`rosetta_bot/fast/` y se orquesta desde `rosetta_bot/orchestrator.py`.
 
 ## ⏱️ Sistema de Tracking de Horas
 
@@ -64,9 +65,13 @@ DEBUG=1
 | `LESSON_NAME` | Nombre de la lección (regex) | `A Visit to Hollywood\|Una visita a Hollywood` |
 | `TARGET_HOURS` | Horas objetivo por usuario | `35` |
 | `DEBUG` | Habilitar debug/screenshots | `1` |
-| `FALLBACK_MIN_HOURS` | Si v3 acredita menos horas que esto, se activa el bot completo | `0.1` |
+| `FALLBACK_MIN_HOURS` | Si la fase rápida acredita menos horas que esto, se activa el bot completo | `0.1` |
 | `FALLBACK_MODE` | Workflow del bot en el fallback: `stories` o `lesson` | `stories` |
-| `PARALLEL_SESSIONS` | Sesiones paralelas de `fast_stories_v3` | `5` |
+| `PARALLEL_SESSIONS` | Sesiones paralelas de la fase rápida | `5` |
+| `REPORT_CHUNK_MIN_SEC` | Mínimo de segundos por chunk de reporte | `300` |
+| `REPORT_CHUNK_MAX_SEC` | Máximo de segundos por chunk de reporte | `900` |
+| `REPORT_DELAY_SEC` | Espera entre POSTs de reporte por sesión | `0.5` |
+| `STORIES_LANGUAGE` | Idioma reportado a la API de Stories | `ENG` |
 
 ### Ejecución Local
 
@@ -74,10 +79,7 @@ DEBUG=1
 # Instalar dependencias
 uv sync
 
-# Ejecutar el orquestador (rápido + fallback) — recomendado
-uv run run.py
-
-# Ejecutar solo el bot completo de navegador
+# Ejecutar el orquestador (rápido + fallback)
 uv run main.py
 
 # Ver estado de horas de todos los usuarios
@@ -221,6 +223,13 @@ rosetta_bot/
 │   ├── stories_workflow.py  # Procesamiento de historias
 │   └── lesson_workflow.py   # Ciclo de lecciones
 │
+├── fast/           # ⚡ Reporte rápido vía API app_usage (async)
+│   ├── config.py        # FastReportConfig
+│   ├── result.py        # FastReportResult
+│   ├── usage_api.py     # UsageApiClient (report_usage / report_additional_usage)
+│   ├── dashboard.py     # DashboardReader (horas before/after)
+│   └── runner.py        # FastStoriesRunner (sesiones + loop + monitor)
+│
 ├── pages/          # Page Objects (Patrón POM)
 │   ├── base_page.py      # Funcionalidad común
 │   ├── login_page.py     # Autenticación
@@ -240,7 +249,8 @@ rosetta_bot/
 │   ├── launchpad_locators.py
 │   └── common_locators.py
 │
-├── bot.py          # Orquestador principal
+├── orchestrator.py # Fase rápida primero, bot completo como fallback
+├── bot.py          # Bot de navegador (Page Object Model)
 ├── browser.py      # Gestión del navegador
 ├── config.py       # Configuración
 └── exceptions.py   # Excepciones personalizadas
