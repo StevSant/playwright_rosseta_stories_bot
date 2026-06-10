@@ -62,6 +62,7 @@ DEBUG=1
 | `ROSETTA_EMAIL` | Email de la cuenta Rosetta Stone | (requerido) |
 | `ROSETTA_PASSWORD` | Contraseña | (requerido) |
 | `BROWSER_HEADLESS` | Modo headless (1=sí, 0=no) | `1` |
+| `BROWSER_CHANNEL` | Navegador del sistema: `chrome` o `msedge` (vacío = Chromium de Playwright). Útil para el `.exe`. | `chrome` |
 | `LESSON_NAME` | Nombre de la lección (regex) | `A Visit to Hollywood\|Una visita a Hollywood` |
 | `TARGET_HOURS` | Horas objetivo por usuario | `35` |
 | `DEBUG` | Habilitar debug/screenshots | `1` |
@@ -85,6 +86,21 @@ uv run main.py
 # Ver estado de horas de todos los usuarios
 uv run status.py
 ```
+
+### Compilar el .exe
+
+```bash
+uv run --group dev python build.py
+```
+
+Genera `dist/rosetta-bot-stories.exe`. Para usarlo:
+
+1. Pon un archivo `.env` **en la misma carpeta que el `.exe`** (lee el `.env` de su
+   propia carpeta; o pásale una ruta como primer argumento:
+   `rosetta-bot-stories.exe .env_daniela`).
+2. Necesita Chrome o Edge instalado (lo normal en Windows); no hace falta
+   `playwright install`. El bot usa el navegador del sistema vía `BROWSER_CHANNEL`
+   (`chrome` → `msedge` → Chromium de Playwright como último recurso).
 
 ## 🐳 Docker
 

@@ -13,6 +13,7 @@ from .timeouts import Timeouts
 from .wait_times import WaitTimes
 from .urls import URLs
 from .logger import Logger, LogLevel, get_logger
+from .browser_channel import channel_candidates
 
 __all__ = [
     "Timeouts",
@@ -21,4 +22,5 @@ __all__ = [
     "Logger",
     "LogLevel",
     "get_logger",
+    "channel_candidates",
 ]

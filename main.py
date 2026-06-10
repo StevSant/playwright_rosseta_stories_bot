@@ -10,14 +10,21 @@ Usage:
 """
 
 import sys
+from pathlib import Path
 
 from dotenv import load_dotenv
 
 from rosetta_bot import Orchestrator
 
 
+def _default_env_file() -> str:
+    """Default .env location: next to the .exe when frozen, else the CWD."""
+    base = Path(sys.executable).parent if getattr(sys, "frozen", False) else Path.cwd()
+    return str(base / ".env")
+
+
 def main() -> None:
-    env_file = sys.argv[1] if len(sys.argv) > 1 else ".env"
+    env_file = sys.argv[1] if len(sys.argv) > 1 else _default_env_file()
     load_dotenv(env_file, override=True)
 
     Orchestrator.from_env().run()

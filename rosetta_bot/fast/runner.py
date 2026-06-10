@@ -28,7 +28,7 @@ from typing import Optional
 
 from playwright.async_api import async_playwright, Playwright
 
-from ..core import Logger, URLs, get_logger
+from ..core import Logger, URLs, channel_candidates, get_logger
 from .config import FastReportConfig
 from .dashboard import DashboardReader
 from .result import FastReportResult
@@ -135,18 +135,32 @@ class FastStoriesRunner:
     # ==================== Session Setup ====================
 
     async def _setup_all_sessions(self, pw: Playwright, shared_auth: dict) -> tuple:
-        browser = await pw.chromium.launch(
-            headless=self._config.headless,
-            args=[
-                "--disable-blink-features=AutomationControlled",
-                "--disable-gpu",
-                "--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--disable-background-timer-throttling",
-                "--disable-renderer-backgrounding",
-                "--disable-backgrounding-occluded-windows",
-            ],
-        )
+        launch_args = [
+            "--disable-blink-features=AutomationControlled",
+            "--disable-gpu",
+            "--no-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-background-timer-throttling",
+            "--disable-renderer-backgrounding",
+            "--disable-backgrounding-occluded-windows",
+        ]
+        # Prefer a system browser (chrome -> msedge -> bundled Chromium) so a
+        # packaged .exe needs no `playwright install`.
+        browser = None
+        last_error: Optional[Exception] = None
+        for channel in channel_candidates():
+            try:
+                browser = await pw.chromium.launch(
+                    headless=self._config.headless, args=launch_args, channel=channel
+                )
+                break
+            except Exception as exc:
+                last_error = exc
+        if browser is None:
+            raise RuntimeError(
+                "Could not launch a browser. Install Chrome/Edge or run "
+                "'playwright install chromium'."
+            ) from last_error
 
         sessions = []
         for i in range(self._config.parallel_sessions):

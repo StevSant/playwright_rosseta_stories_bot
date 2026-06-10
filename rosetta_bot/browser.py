@@ -10,6 +10,7 @@ from playwright.sync_api import (
 )
 
 from .config import BrowserConfig
+from .core import channel_candidates
 
 
 class BrowserManager:
@@ -33,22 +34,38 @@ class BrowserManager:
         return self.page
 
     def _launch_browser(self, playwright: Playwright) -> None:
-        """Initialize the browser with anti-detection settings."""
+        """Initialize the browser, preferring a system-installed channel.
+
+        Tries channels in order (chrome -> msedge -> bundled Chromium) so a
+        packaged .exe works without `playwright install`.
+        """
+        args = [
+            "--disable-blink-features=AutomationControlled",
+            "--no-default-browser-check",
+            "--disable-dev-shm-usage",
+        ]
+        last_error: Optional[Exception] = None
+        for channel in channel_candidates():
+            try:
+                self.browser = playwright.chromium.launch(
+                    headless=self.config.headless,
+                    slow_mo=self.config.slow_mo,
+                    args=args,
+                    channel=channel,
+                )
+                return
+            except Exception as exc:
+                last_error = exc
+        # Last resort: bundled Chromium with no extra flags
         try:
-            self.browser = playwright.chromium.launch(
-                headless=self.config.headless,
-                slow_mo=self.config.slow_mo,
-                args=[
-                    "--disable-blink-features=AutomationControlled",
-                    "--no-default-browser-check",
-                    "--disable-dev-shm-usage",
-                ],
-            )
-        except Exception:
-            # Fallback if some flags fail
             self.browser = playwright.chromium.launch(
                 headless=self.config.headless, slow_mo=self.config.slow_mo
             )
+        except Exception as exc:
+            raise RuntimeError(
+                "Could not launch a browser. Install Chrome/Edge or run "
+                "'playwright install chromium'."
+            ) from (last_error or exc)
 
     def _create_context(self) -> None:
         """Create browser context with realistic settings."""
