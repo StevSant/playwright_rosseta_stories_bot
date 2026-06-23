@@ -16,7 +16,7 @@ from playwright.sync_api import Playwright, Page
 
 from .config import AppConfig
 from .browser import BrowserManager
-from .core import get_logger
+from .core import app_base_dir, get_logger
 from .pages import LoginPage, LaunchpadPage
 from .workflows import StoriesWorkflow, LessonWorkflow
 from .services import TimeTracker
@@ -42,10 +42,11 @@ class RosettaStoneBot:
         self._logger = get_logger("Bot")
         self._page: Optional[Page] = None
 
-        # Time tracking
+        # Time tracking (exe-relative dir so progress survives frozen runs)
         self._time_tracker = TimeTracker(
             user_email=config.email,
             target_hours=config.target_hours,
+            data_dir=str(app_base_dir() / "data"),
             logger=get_logger("TimeTracker"),
         )
 
@@ -194,7 +195,14 @@ class RosettaStoneBot:
         success = login_page.login(self._config.email, self._config.password)
 
         if not success:
-            raise RuntimeError("Authentication failed")
+            raise RuntimeError(
+                "Authentication failed - see the [ERROR] lines above and the "
+                "debug/ screenshots for the screen that blocked the login."
+            )
+
+        # Persist cookies/localStorage so later runs reuse this session and
+        # skip the login (and Microsoft's new-device verification) entirely.
+        self._browser_manager.save_storage_state()
 
     def _navigate_to_lesson(self) -> None:
         """Navigate to the target lesson."""

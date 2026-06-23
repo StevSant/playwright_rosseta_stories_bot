@@ -1,6 +1,6 @@
 """Login Page Object following Page Object Model pattern."""
 
-import re
+import time
 from typing import Optional
 
 from playwright.sync_api import Page, Locator
@@ -8,7 +8,13 @@ from playwright.sync_api import Page, Locator
 from .base_page import BasePage
 from ..locators import LoginLocators
 from ..components import CookieConsent
-from ..core import Timeouts
+from ..core import (
+    MANUAL_LOGIN_HINT,
+    Timeouts,
+    find_login_blocker,
+    is_kmsi_prompt,
+    is_login_url,
+)
 
 
 class LoginPage(BasePage):
@@ -77,6 +83,12 @@ class LoginPage(BasePage):
             True if login was successful, False otherwise
         """
         self.open()
+
+        # A restored storage_state session redirects straight into the app.
+        if not is_login_url(self.url):
+            self._log("Already logged in (restored session).")
+            self.take_screenshot("already_logged_in")
+            return True
 
         if not self._fill_email(email):
             return False
@@ -165,6 +177,12 @@ class LoginPage(BasePage):
         """
         Verify if login was successful.
 
+        Unlike the old implementation (which always returned True and let the
+        failure surface much later as ``login?reauth=true`` redirects), this
+        actually waits until the browser leaves every login/Microsoft page.
+        If it never does, it reports the blocking screen (MFA, CAPTCHA,
+        wrong password...) and fails loudly.
+
         Args:
             password: User password (needed for institutional re-auth)
 
@@ -173,22 +191,84 @@ class LoginPage(BasePage):
         """
         self._log("Verifying login success...")
 
-        try:
-            title = self.title
-        except Exception:
-            title = ""
+        # Handle institutional account selection if needed (best-effort; the
+        # URL check below is the real verdict).
+        self._handle_institutional_account(password)
+        self._handle_stay_signed_in()
 
-        # Handle institutional account selection if needed
-        if self._handle_institutional_account(password):
+        if self._wait_until_authenticated(timeout_sec=20):
+            self.take_screenshot("logged_in")
             return True
 
-        # Check if still on login page
-        if self._locators.LOGIN_PAGE_PATTERN.search(title):
-            self._log("Still on login page, retrying button click...", level="WARN")
-            self._retry_login_click()
+        # Still on a login page: retry the submit once, then re-check.
+        self._log("Still on login page, retrying button click...", level="WARN")
+        self._retry_login_click()
+        self._handle_stay_signed_in()
 
-        self.take_screenshot("logged_in")
-        return True
+        if self._wait_until_authenticated(timeout_sec=15):
+            self.take_screenshot("logged_in")
+            return True
+
+        blocker = self._detect_login_blocker()
+        if blocker:
+            self._log(f"Login blocked: {blocker}", level="ERROR")
+        self._log(
+            f"Login did not complete - still on {self.url}. {MANUAL_LOGIN_HINT}",
+            level="ERROR",
+        )
+        self.take_screenshot("login_failed")
+        return False
+
+    def _wait_until_authenticated(self, timeout_sec: int) -> bool:
+        """Poll until the URL leaves every login/authentication page."""
+        deadline = time.time() + timeout_sec
+        while time.time() < deadline:
+            try:
+                if not is_login_url(self.url):
+                    return True
+            except Exception:
+                pass
+            self.wait(1)
+        return False
+
+    def _detect_login_blocker(self) -> Optional[str]:
+        """Identify the verification/MFA/error screen blocking the login."""
+        try:
+            return find_login_blocker(self._page.inner_text("body"))
+        except Exception:
+            return None
+
+    def _handle_stay_signed_in(self) -> None:
+        """Accept Microsoft's 'Stay signed in?' (KMSI) prompt if shown."""
+        try:
+            if not is_kmsi_prompt(self._page.inner_text("body")):
+                return
+        except Exception:
+            return
+
+        self._log("Accepting 'Stay signed in?' prompt...")
+        try:
+            checkbox = self._page.locator("#KmsiCheckboxField").first
+            if self.is_visible(checkbox, timeout=1500):
+                checkbox.check()
+        except Exception:
+            pass
+
+        for selector in (
+            "#idSIButton9",
+            "input[type='submit'][value='Yes']",
+            "input[type='submit'][value='Sí']",
+            "button:has-text('Yes')",
+            "button:has-text('Sí')",
+        ):
+            try:
+                btn = self._page.locator(selector).first
+                if self.is_visible(btn, timeout=1500):
+                    btn.click()
+                    self.wait(2)
+                    return
+            except Exception:
+                continue
 
     def _handle_institutional_account(self, password: str) -> bool:
         """

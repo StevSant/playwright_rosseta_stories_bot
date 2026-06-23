@@ -1,9 +1,9 @@
 """Configuration for the fast Stories usage-reporting capability."""
 
 import os
-from dataclasses import dataclass, field
-from pathlib import Path
+from dataclasses import dataclass
 
+from ..core import app_base_dir
 from ..exceptions import ConfigurationError
 
 _DEFAULT_USER_AGENT = (
@@ -11,8 +11,10 @@ _DEFAULT_USER_AGENT = (
     "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 )
 
-# Default state directory: <project root>/state/
-_DEFAULT_STATE_DIR = str(Path(__file__).resolve().parents[2] / "state")
+# Default state directory: <project root>/state/ from source, or
+# <exe dir>/state/ when frozen. Never resolved from __file__, which under a
+# PyInstaller one-file build points into the wiped-on-exit _MEI temp dir.
+_DEFAULT_STATE_DIR = str(app_base_dir() / "state")
 
 
 @dataclass
@@ -24,7 +26,16 @@ class FastReportConfig:
     session per context, then credits Stories hours directly via the
     ``app_usage`` API instead of playing stories in real time.
 
-    Gradual-accumulation settings
+    Speed mode
+    ~~~~~~~~~~
+    HUMAN_MODE
+        When false (the default) the runner is *fast*: it credits the full
+        remaining TARGET_HOURS in a single run, ignoring the per-run session
+        window and the daily cap, with no jittered delay between POSTs.
+        Set HUMAN_MODE=1 to restore the gradual, human-like accumulation
+        described below (session window + daily cap + jittered POST delays).
+
+    Gradual-accumulation settings (only applied when HUMAN_MODE is on)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     SESSION_HOURS_MIN / SESSION_HOURS_MAX
         Each invocation credits a random amount of hours in this range.
@@ -52,6 +63,9 @@ class FastReportConfig:
     email: str
     password: str
     target_hours: float = 35.0
+    # Fast by default: credit the full target in one run. Flip to True (via
+    # HUMAN_MODE) for gradual, human-like accumulation across many runs.
+    human_mode: bool = False
     parallel_sessions: int = 2
     chunk_min_sec: int = 300
     chunk_max_sec: int = 900
@@ -81,11 +95,13 @@ class FastReportConfig:
             )
 
         headless = os.getenv("BROWSER_HEADLESS", "1").lower() not in ("0", "false", "no")
+        human_mode = os.getenv("HUMAN_MODE", "0").lower() in ("1", "true", "yes")
 
         return cls(
             email=email,
             password=password,
             target_hours=float(os.getenv("TARGET_HOURS", "35")),
+            human_mode=human_mode,
             parallel_sessions=int(os.getenv("PARALLEL_SESSIONS", "2")),
             chunk_min_sec=int(os.getenv("REPORT_CHUNK_MIN_SEC", "300")),
             chunk_max_sec=int(os.getenv("REPORT_CHUNK_MAX_SEC", "900")),

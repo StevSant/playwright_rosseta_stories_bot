@@ -15,20 +15,29 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from rosetta_bot import Orchestrator
+from rosetta_bot.core import app_base_dir, ensure_env_exists
 
 
 def _default_env_file() -> str:
-    """Default .env location: next to the .exe when frozen, else the CWD."""
-    base = Path(sys.executable).parent if getattr(sys, "frozen", False) else Path.cwd()
-    return str(base / ".env")
+    """Default .env location: next to the .exe when frozen, else project root."""
+    return str(app_base_dir() / ".env")
 
 
 def main() -> None:
     env_file = sys.argv[1] if len(sys.argv) > 1 else _default_env_file()
+    ensure_env_exists(Path(env_file))
     load_dotenv(env_file, override=True)
 
     Orchestrator.from_env().run()
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
+    except Exception as exc:
+        print(f"\nError: {exc}")
+    finally:
+        if getattr(sys, "frozen", False):
+            input("\nPresiona Enter para cerrar...")

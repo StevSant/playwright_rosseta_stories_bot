@@ -3,6 +3,7 @@
 import os
 from dataclasses import dataclass
 
+from .core import auth_state_path
 from .exceptions import ConfigurationError
 
 
@@ -19,6 +20,9 @@ class BrowserConfig:
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
     )
+    # Playwright storage_state file: restored on context creation when it
+    # exists, written after a successful login. Empty string disables it.
+    storage_state_path: str = ""
 
 
 @dataclass
@@ -49,7 +53,11 @@ class AppConfig:
         slow_mo = int(os.getenv("BROWSER_SLOW_MO", "500"))
         debug_enabled = os.getenv("DEBUG", "1").lower() not in ("0", "false", "no")
 
-        browser_config = BrowserConfig(headless=headless, slow_mo=slow_mo)
+        browser_config = BrowserConfig(
+            headless=headless,
+            slow_mo=slow_mo,
+            storage_state_path=str(auth_state_path(email)),
+        )
 
         lesson_name = os.getenv(
             "LESSON_NAME", "A Visit to Hollywood|Una visita a Hollywood"

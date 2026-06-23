@@ -1,5 +1,6 @@
 """Browser management for the Rosetta Stone Bot."""
 
+from pathlib import Path
 from typing import Optional
 
 from playwright.sync_api import (
@@ -72,16 +73,35 @@ class BrowserManager:
         if not self.browser:
             raise RuntimeError("Browser not launched")
 
-        self.context = self.browser.new_context(
-            permissions=[],
-            accept_downloads=True,
-            user_agent=self.config.user_agent,
-            locale=self.config.locale,
-            viewport={
+        context_kwargs = {
+            "permissions": [],
+            "accept_downloads": True,
+            "user_agent": self.config.user_agent,
+            "locale": self.config.locale,
+            "viewport": {
                 "width": self.config.viewport_width,
                 "height": self.config.viewport_height,
             },
-        )
+        }
+
+        state_path = self.config.storage_state_path
+        if state_path and Path(state_path).exists():
+            print(f"[INFO] Reusing saved login session: {state_path}")
+            context_kwargs["storage_state"] = state_path
+
+        self.context = self.browser.new_context(**context_kwargs)
+
+    def save_storage_state(self) -> None:
+        """Persist cookies/localStorage so later runs can skip the login."""
+        state_path = self.config.storage_state_path
+        if not (self.context and state_path):
+            return
+        try:
+            Path(state_path).parent.mkdir(parents=True, exist_ok=True)
+            self.context.storage_state(path=state_path)
+            print(f"[INFO] Login session saved: {state_path}")
+        except Exception as exc:
+            print(f"[WARN] Could not save login session: {exc}")
 
     def _create_page(self) -> None:
         """Create the main page."""

@@ -36,7 +36,17 @@ from typing import Optional
 
 from playwright.async_api import async_playwright, Playwright
 
-from ..core import Logger, URLs, channel_candidates, get_logger
+from ..core import (
+    MANUAL_LOGIN_HINT,
+    Logger,
+    URLs,
+    auth_state_path,
+    channel_candidates,
+    find_login_blocker,
+    get_logger,
+    is_kmsi_prompt,
+    is_login_url,
+)
 from ..locators import StoriesLocators
 from .config import FastReportConfig
 from .dashboard import DashboardReader
@@ -95,6 +105,7 @@ class FastStoriesRunner:
             session_max_sec=int(cfg.session_hours_max * 3600),
             max_daily_sec=int(cfg.max_hours_per_day * 3600),
             rng=account_rng,
+            human_mode=cfg.human_mode,
         )
 
         cumulative_h = state.get("cumulative_seconds", 0) / 3600
@@ -237,11 +248,20 @@ class FastStoriesRunner:
         tag = f"[S{session_id}]"
         setup_start = time.time()
 
-        context = await browser.new_context(
-            viewport={"width": 1366, "height": 768},
-            locale="es-ES",
-            user_agent=cfg.user_agent,
-        )
+        # Reuse a previously saved login session when available: it skips the
+        # whole login flow and avoids re-triggering Microsoft's new-device
+        # verification on machines that haven't logged in before.
+        auth_state = auth_state_path(cfg.email)
+        context_kwargs = {
+            "viewport": {"width": 1366, "height": 768},
+            "locale": "es-ES",
+            "user_agent": cfg.user_agent,
+        }
+        if auth_state.exists():
+            self._logger.info(f"{tag} Reusing saved login session: {auth_state}")
+            context_kwargs["storage_state"] = str(auth_state)
+
+        context = await browser.new_context(**context_kwargs)
         page = await context.new_page()
 
         captured_session_id = ""
@@ -276,29 +296,46 @@ class FastStoriesRunner:
             await page.goto(URLs.LOGIN, wait_until="networkidle", timeout=60000)
             await asyncio.sleep(2)
 
-            await self._dismiss_cookie_banner(page)
+            if is_login_url(page.url):
+                await self._dismiss_cookie_banner(page)
 
-            await self._fill_first(
-                page,
-                ["input[type='email']", "input[autocomplete='email']", "input[name='email']"],
-                cfg.email,
-            )
-            pw_field = await self._fill_first(
-                page, ["input[type='password']", "input[name='password']"], cfg.password
-            )
-            if pw_field:
-                await asyncio.sleep(1)
-                await pw_field.press("Enter")
+                await self._fill_first(
+                    page,
+                    ["input[type='email']", "input[autocomplete='email']", "input[name='email']"],
+                    cfg.email,
+                )
+                pw_field = await self._fill_first(
+                    page, ["input[type='password']", "input[name='password']"], cfg.password
+                )
+                if pw_field:
+                    await asyncio.sleep(1)
+                    await pw_field.press("Enter")
 
-            await asyncio.sleep(5)
-            await self._wait_idle(page, 20000)
+                await asyncio.sleep(5)
+                await self._wait_idle(page, 20000)
 
-            await self._handle_institutional_account(page, tag)
+                await self._handle_institutional_account(page, tag)
+                await self._handle_stay_signed_in(page)
+                # Fail loudly here (MFA / CAPTCHA / wrong password) instead of
+                # blundering on to Stories with a logged-out page.
+                await self._ensure_authenticated(page, tag)
+            else:
+                self._logger.info(f"{tag} Already authenticated (restored session).")
+
             await self._authenticate_totale(page, tag)
 
             self._logger.info(f"{tag} Navigating to Stories...")
             await page.goto(URLs.STORIES, wait_until="networkidle", timeout=60000)
             await asyncio.sleep(5)
+            if is_login_url(page.url):
+                raise RuntimeError(
+                    f"Redirected back to login when opening Stories ({page.url}). "
+                    f"The session is not authenticated. {MANUAL_LOGIN_HINT}"
+                )
+
+            # Login confirmed - persist the session for future runs.
+            auth_state.parent.mkdir(parents=True, exist_ok=True)
+            await context.storage_state(path=str(auth_state))
             await self._click_first_button(page, ["Continuar", "Continue"], timeout=3000)
             await self._wait_for_stories(page, tag)
 
@@ -424,8 +461,10 @@ class FastStoriesRunner:
                     f"{seconds_to_report / 3600:.3f}h reported"
                 )
 
-            delay = rng.uniform(cfg.report_delay_min_sec, cfg.report_delay_max_sec)
-            await asyncio.sleep(delay)
+            # Fast mode fires POSTs back-to-back; human mode jitters the pacing.
+            if cfg.human_mode:
+                delay = rng.uniform(cfg.report_delay_min_sec, cfg.report_delay_max_sec)
+                await asyncio.sleep(delay)
 
         self._logger.info(
             f"{tag} Reporting done. {session['chunks_sent']} chunks, "
@@ -517,6 +556,62 @@ class FastStoriesRunner:
             await self._wait_idle(page, 20000)
         except Exception:
             pass
+
+    async def _handle_stay_signed_in(self, page) -> None:
+        """Accept Microsoft's 'Stay signed in?' (KMSI) prompt if shown."""
+        try:
+            if not is_kmsi_prompt(await page.inner_text("body")):
+                return
+        except Exception:
+            return
+
+        try:
+            checkbox = page.locator("#KmsiCheckboxField").first
+            if await checkbox.is_visible(timeout=1500):
+                await checkbox.check()
+        except Exception:
+            pass
+
+        for selector in (
+            "#idSIButton9",
+            "input[type='submit'][value='Yes']",
+            "input[type='submit'][value='Sí']",
+            "button:has-text('Yes')",
+            "button:has-text('Sí')",
+        ):
+            try:
+                btn = page.locator(selector).first
+                if await btn.is_visible(timeout=1500):
+                    await btn.click()
+                    await asyncio.sleep(2)
+                    return
+            except Exception:
+                continue
+
+    async def _ensure_authenticated(self, page, tag: str) -> None:
+        """
+        Raise with a clear reason if we are still stuck on a login page.
+
+        Microsoft may interrupt the institutional flow on a new device/IP
+        with a verification screen (MFA, code, CAPTCHA) that no selector in
+        this runner can complete; surface that instead of timing out later.
+        """
+        deadline = time.time() + 15
+        while time.time() < deadline:
+            if not is_login_url(page.url):
+                return
+            await asyncio.sleep(1)
+
+        blocker = None
+        try:
+            blocker = find_login_blocker(await page.inner_text("body"))
+        except Exception:
+            pass
+
+        detail = f" Blocking screen: {blocker}." if blocker else ""
+        raise RuntimeError(
+            f"Login did not complete - still on {page.url}.{detail} {MANUAL_LOGIN_HINT}"
+        )
 
     async def _authenticate_totale(self, page, tag: str) -> None:
         self._logger.info(f"{tag} Authenticating with totale...")
@@ -613,12 +708,17 @@ class FastStoriesRunner:
         self._logger.info("=" * 60)
         self._logger.info("Fast Stories (parallel report_additional_usage)")
         self._logger.info(f"  Email:             {cfg.email}")
+        self._logger.info(f"  Mode:              {'HUMAN (gradual)' if cfg.human_mode else 'FAST (full target in one run)'}")
         self._logger.info(f"  Target total:      {cfg.target_hours}h")
-        self._logger.info(f"  Session window:    {cfg.session_hours_min}-{cfg.session_hours_max}h / run")
-        self._logger.info(f"  Daily cap:         {cfg.max_hours_per_day}h / day")
+        if cfg.human_mode:
+            self._logger.info(f"  Session window:    {cfg.session_hours_min}-{cfg.session_hours_max}h / run")
+            self._logger.info(f"  Daily cap:         {cfg.max_hours_per_day}h / day")
         self._logger.info(f"  Parallel sessions: {cfg.parallel_sessions}")
         self._logger.info(f"  Chunk size:        {cfg.chunk_min_sec}-{cfg.chunk_max_sec}s")
-        self._logger.info(f"  Post delay:        {cfg.report_delay_min_sec}-{cfg.report_delay_max_sec}s (jittered)")
+        if cfg.human_mode:
+            self._logger.info(f"  Post delay:        {cfg.report_delay_min_sec}-{cfg.report_delay_max_sec}s (jittered)")
+        else:
+            self._logger.info("  Post delay:        none (back-to-back)")
         self._logger.info(f"  Headless:          {cfg.headless}")
         self._logger.info(f"  State dir:         {cfg.state_dir}")
         self._logger.info("=" * 60)

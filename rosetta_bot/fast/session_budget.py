@@ -33,6 +33,7 @@ def compute_budget(
     session_max_sec: int,
     max_daily_sec: int,
     rng: Optional[random.Random] = None,
+    human_mode: bool = False,
 ) -> SessionBudget:
     """
     Compute how many seconds to credit in this run.
@@ -45,6 +46,10 @@ def compute_budget(
         max_daily_sec:    Daily cap in seconds (MAX_HOURS_PER_DAY * 3600).
         rng:              Optional :class:`random.Random` instance (for
                           reproducible tests or per-account seeding).
+        human_mode:       When False (the default) run *fast*: credit all of
+                          the remaining target in this single run, ignoring the
+                          per-run session window and the daily cap. When True,
+                          apply the gradual session/daily caps below.
 
     Returns:
         A :class:`SessionBudget` with the approved seconds and a reason string.
@@ -59,6 +64,16 @@ def compute_budget(
         return SessionBudget(
             this_run_seconds=0,
             reason=f"Goal already reached ({cumulative / 3600:.2f}h >= {target_seconds / 3600:.2f}h).",
+        )
+
+    # Fast mode: credit everything still owed toward the target in one run.
+    if not human_mode:
+        return SessionBudget(
+            this_run_seconds=remaining_total,
+            reason=(
+                f"Fast mode: crediting full remaining {remaining_total / 3600:.3f}h "
+                f"toward {target_seconds / 3600:.2f}h target in one run."
+            ),
         )
 
     remaining_today = max_daily_sec - today
