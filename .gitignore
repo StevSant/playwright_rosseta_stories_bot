@@ -27,3 +27,6 @@ network_capture.json
 
 # Tooling caches
 .mypy_cache/
+
+
+state/*
