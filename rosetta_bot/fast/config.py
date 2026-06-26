@@ -12,7 +12,7 @@ _DEFAULT_USER_AGENT = (
 )
 
 # Default state directory: <project root>/state/
-_DEFAULT_STATE_DIR = str(Path(__file__).resolve().parents[2] / "state")
+_DEFAULT_STATE_DIR = str(app_base_dir() / "state")
 
 # Sentinel "no throttle" value (in hours). When the session window and daily
 # cap are this large, a single run credits the entire remaining target at once.
