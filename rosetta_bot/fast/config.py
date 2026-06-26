@@ -11,10 +11,14 @@ _DEFAULT_USER_AGENT = (
     "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 )
 
-# Default state directory: <project root>/state/ from source, or
-# <exe dir>/state/ when frozen. Never resolved from __file__, which under a
-# PyInstaller one-file build points into the wiped-on-exit _MEI temp dir.
-_DEFAULT_STATE_DIR = str(app_base_dir() / "state")
+# Default state directory: <project root>/state/
+_DEFAULT_STATE_DIR = str(Path(__file__).resolve().parents[2] / "state")
+
+# Sentinel "no throttle" value (in hours). When the session window and daily
+# cap are this large, a single run credits the entire remaining target at once.
+# Far above any realistic TARGET_HOURS, so the only binding limit is the
+# remaining cumulative goal. Override the caps via env to re-enable throttling.
+_NO_CAP_HOURS = 100_000.0
 
 
 @dataclass
@@ -26,25 +30,22 @@ class FastReportConfig:
     session per context, then credits Stories hours directly via the
     ``app_usage`` API instead of playing stories in real time.
 
-    Speed mode
-    ~~~~~~~~~~
-    HUMAN_MODE
-        When false (the default) the runner is *fast*: it credits the full
-        remaining TARGET_HOURS in a single run, ignoring the per-run session
-        window and the daily cap, with no jittered delay between POSTs.
-        Set HUMAN_MODE=1 to restore the gradual, human-like accumulation
-        described below (session window + daily cap + jittered POST delays).
+    Accumulation settings
+    ~~~~~~~~~~~~~~~~~~~~~~
+    By default the bot is **uncapped**: a single run credits the entire
+    remaining TARGET_HOURS at once.  Set the env vars below to re-enable
+    gradual, human-like accumulation across scheduled runs.
 
-    Gradual-accumulation settings (only applied when HUMAN_MODE is on)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     SESSION_HOURS_MIN / SESSION_HOURS_MAX
         Each invocation credits a random amount of hours in this range.
-        Running once or twice a day via Task Scheduler spreads TARGET_HOURS
-        over many weeks like a real learner.
+        Defaults are effectively unlimited (``_NO_CAP_HOURS``) so one run
+        finishes the goal.  Set both (e.g. 0.5 / 2.0) to spread TARGET_HOURS
+        over many runs like a real learner.
 
     MAX_HOURS_PER_DAY
         Hard daily cap: once this many hours are credited for the calendar
         day, subsequent runs exit immediately without touching the browser.
+        Defaults to unlimited; set it (e.g. 2.5) to throttle per day.
 
     STATE_DIR
         Directory where per-account JSON progress files are stored.
@@ -75,10 +76,10 @@ class FastReportConfig:
     headless: bool = True
     language: str = "ENG"
     user_agent: str = _DEFAULT_USER_AGENT
-    # Gradual-accumulation caps.
-    session_hours_min: float = 0.5
-    session_hours_max: float = 2.0
-    max_hours_per_day: float = 2.5
+    # Accumulation caps. Default: uncapped — one run completes the full target.
+    session_hours_min: float = _NO_CAP_HOURS
+    session_hours_max: float = _NO_CAP_HOURS
+    max_hours_per_day: float = _NO_CAP_HOURS
     # State persistence.
     state_dir: str = _DEFAULT_STATE_DIR
     state_key: str = ""  # Defaults to email when empty.
@@ -109,9 +110,9 @@ class FastReportConfig:
             report_delay_max_sec=float(os.getenv("REPORT_DELAY_MAX_SEC", "6.0")),
             headless=headless,
             language=os.getenv("STORIES_LANGUAGE", "ENG"),
-            session_hours_min=float(os.getenv("SESSION_HOURS_MIN", "0.5")),
-            session_hours_max=float(os.getenv("SESSION_HOURS_MAX", "2.0")),
-            max_hours_per_day=float(os.getenv("MAX_HOURS_PER_DAY", "2.5")),
+            session_hours_min=float(os.getenv("SESSION_HOURS_MIN", str(_NO_CAP_HOURS))),
+            session_hours_max=float(os.getenv("SESSION_HOURS_MAX", str(_NO_CAP_HOURS))),
+            max_hours_per_day=float(os.getenv("MAX_HOURS_PER_DAY", str(_NO_CAP_HOURS))),
             state_dir=os.getenv("STATE_DIR", _DEFAULT_STATE_DIR),
             state_key=os.getenv("STATE_KEY", ""),
         )
