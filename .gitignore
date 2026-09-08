@@ -30,3 +30,6 @@ network_capture.json
 
 
 state/*
+
+# Runtime state, not source
+data/time_tracking.json
