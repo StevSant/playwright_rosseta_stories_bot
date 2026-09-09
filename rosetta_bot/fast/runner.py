@@ -339,6 +339,10 @@ class FastStoriesRunner:
             await self._click_first_button(page, ["Continuar", "Continue"], timeout=3000)
             await self._wait_for_stories(page, tag)
 
+            discovered_stories = await self._discover_stories(page)
+            story_names = [name for name, _ in discovered_stories]
+            if not story_names:
+                story_names = list(self._locators.KNOWN_STORIES)
             story_name = await self._enter_distinct_story(page, tag)
             if not story_name:
                 self._logger.error(f"{tag} Could not click any story")
@@ -384,6 +388,10 @@ class FastStoriesRunner:
                 "context": context,
                 "page": page,
                 "story": story_name,
+                # Keep a stable per-session rotation order. Put the story
+                # already opened first, then visit every other story once.
+                "story_names": [story_name]
+                + [name for name in story_names if name != story_name],
                 "cookies_str": cookies_str,
                 "stories_session_id": stories_session_id,
                 "started_ago": started_ago_sec,
@@ -410,15 +418,43 @@ class FastStoriesRunner:
         rng: random.Random,
     ) -> None:
         """
-        Send report_additional_usage in chunks until the per-run budget is
-        credited for this session.
+        Split the session budget evenly across all available stories and
+        rotate the browser to the next story between allocations.
 
         Delays between POSTs are jittered between
         ``report_delay_min_sec`` and ``report_delay_max_sec`` using the
         shared per-account RNG so timing differs across accounts.
         """
+        story_names = session.get("story_names") or [session["story"]]
+        base, remainder = divmod(seconds_to_report, len(story_names))
+
+        self._logger.info(
+            f"[S{session['session_id']}] Distributing {seconds_to_report}s "
+            f"across {len(story_names)} stories (~{base}s each)."
+        )
+
+        for index, story_name in enumerate(story_names):
+            if stop_event.is_set() or session["failed"]:
+                return
+            if index > 0:
+                if not await self._rotate_to_story(session, story_name):
+                    session["failed"] = True
+                    return
+            story_seconds = base + (1 if index < remainder else 0)
+            await self._report_story_usage(session, story_seconds, stop_event, rng)
+
+    async def _report_story_usage(
+        self,
+        session: dict,
+        seconds_to_report: int,
+        stop_event: asyncio.Event,
+        rng: random.Random,
+    ) -> None:
+        """Credit one story allocation in realistic-sized chunks."""
         cfg = self._config
         tag = f"[S{session['session_id']}]"
+        if seconds_to_report <= 0:
+            return
 
         # The first chunk size doubles as a realistic ``started_ago`` value:
         # it tells the server the story began that many seconds ago, which is
@@ -426,13 +462,16 @@ class FastStoriesRunner:
         # the API.
         first_chunk = min(seconds_to_report, rng.randint(cfg.chunk_min_sec, cfg.chunk_max_sec))
         session["started_ago"] = first_chunk
+        story_start_seconds = session["seconds_reported"]
 
         while (
             not stop_event.is_set()
-            and session["seconds_reported"] < seconds_to_report
+            and session["seconds_reported"] - story_start_seconds < seconds_to_report
             and not session["failed"]
         ):
-            remaining = seconds_to_report - session["seconds_reported"]
+            remaining = seconds_to_report - (
+                session["seconds_reported"] - story_start_seconds
+            )
             chunk = min(remaining, rng.randint(cfg.chunk_min_sec, cfg.chunk_max_sec))
 
             result = await asyncio.to_thread(
@@ -470,6 +509,42 @@ class FastStoriesRunner:
             f"{tag} Reporting done. {session['chunks_sent']} chunks, "
             f"{session['seconds_reported'] / 3600:.3f}h credited."
         )
+
+    async def _rotate_to_story(self, session: dict, story_name: str) -> bool:
+        """Navigate back to Stories, enter the next story, and initialize it."""
+        page = session["page"]
+        tag = f"[S{session['session_id']}]"
+        try:
+            await page.goto(URLs.STORIES, wait_until="networkidle", timeout=60000)
+            await self._wait_for_stories(page, tag)
+            candidates = await self._discover_stories(page)
+            target = next((locator for name, locator in candidates if name == story_name), None)
+            if target is None:
+                return False
+            await target.scroll_into_view_if_needed()
+            await target.click()
+            await asyncio.sleep(3)
+            for label in ["Continuar", "Continue", "Escuchar", "Listen"]:
+                await self._click_first_button(page, [label], timeout=1500)
+            await asyncio.sleep(2)
+
+            session["stories_session_id"] = str(uuid.uuid4())
+            init = await asyncio.to_thread(
+                self._api.report_usage_init,
+                session["cookies_str"],
+                session["stories_session_id"],
+                self._config.language,
+                0,
+            )
+            if init is None or (isinstance(init, dict) and "__error__" in init):
+                self._logger.error(f"{tag} Could not initialize story '{story_name}'.")
+                return False
+            session["story"] = story_name
+            self._logger.info(f"{tag} Rotated to story: {story_name}")
+            return True
+        except Exception as exc:
+            self._logger.error(f"{tag} Story rotation failed for '{story_name}': {exc}")
+            return False
 
     async def _status_monitor(
         self,
